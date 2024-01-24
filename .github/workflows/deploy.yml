@@ -1,1 +1,19 @@
+name: Build & Deploy
+on:
+  push:
+    branches: [main]
 
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: ${{secrets.SSH_HOST}} # IP address
+          key: ${{secrets.SSH_KEY}} # Public key
+          username: ${{ secrets.SSH_USERNAME }} # User of the server you want to ssh into
+     
+          script: | 
+            cd /var/www/html
+            git pull origin main
