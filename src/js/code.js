@@ -1,6 +1,6 @@
 // THIS NEEDS TO BE REFRACTOR
 // THIS FILE IS TOO BLOAT FOR ITS OWN GOOD
-const urlBase = 'http://cop43316.xyz/LAMPAPI';
+const urlBase = 'http://COP4331-g24.xyz/LAMPAPI';
 const extension = 'php';
 
 let userId = 0;
