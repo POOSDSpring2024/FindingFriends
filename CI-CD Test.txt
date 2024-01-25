@@ -19,3 +19,5 @@ and the repository exists.
 root@Group24SmallProject:/var/www/html# git branch --set-upstream-to=origin/main main
 Branch 'main' set up to track remote branch 'main' from 'origin'.
 root@Group24SmallProject:/var/www/html#
+
+Now git config pull.config pull.ff only
