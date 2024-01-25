@@ -1,8 +1,9 @@
 
 <?php
-
+	echo "Fetching Data";
 	$inData = getRequestInfo();
-	
+	echo "Data Recieved";
+
 	$id = 0;
 	$firstName = "";
 	$lastName = "";

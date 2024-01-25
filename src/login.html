@@ -148,7 +148,7 @@
             lenInput.classList.add("invalid");
           }
 
-          //check letters
+          /*//check letters
           if(userform.value.match(lett)) {
             lettInput.classList.remove("invalid");
             lettInput.classList.add("valid");
@@ -182,7 +182,7 @@
           }else {
             undInput.classList.remove("valid");
             undInput.classList.add("opt");
-          }
+          }*/
         }
       </script>
 
@@ -216,9 +216,13 @@
           var nums = /[0-9]/g;
           var lett = /[a-zA-Z]/g;
           var spec = /[!@#$%^&*]/g;
-
+          
+// Debug Line
+for(var i =0;i<4;i++){
+pLenInput.classList.remove("invalid");
+pLenInput.classList.add("valid");}
           //check length
-          if(passform.value.length >= 8 && passform.value.length <= 32) {
+          /*if(passform.value.length >= 4 && passform.value.length <= 32) {
             pLenInput.classList.remove("invalid");
             pLenInput.classList.add("valid");
           }else{
@@ -251,7 +255,7 @@
           }else {
             pSpecInput.classList.remove("valid");
             pSpecInput.classList.add("invalid");
-          }
+          }*/
         }
       </script>
     </div>

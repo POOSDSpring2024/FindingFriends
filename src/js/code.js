@@ -1,6 +1,6 @@
 // THIS NEEDS TO BE REFRACTOR
 // THIS FILE IS TOO BLOAT FOR ITS OWN GOOD
-const urlBase = 'http://COP4331-g24.xyz/LAMPAPI';
+const urlBase = 'http://cop4331-g24.xyz/LAMPAPI';
 const extension = 'php';
 
 let userId = 0;
@@ -21,12 +21,15 @@ function doLogin() {
     let login = document.getElementById("loginName").value;
     let password = document.getElementById("loginPassword").value;
 
-    var hash = md5(password);
+//var hash = md5(password);
+// DEBUG
+    var hash =password;
     if (!validLoginForm(login, password)) {
         document.getElementById("loginResult").innerHTML = "invalid username or password";
         return;
     }
     document.getElementById("loginResult").innerHTML = "";
+    
 
     let tmp = {
         login: login,
@@ -36,9 +39,10 @@ function doLogin() {
     let jsonPayload = JSON.stringify(tmp);
 
     let url = urlBase + '/Login.' + extension;
-
     let xhr = new XMLHttpRequest();
+    console.log("Attempting xhr Post");
     xhr.open("POST", url, true);
+    console.log("Finished Post");
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
     try {
         xhr.onreadystatechange = function () {
@@ -90,7 +94,7 @@ function doSignup() {
 
     let jsonPayload = JSON.stringify(tmp);
 
-    let url = urlBase + '/SignUp.' + extension;
+    let url = urlBase + '/Register.' + extension;
 
     let xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
@@ -427,6 +431,8 @@ function clickRegister() {
 }
 
 function validLoginForm(logName, logPass) {
+//DEBUG LINE
+return true;
 
     var logNameErr = logPassErr = true;
 
