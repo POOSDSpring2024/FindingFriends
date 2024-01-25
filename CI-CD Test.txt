@@ -21,3 +21,5 @@ Branch 'main' set up to track remote branch 'main' from 'origin'.
 root@Group24SmallProject:/var/www/html#
 
 Now git config pull.config pull.ff only
+
+Now no longer detached head
