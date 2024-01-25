@@ -1,3 +1,5 @@
+// THIS NEEDS TO BE REFRACTOR
+// THIS FILE IS TOO BLOAT FOR ITS OWN GOOD
 const urlBase = 'http://cop43316.xyz/LAMPAPI';
 const extension = 'php';
 
@@ -6,6 +8,11 @@ let firstName = "";
 let lastName = "";
 const ids = []
 
+/* NOTE CHANGE NAMING CONVENTION for js and html file
+loginName=>login
+loginPassword=>password
+
+*/
 function doLogin() {
     userId = 0;
     firstName = "";
@@ -62,10 +69,10 @@ function doSignup() {
     firstName = document.getElementById("firstName").value;
     lastName = document.getElementById("lastName").value;
 
-    let username = document.getElementById("username").value;
+    let login = document.getElementById("username").value;
     let password = document.getElementById("password").value;
 
-    if (!validSignUpForm(firstName, lastName, username, password)) {
+    if (!validSignUpForm(firstName, lastName, login, password)) {
         document.getElementById("signupResult").innerHTML = "invalid signup";
         return;
     }
@@ -77,7 +84,7 @@ function doSignup() {
     let tmp = {
         firstName: firstName,
         lastName: lastName,
-        login: username,
+        login: login,
         password: hash
     };
 
