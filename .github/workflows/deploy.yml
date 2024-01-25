@@ -1,19 +1,22 @@
-name: Build & Deploy
+name: Constant Integration and Constant Deployment
 on:
   push:
-    branches: [main]
-
+  create:
+  delete:
+  
 jobs:
-  deploy:
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy
-        uses: appleboy/ssh-action@v0.1.2
-        with:
-          host: ${{secrets.SSH_HOST}} # IP address
-          key: ${{secrets.SSH_KEY}} # Public key
-          username: ${{ secrets.SSH_USERNAME }} # User of the server you want to ssh into
-     
-          script: | 
-            cd /var/www/html
-            git pull origin main
+    - name: Executing Remote SSH Commands Using Password
+      uses: appleboy/ssh-action@v0.1.2 #Marketplace Tool
+      with:
+        host: ${{secrets.SSH_HOST}} # IP address
+        key: ${{secrets.SSH_KEY}} # Private key
+        username: ${{ secrets.SSH_USERNAME }} # User of the server you want to ssh into
+        script: |
+          cd /var/www/html
+          git reset --hard
+          git fetch -p && for branch in $(git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'); do git branch -D $branch; done
+          git pull --all
