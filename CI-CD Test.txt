@@ -23,3 +23,6 @@ root@Group24SmallProject:/var/www/html#
 Now git config pull.config pull.ff only
 
 Now no longer detached head
+
+Now remove pull.ff
+Rebased and removed old First Commit
