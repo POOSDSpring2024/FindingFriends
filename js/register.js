@@ -3,17 +3,17 @@
 urlBase = 'http://cop4331-g24.xyz/LAMPAPI';
 extension = 'php';
 
-let userId = 0;
-let firstName = "";
-let lastName = "";
+var userId = 0;
+var firstName = "";
+var lastName = "";
 ids = []
 
 function doSignup() {
     firstName = document.getElementById("firstName").value;
     lastName = document.getElementById("lastName").value;
 
-    let login = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
+    var login = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
 
     if (!validSignUpForm(firstName, lastName, login, password)) {
         document.getElementById("signupResult").innerHTML = "invalid signup";
@@ -24,18 +24,18 @@ function doSignup() {
 
     document.getElementById("signupResult").innerHTML = "";
 
-    let tmp = {
+    var tmp = {
         firstName: firstName,
         lastName: lastName,
         login: login,
         password: hash
     };
 
-    let jsonPayload = JSON.stringify(tmp);
+    var jsonPayload = JSON.stringify(tmp);
 
-    let url = urlBase + '/Register.' + extension;
+    var url = urlBase + '/Register.' + extension;
 
-    let xhr = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
@@ -53,7 +53,7 @@ function doSignup() {
 
             if (this.status == 200) {
 
-                let jsonObject = JSON.parse(xhr.responseText);
+                var jsonObject = JSON.parse(xhr.responseText);
                 userId = jsonObject.id;
                 document.getElementById("signupResult").innerHTML = "User added";
                 firstName = jsonObject.firstName;
@@ -143,8 +143,8 @@ function validSignUpForm(fName, lName, user, pass) {
 }
 
 function saveCookie() {
-    let minutes = 20;
-    let date = new Date();
+    var minutes = 20;
+    var date = new Date();
     date.setTime(date.getTime() + (minutes * 60 * 1000));
 
     document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
@@ -152,13 +152,13 @@ function saveCookie() {
 
 function readCookie() {
     userId = -1;
-    let data = document.cookie;
-    let splits = data.split(",");
+    var data = document.cookie;
+    var splits = data.split(",");
 
     for (var i = 0; i < splits.length; i++) {
 
-        let thisOne = splits[i].trim();
-        let tokens = thisOne.split("=");
+        var thisOne = splits[i].trim();
+        var tokens = thisOne.split("=");
 
         if (tokens[0] == "firstName") {
             firstName = tokens[1];
