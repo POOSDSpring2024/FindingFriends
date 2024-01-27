@@ -3,9 +3,9 @@
 urlBase = 'http://cop4331-g24.xyz/LAMPAPI';
 extension = 'php';
 
-let userId = 0;
-let firstName = "";
-let lastName = "";
+var userId = 0;
+var firstName = "";
+var lastName = "";
 ids = []
 
 function doLogin() {
@@ -13,8 +13,8 @@ function doLogin() {
     firstName = "";
     lastName = "";
 
-    let login = document.getElementById("loginName").value;
-    let password = document.getElementById("loginPassword").value;
+    var login = document.getElementById("loginName").value;
+    var password = document.getElementById("loginPassword").value;
 
 //var hash = md5(password);
 // DEBUG
@@ -26,15 +26,15 @@ function doLogin() {
     document.getElementById("loginResult").innerHTML = "";
     
 
-    let tmp = {
+    var tmp = {
         login: login,
         password: hash
     };
 
-    let jsonPayload = JSON.stringify(tmp);
+    var jsonPayload = JSON.stringify(tmp);
 
-    let url = urlBase + '/Login.' + extension;
-    let xhr = new XMLHttpRequest();
+    var url = urlBase + '/Login.' + extension;
+    var xhr = new XMLHttpRequest();
     console.log("Attempting xhr Post");
     xhr.open("POST", url, true);
     console.log("Finished Post");
@@ -43,7 +43,7 @@ function doLogin() {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
 
-                let jsonObject = JSON.parse(xhr.responseText);
+                var jsonObject = JSON.parse(xhr.responseText);
                 userId = jsonObject.id;
 
                 if (userId < 1) {
@@ -132,8 +132,8 @@ function validLoginForm(logName, logPass) {
     }
 
     function saveCookie() {
-        let minutes = 20;
-        let date = new Date();
+        var minutes = 20;
+        var date = new Date();
         date.setTime(date.getTime() + (minutes * 60 * 1000));
     
         document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
@@ -141,13 +141,13 @@ function validLoginForm(logName, logPass) {
     
     function readCookie() {
         userId = -1;
-        let data = document.cookie;
-        let splits = data.split(",");
+        var data = document.cookie;
+        var splits = data.split(",");
     
         for (var i = 0; i < splits.length; i++) {
     
-            let thisOne = splits[i].trim();
-            let tokens = thisOne.split("=");
+            var thisOne = splits[i].trim();
+            var tokens = thisOne.split("=");
     
             if (tokens[0] == "firstName") {
                 firstName = tokens[1];
