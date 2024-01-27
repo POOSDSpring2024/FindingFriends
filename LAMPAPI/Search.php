@@ -1,4 +1,7 @@
 <?php
+	header("Access-Control-Allow-Origin: http://cop4331-g24.xyz");
+	header("Access-Control-Allow-Methods: GET, POST");
+	header("Access-Control-Allow-Headers: Content-Type");
 
 	$inData = getRequestInfo();
 
