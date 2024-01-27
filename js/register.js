@@ -1,12 +1,12 @@
 // THIS NEEDS TO BE REFRACTOR
 // THIS FILE IS TOO BLOAT FOR ITS OWN GOOD
-const urlBase = 'http://cop4331-g24.xyz/LAMPAPI';
-const extension = 'php';
+urlBase = 'http://cop4331-g24.xyz/LAMPAPI';
+extension = 'php';
 
 let userId = 0;
 let firstName = "";
 let lastName = "";
-const ids = []
+ids = []
 
 function doSignup() {
     firstName = document.getElementById("firstName").value;
