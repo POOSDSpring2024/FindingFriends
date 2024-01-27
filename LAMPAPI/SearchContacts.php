@@ -1,4 +1,7 @@
 <?php
+	header("Access-Control-Allow-Origin: http://cop4331-g24.xyz");
+	header("Access-Control-Allow-Methods: GET, POST");
+	header("Access-Control-Allow-Headers: Content-Type");
 
 	$inData = getRequestInfo();
 
@@ -6,12 +9,9 @@
 	$searchCount = 0;
 
 	$conn = new mysqli("localhost", "MasterUser", "COP4331TwoFour", "COP4331");
-	if ($conn->connect_error)
-	{
+	if ($conn->connect_error){
 		returnWithError( $conn->connect_error );
-	}
-	else
-	{
+	}else{
 		$stmt = $conn->prepare("SELECT * FROM Contacts WHERE (FirstName LIKE ? OR LastName LIKE ? OR Phone LIKE ? OR Email LIKE ?) AND UserID = ?");
 		$input = "%" . $inData["search"] . "%";
 		$stmt->bind_param("sssss", $input, $input, $input, $input, $inData["userId"]);
@@ -19,17 +19,14 @@
 
 		$result = $stmt->get_result();
 
-		while($row = $result->fetch_assoc())
-		{
-			if( $searchCount > 0 )
-			{
+		while($row = $result->fetch_assoc()){
+			if( $searchCount > 0 ){
 				$searchResults .= ",";
 			}
 			$searchCount++;
 			// Return array of JSON objects instead of array of strings
 			// $searchResults .= '{"FirstName" : "' . $row["FirstName"]. '", "LastName" : "' . $row["LastName"]. '", "Phone" : "' . $row["Phone"]. '", "Email" : "' . $row["Email"]. '", "UserID" : "' . $row["UserID"].'", "ID" : "' . $row["ID"]. '"}';
-			$searchResults .= '{"FirstName" : "' . $row["FirstName"]. '", "LastName" : "' . $row["LastName"]. '", "Phone" : "' . $row["Phone"]. '", "Email" : "' . $row["Email"]. '"}';
-
+			$searchResults .= '{"firstName" : "' . $row["FirstName"]. '", "lastName" : "' . $row["LastName"]. '", "phone" : "' . $row["Phone"]. '", "email" : "' . $row["Email"]. '"}';
 		}
 
 		if( $searchCount == 0 )
