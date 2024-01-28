@@ -22,6 +22,7 @@ function doLogin() {
     let password = document.getElementById("loginPassword").value;
 
     var hash = md5(password);
+    console.log(hash);
     //var hash =password;
     if (!validLoginForm(login, password)) {
         document.getElementById("loginResult").innerHTML = "invalid username or password";
