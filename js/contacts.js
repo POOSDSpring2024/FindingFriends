@@ -22,20 +22,20 @@ function showTable() {
 
 function addContact() {
 
-    let firstname = document.getElementById("contactTextFirst").value;
-    let lastname = document.getElementById("contactTextLast").value;
-    let phonenumber = document.getElementById("contactTextNumber").value;
-    let emailaddress = document.getElementById("contactTextEmail").value;
+    let firstName = document.getElementById("contactTextFirst").value;
+    let lastName = document.getElementById("contactTextLast").value;
+    let phoneNumber = document.getElementById("contactTextNumber").value;
+    let emailAddress = document.getElementById("contactTextEmail").value;
 
-    if (!validAddContact(firstname, lastname, phonenumber, emailaddress)) {
+    if (!validAddContact(firstName, lastName, phoneNumber, emailAddress)) {
         console.log("INVALID FIRST NAME, LAST NAME, PHONE, OR EMAIL SUBMITTED");
         return;
     }
     let tmp = {
-        firstName: firstname,
-        lastName: lastname,
-        phoneNumber: phonenumber,
-        emailAddress: emailaddress,
+        firstName: firstName,
+        lastName: lastName,
+        phone: phoneNumber,
+        email: emailAddress,
         userId: userId
     };
 
@@ -87,15 +87,15 @@ function loadContacts() {
                 }
                 let text = "<table border='1'>"
                 for (let i = 0; i < jsonObject.results.length; i++) {
-                    ids[i] = jsonObject.results[i].ID
-                    text += "<tr id='row" + i + "'>"
-                    text += "<td id='first_Name" + i + "'><span>" + jsonObject.results[i].FirstName + "</span></td>";
-                    text += "<td id='last_Name" + i + "'><span>" + jsonObject.results[i].LastName + "</span></td>";
-                    text += "<td id='email" + i + "'><span>" + jsonObject.results[i].EmailAddress + "</span></td>";
-                    text += "<td id='phone" + i + "'><span>" + jsonObject.results[i].PhoneNumber + "</span></td>";
+                    ids[i] = jsonObject.results[i].id;
+                    text += "<tr id='row" + i + "'>";
+                    text += "<td id='firstName" + i + "'><span>" + jsonObject.results[i].firstName + "</span></td>";
+                    text += "<td id='lastName" + i + "'><span>" + jsonObject.results[i].lastName + "</span></td>";
+                    text += "<td id='email" + i + "'><span>" + jsonObject.results[i].email + "</span></td>";
+                    text += "<td id='phone" + i + "'><span>" + jsonObject.results[i].phone + "</span></td>";
                     text += "<td>" +
-                        "<button type='button' id='edit_button" + i + "' class='w3-button w3-circle w3-lime' onclick='edit_row(" + i + ")'>" + "<span class='glyphicon glyphicon-edit'></span>" + "</button>" +
-                        "<button type='button' id='save_button" + i + "' value='Save' class='w3-button w3-circle w3-lime' onclick='save_row(" + i + ")' style='display: none'>" + "<span class='glyphicon glyphicon-saved'></span>" + "</button>" +
+                        "<button type='button' id='editButton" + i + "' class='w3-button w3-circle w3-lime' onclick='edit_row(" + i + ")'>" + "<span class='glyphicon glyphicon-edit'></span>" + "</button>" +
+                        "<button type='button' id='saveButton" + i + "' value='Save' class='w3-button w3-circle w3-lime' onclick='save_row(" + i + ")' style='display: none'>" + "<span class='glyphicon glyphicon-saved'></span>" + "</button>" +
                         "<button type='button' onclick='delete_row(" + i + ")' class='w3-button w3-circle w3-amber'>" + "<span class='glyphicon glyphicon-trash'></span> " + "</button>" + "</td>";
                     text += "<tr/>"
                 }
@@ -109,47 +109,47 @@ function loadContacts() {
     }
 }
 
-function edit_row(id) {
-    document.getElementById("edit_button" + id).style.display = "none";
-    document.getElementById("save_button" + id).style.display = "inline-block";
+function edit_row(no) {
+    document.getElementById("editButton" + no).style.display = "none";
+    document.getElementById("saveButton" + no).style.display = "inline-block";
 
-    var firstNameI = document.getElementById("first_Name" + id);
-    var lastNameI = document.getElementById("last_Name" + id);
-    var email = document.getElementById("email" + id);
-    var phone = document.getElementById("phone" + id);
+    var firstNameNo = document.getElementById("firstName" + no);
+    var lastNameNo = document.getElementById("lastName" + no);
+    var emailNo = document.getElementById("email" + no);
+    var phoneNo = document.getElementById("phone" + no);
 
-    var namef_data = firstNameI.innerText;
-    var namel_data = lastNameI.innerText;
-    var email_data = email.innerText;
-    var phone_data = phone.innerText;
+    var firstNameData = firstNameNo.innerText;
+    var lastNameData = lastNameNo.innerText;
+    var emailData = emailNo.innerText;
+    var phoneData = phoneNo.innerText;
 
-    firstNameI.innerHTML = "<input type='text' id='namef_text" + id + "' value='" + namef_data + "'>";
-    lastNameI.innerHTML = "<input type='text' id='namel_text" + id + "' value='" + namel_data + "'>";
-    email.innerHTML = "<input type='text' id='email_text" + id + "' value='" + email_data + "'>";
-    phone.innerHTML = "<input type='text' id='phone_text" + id + "' value='" + phone_data + "'>"
+    firstNameNo.innerHTML = "<input type='text' id='firstNameText" + no + "' value='" + firstNameData + "'>";
+    lastNameNo.innerHTML = "<input type='text' id='lastNameText" + no + "' value='" + lastNameData + "'>";
+    emailNo.innerHTML = "<input type='text' id='emailText" + no + "' value='" + emailData + "'>";
+    phoneNo.innerHTML = "<input type='text' id='phoneText" + no + "' value='" + phoneData + "'>"
 }
 
 function save_row(no) {
-    var namef_val = document.getElementById("namef_text" + no).value;
-    var namel_val = document.getElementById("namel_text" + no).value;
-    var email_val = document.getElementById("email_text" + no).value;
-    var phone_val = document.getElementById("phone_text" + no).value;
-    var id_val = ids[no]
+    var firstNameValue = document.getElementById("firstNameText" + no).value;
+    var lastNameValue = document.getElementById("lastNameText" + no).value;
+    var emailValue = document.getElementById("emailText" + no).value;
+    var phoneValue = document.getElementById("phoneText" + no).value;
+    var idValue = ids[no]
 
-    document.getElementById("first_Name" + no).innerHTML = namef_val;
-    document.getElementById("last_Name" + no).innerHTML = namel_val;
-    document.getElementById("email" + no).innerHTML = email_val;
-    document.getElementById("phone" + no).innerHTML = phone_val;
+    document.getElementById("firstName" + no).innerHTML = firstNameValue;
+    document.getElementById("lastName" + no).innerHTML = lastNameValue;
+    document.getElementById("email" + no).innerHTML = emailValue;
+    document.getElementById("phone" + no).innerHTML = phoneValue;
 
-    document.getElementById("edit_button" + no).style.display = "inline-block";
-    document.getElementById("save_button" + no).style.display = "none";
+    document.getElementById("editButton" + no).style.display = "inline-block";
+    document.getElementById("saveButton" + no).style.display = "none";
 
     let tmp = {
-        phoneNumber: phone_val,
-        emailAddress: email_val,
-        newFirstName: namef_val,
-        newLastName: namel_val,
-        id: id_val
+        firstName: firstNameValue,
+        lastName: lastNameValue,
+        email: emailValue,
+        phone: phoneValue,
+        id: idValue
     };
 
     let jsonPayload = JSON.stringify(tmp);
@@ -173,17 +173,16 @@ function save_row(no) {
 }
 
 function delete_row(no) {
-    var namef_val = document.getElementById("first_Name" + no).innerText;
-    var namel_val = document.getElementById("last_Name" + no).innerText;
-    nameOne = namef_val.substring(0, namef_val.length);
-    nameTwo = namel_val.substring(0, namel_val.length);
-    let check = confirm('Confirm deletion of contact: ' + nameOne + ' ' + nameTwo);
+    var idValue = ids[no]
+    var firstNameValue = document.getElementById("firstName" + no).innerText;
+    var lastNameValue = document.getElementById("lastName" + no).innerText;
+    firstName = firstNameValue.substring(0, firstNameValue.length);
+    lastName = lastNameValue.substring(0, lastNameValue.length);
+    let check = confirm('Confirm deletion of contact: ' + firstName + ' ' + lastName);
     if (check === true) {
         document.getElementById("row" + no + "").outerHTML = "";
         let tmp = {
-            firstName: nameOne,
-            lastName: nameTwo,
-            userId: userId
+            id: idValue
         };
 
         let jsonPayload = JSON.stringify(tmp);
@@ -217,19 +216,29 @@ function searchContacts() {
     const tr = table.getElementsByTagName("tr");// Table Row
 
     for (let i = 0; i < tr.length; i++) {
-        const td_fn = tr[i].getElementsByTagName("td")[0];// Table Data: First Name
-        const td_ln = tr[i].getElementsByTagName("td")[1];// Table Data: Last Name
+        const tdfirstName = tr[i].getElementsByTagName("td")[0];// Table Data: First Name
+        const tdLastName = tr[i].getElementsByTagName("td")[1];// Table Data: Last Name
+        const tdEmail = tr[i].getElementsByTagName("td")[2];// Table Data: Email
+        const tdPhone = tr[i].getElementsByTagName("td")[3];// Table Data: Phone
 
-        if (td_fn && td_ln) {
-            const txtValue_fn = td_fn.textContent || td_fn.innerText;
-            const txtValue_ln = td_ln.textContent || td_ln.innerText;
+        if (tdfirstName && tdLastName) {
+            const txtValueFirstName = tdfirstName.textContent || tdfirstName.innerText;
+            const txtValueLastName = tdLastName.textContent || tdLastName.innerText;
+            const txtValueEmail = tdEmail.textContent || tdEmail.innerText;
+            const txtValuePhone = tdPhone.textContent || tdPhone.innerText;
             tr[i].style.display = "none";
 
             for (selection of selections) {
-                if (txtValue_fn.toUpperCase().indexOf(selection) > -1) {
+                if (txtValueFirstName.toUpperCase().indexOf(selection) > -1) {
                     tr[i].style.display = "";
                 }
-                if (txtValue_ln.toUpperCase().indexOf(selection) > -1) {
+                if (txtValueLastName.toUpperCase().indexOf(selection) > -1) {
+                    tr[i].style.display = "";
+                }
+                if (txtValueEmail.toUpperCase().indexOf(selection) > -1) {
+                    tr[i].style.display = "";
+                }
+                if (txtValuePhone.toUpperCase().indexOf(selection) > -1) {
                     tr[i].style.display = "";
                 }
             }
