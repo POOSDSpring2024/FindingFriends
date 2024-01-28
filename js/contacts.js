@@ -109,24 +109,24 @@ function loadContacts() {
     }
 }
 
-function edit_row(id) {
-    document.getElementById("editButton" + id).style.display = "none";
-    document.getElementById("saveButton" + id).style.display = "inline-block";
+function edit_row(no) {
+    document.getElementById("editButton" + no).style.display = "none";
+    document.getElementById("saveButton" + no).style.display = "inline-block";
 
-    var firstNameId = document.getElementById("firstName" + id);
-    var lastNameId = document.getElementById("lastName" + id);
-    var emailId = document.getElementById("email" + id);
-    var phoneId = document.getElementById("phone" + id);
+    var firstNameNo = document.getElementById("firstName" + no);
+    var lastNameNo = document.getElementById("lastName" + no);
+    var emailNo = document.getElementById("email" + no);
+    var phoneNo = document.getElementById("phone" + no);
 
-    var firstNameData = firstNameId.innerText;
-    var lastNameData = lastNameId.innerText;
-    var emailData = emailId.innerText;
-    var phoneData = phoneId.innerText;
+    var firstNameData = firstNameNo.innerText;
+    var lastNameData = lastNameNo.innerText;
+    var emailData = emailNo.innerText;
+    var phoneData = phoneNo.innerText;
 
-    firstNameId.innerHTML = "<input type='text' id='firstNameText" + id + "' value='" + firstNameData + "'>";
-    lastNameId.innerHTML = "<input type='text' id='lastNameText" + id + "' value='" + lastNameData + "'>";
-    emailId.innerHTML = "<input type='text' id='emailText" + id + "' value='" + emailData + "'>";
-    phoneId.innerHTML = "<input type='text' id='phoneText" + id + "' value='" + phoneData + "'>"
+    firstNameNo.innerHTML = "<input type='text' id='firstNameText" + no + "' value='" + firstNameData + "'>";
+    lastNameNo.innerHTML = "<input type='text' id='lastNameText" + no + "' value='" + lastNameData + "'>";
+    emailNo.innerHTML = "<input type='text' id='emailText" + no + "' value='" + emailData + "'>";
+    phoneNo.innerHTML = "<input type='text' id='phoneText" + no + "' value='" + phoneData + "'>"
 }
 
 function save_row(no) {
@@ -173,17 +173,16 @@ function save_row(no) {
 }
 
 function delete_row(no) {
-    var namef_val = document.getElementById("first_Name" + no).innerText;
-    var namel_val = document.getElementById("last_Name" + no).innerText;
-    nameOne = namef_val.substring(0, namef_val.length);
-    nameTwo = namel_val.substring(0, namel_val.length);
-    let check = confirm('Confirm deletion of contact: ' + nameOne + ' ' + nameTwo);
+    var idValue = ids[no]
+    var firstNameValue = document.getElementById("firstName" + no).innerText;
+    var lastNameValue = document.getElementById("lastName" + no).innerText;
+    firstName = firstNameValue.substring(0, firstNameValue.length);
+    lastName = lastNameValue.substring(0, lastNameValue.length);
+    let check = confirm('Confirm deletion of contact: ' + firstName + ' ' + lastName);
     if (check === true) {
         document.getElementById("row" + no + "").outerHTML = "";
         let tmp = {
-            firstName: nameOne,
-            lastName: nameTwo,
-            userId: userId
+            id: idValue
         };
 
         let jsonPayload = JSON.stringify(tmp);
