@@ -14,7 +14,8 @@
 	}else{
 		$stmt = $conn->prepare("SELECT * FROM Contacts WHERE (FirstName LIKE ? OR LastName LIKE ? OR Phone LIKE ? OR Email LIKE ?) AND UserID = ?");
 		$input = "%" . $inData["search"] . "%";
-		$stmt->bind_param("ssssi", $input, $input, $input, $input, $inData["userId"]);
+		// Phone number needs to be binded as an Integer since phoneNumber in database is saved as "123-456-7890"
+		$stmt->bind_param("sssss", $input, $input, $input, $input, $inData["userId"]);
 		$stmt->execute();
 
 		$result = $stmt->get_result();
