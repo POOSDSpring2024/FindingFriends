@@ -18,8 +18,8 @@ function doLogin() {
 
     //console.log(password);
     var hash = md5(password);
-    console.log(hash);
-    console.log(hash);
+    //console.log(hash);
+    //console.log(hash);
     //console.log(hash);
 // DEBUG
     if (!validLoginForm(login, password)) {
