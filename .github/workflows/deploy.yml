@@ -3,6 +3,9 @@ on:
   push:
   create:
   delete:
+  deployment:
+  fork:
+  merge_group:
   
 jobs:
   build:
