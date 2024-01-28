@@ -234,6 +234,12 @@ function searchContacts() {
                 if (txtValueLastName.toUpperCase().indexOf(selection) > -1) {
                     tr[i].style.display = "";
                 }
+                if (tdemail.toUpperCase().indexOf(selection) > -1) {
+                    tr[i].style.display = "";
+                }
+                if (tdphone.toUpperCase().indexOf(selection) > -1) {
+                    tr[i].style.display = "";
+                }
             }
         }
     }
