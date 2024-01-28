@@ -219,12 +219,14 @@ function searchContacts() {
     for (let i = 0; i < tr.length; i++) {
         const tdfirstName = tr[i].getElementsByTagName("td")[0];// Table Data: First Name
         const tdLastName = tr[i].getElementsByTagName("td")[1];// Table Data: Last Name
-        const tdemail = tr[i].getElementsByTagName("td")[2];// Table Data: Email
-        const tdphone = tr[i].getElementsByTagName("td")[3];// Table Data: Phone
+        const tdEmail = tr[i].getElementsByTagName("td")[2];// Table Data: Email
+        const tdPhone = tr[i].getElementsByTagName("td")[3];// Table Data: Phone
 
         if (tdfirstName && tdLastName) {
             const txtValueFirstName = tdfirstName.textContent || tdfirstName.innerText;
             const txtValueLastName = tdLastName.textContent || tdLastName.innerText;
+            const txtValueEmail = tdEmail.textContent || tdEmail.innerText;
+            const txtValuePhone = tdPhone.textContent || tdPhone.innerText;
             tr[i].style.display = "none";
 
             for (selection of selections) {
@@ -234,10 +236,10 @@ function searchContacts() {
                 if (txtValueLastName.toUpperCase().indexOf(selection) > -1) {
                     tr[i].style.display = "";
                 }
-                if (tdemail.toUpperCase().indexOf(selection) > -1) {
+                if (txtValueEmail.toUpperCase().indexOf(selection) > -1) {
                     tr[i].style.display = "";
                 }
-                if (tdphone.toUpperCase().indexOf(selection) > -1) {
+                if (txtValuePhone.toUpperCase().indexOf(selection) > -1) {
                     tr[i].style.display = "";
                 }
             }
