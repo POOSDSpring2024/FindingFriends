@@ -9,21 +9,21 @@ var lastName = "";
 ids = []
 
 function doSignup() {
-    firstName = document.getElementById("firstName").value;
-    lastName = document.getElementById("lastName").value;
+    firstName = document.getElementById("first-name").value;
+    lastName = document.getElementById("last-name").value;
 
     var login = document.getElementById("username").value;
     var password = document.getElementById("password").value;
 
 
     if (!validSignUpForm(firstName, lastName, login, password)) {
-        document.getElementById("signupResult").innerHTML = "invalid signup";
+        document.getElementById("signup-result").innerHTML = "invalid signup";
         return;
     }
 
     var hash = md5(password);
 
-    document.getElementById("signupResult").innerHTML = "";
+    document.getElementById("signup-result").innerHTML = "";
 
     console.log(firstName);
     console.log(lastName);
@@ -53,7 +53,7 @@ function doSignup() {
             }
 
             if (this.status == 409) {
-                document.getElementById("signupResult").innerHTML = "User already exists";
+                document.getElementById("signup-result").innerHTML = "User already exists";
                 return;
             }
 
@@ -61,7 +61,7 @@ function doSignup() {
 
                 var jsonObject = JSON.parse(xhr.responseText);
                 userId = jsonObject.id;
-                document.getElementById("signupResult").innerHTML = "User added";
+                document.getElementById("signup-result").innerHTML = "User added";
                 firstName = jsonObject.firstName;
                 lastName = jsonObject.lastName;
                 saveCookie();
@@ -70,7 +70,7 @@ function doSignup() {
 
         xhr.send(jsonPayload);
     } catch (err) {
-        document.getElementById("signupResult").innerHTML = err.message;
+        document.getElementById("signup-result").innerHTML = err.message;
     }
 }
 
@@ -78,7 +78,7 @@ function clickRegister() {
 
     var log = document.getElementById("login");
     var reg = document.getElementById("signup");
-    var but = document.getElementById("btn");
+    var but = document.getElementById("toggle-form");
 
     reg.style.left = "-400px";
     log.style.left = "0px";
@@ -86,61 +86,61 @@ function clickRegister() {
 
 }
 
-function validSignUpForm(fName, lName, user, pass) {
+function validSignUpForm(firstName, lastName, username, password) {
 
-    var fNameErr = lNameErr = userErr = passErr = true;
+    var firstNameError = lastNameError = usernameError = passwordError = true;
 
-    if (fName == "") {
+    if (firstName == "") {
         console.log("FIRST NAME IS BLANK");
     }
     else {
         console.log("first name IS VALID");
-        fNameErr = false;
+        firstNameError = false;
     }
 
-    if (lName == "") {
+    if (lastName == "") {
         console.log("LAST NAME IS BLANK");
     }
     else {
         console.log("LAST name IS VALID");
-        lNameErr = false;
+        lastNameError = false;
     }
 
-    if (user == "") {
+    if (username == "") {
         console.log("USERNAME IS BLANK");
     }
     else {
         var regex = /(?=.*[a-zA-Z])([a-zA-Z0-9-_]).{3,18}$/;
 
-        if (regex.test(user) == false) {
+        if (regex.test(username) == false) {
             console.log("USERNAME IS NOT VALID");
         }
 
         else {
 
             console.log("USERNAME IS VALID");
-            userErr = false;
+            usernameError = false;
         }
     }
 
-    if (pass == "") {
+    if (password == "") {
         console.log("PASSWORD IS BLANK");
     }
     else {
         var regex = /(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}/;
 
-        if (regex.test(pass) == false) {
+        if (regex.test(password) == false) {
             console.log("PASSWORD IS NOT VALID");
         }
 
         else {
 
             console.log("PASSWORD IS VALID");
-            passErr = false;
+            passwordError = false;
         }
     }
 
-    if ((fNameErr || lNameErr || userErr || passErr) == true) {
+    if ((firstNameError || lastNameError || usernameError || passwordError) == true) {
         return false;
 
     }
@@ -184,6 +184,6 @@ function readCookie() {
     }
 
     else {
-        document.getElementById("userName").innerHTML = "Welcome, " + firstName + " " + lastName + "!";
+        document.getElementById("weclome-text").innerHTML = "Welcome, " + firstName + " " + lastName + "!";
     }
 }

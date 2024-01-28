@@ -9,8 +9,8 @@ let lastName = "";
 ids = []
 
 function showTable() {
-    var x = document.getElementById("addMe");
-    var contacts = document.getElementById("contactsTable")
+    var x = document.getElementById("add-me");
+    var contacts = document.getElementById("contact-table")
     if (x.style.display === "none") {
         x.style.display = "block";
         contacts.style.display = "none";
@@ -22,10 +22,10 @@ function showTable() {
 
 function addContact() {
 
-    let firstName = document.getElementById("contactTextFirst").value;
-    let lastName = document.getElementById("contactTextLast").value;
-    let phoneNumber = document.getElementById("contactTextNumber").value;
-    let emailAddress = document.getElementById("contactTextEmail").value;
+    let firstName = document.getElementById("contact-text-first-name").value;
+    let lastName = document.getElementById("contact-text-last-name").value;
+    let phoneNumber = document.getElementById("contact-text-number").value;
+    let emailAddress = document.getElementById("contact-text-email").value;
 
     if (!validAddContact(firstName, lastName, phoneNumber, emailAddress)) {
         console.log("INVALID FIRST NAME, LAST NAME, PHONE, OR EMAIL SUBMITTED");
@@ -52,7 +52,7 @@ function addContact() {
             if (this.readyState == 4 && this.status == 200) {
                 console.log("Contact has been added");
                 // Clear input fields in form 
-                document.getElementById("addMe").reset();
+                document.getElementById("add-me").reset();
                 // reload contacts table and switch view to show
                 loadContacts();
                 showTable();
@@ -88,19 +88,19 @@ function loadContacts() {
                 let text = "<table border='1'>"
                 for (let i = 0; i < jsonObject.results.length; i++) {
                     ids[i] = jsonObject.results[i].id;
-                    text += "<tr id='row" + i + "'>";
-                    text += "<td id='firstName" + i + "'><span>" + jsonObject.results[i].firstName + "</span></td>";
-                    text += "<td id='lastName" + i + "'><span>" + jsonObject.results[i].lastName + "</span></td>";
-                    text += "<td id='email" + i + "'><span>" + jsonObject.results[i].email + "</span></td>";
-                    text += "<td id='phone" + i + "'><span>" + jsonObject.results[i].phone + "</span></td>";
+                    text += "<tr id='row-" + i + "'>";
+                    text += "<td id='first-name-" + i + "'><span>" + jsonObject.results[i].firstName + "</span></td>";
+                    text += "<td id='last-name-" + i + "'><span>" + jsonObject.results[i].lastName + "</span></td>";
+                    text += "<td id='email-" + i + "'><span>" + jsonObject.results[i].email + "</span></td>";
+                    text += "<td id='phone-" + i + "'><span>" + jsonObject.results[i].phone + "</span></td>";
                     text += "<td>" +
-                        "<button type='button' id='editButton" + i + "' class='w3-button w3-circle w3-lime' onclick='edit_row(" + i + ")'>" + "<span class='glyphicon glyphicon-edit'></span>" + "</button>" +
-                        "<button type='button' id='saveButton" + i + "' value='Save' class='w3-button w3-circle w3-lime' onclick='save_row(" + i + ")' style='display: none'>" + "<span class='glyphicon glyphicon-saved'></span>" + "</button>" +
-                        "<button type='button' onclick='delete_row(" + i + ")' class='w3-button w3-circle w3-amber'>" + "<span class='glyphicon glyphicon-trash'></span> " + "</button>" + "</td>";
+                        "<button type='button' id='edit-button-" + i + "' class='w3-button w3-circle w3-lime' onclick='editRow(" + i + ")'>" + "<span class='glyphicon glyphicon-edit'></span>" + "</button>" +
+                        "<button type='button' id='save-button-" + i + "' value='Save' class='w3-button w3-circle w3-lime' onclick='saveRow(" + i + ")' style='display: none'>" + "<span class='glyphicon glyphicon-saved'></span>" + "</button>" +
+                        "<button type='button' onclick='deleteRow(" + i + ")' class='w3-button w3-circle w3-amber'>" + "<span class='glyphicon glyphicon-trash'></span> " + "</button>" + "</td>";
                     text += "<tr/>"
                 }
                 text += "</table>"
-                document.getElementById("tbody").innerHTML = text;
+                document.getElementById("table-body").innerHTML = text;
             }
         };
         xhr.send(jsonPayload);
@@ -109,47 +109,47 @@ function loadContacts() {
     }
 }
 
-function edit_row(no) {
-    document.getElementById("editButton" + no).style.display = "none";
-    document.getElementById("saveButton" + no).style.display = "inline-block";
+function editRow(rowNumber) {
+    document.getElementById("edit-button-" + rowNumber).style.display = "none";
+    document.getElementById("save-button-" + rowNumber).style.display = "inline-block";
 
-    var firstNameNo = document.getElementById("firstName" + no);
-    var lastNameNo = document.getElementById("lastName" + no);
-    var emailNo = document.getElementById("email" + no);
-    var phoneNo = document.getElementById("phone" + no);
+    var firstNameElement = document.getElementById("first-name-" + rowNumber);
+    var lastNameElement = document.getElementById("last-name-" + rowNumber);
+    var emailNElement= document.getElementById("email-" + rowNumber);
+    var phoneElement = document.getElementById("phone-" + rowNumber);
 
-    var firstNameData = firstNameNo.innerText;
-    var lastNameData = lastNameNo.innerText;
-    var emailData = emailNo.innerText;
-    var phoneData = phoneNo.innerText;
+    var firstNameData = firstNameElement.innerText;
+    var lastNameData = lastNameElement.innerText;
+    var emailData = emailNElement.innerText;
+    var phoneData = phoneElement.innerText;
 
-    firstNameNo.innerHTML = "<input type='text' id='firstNameText" + no + "' value='" + firstNameData + "'>";
-    lastNameNo.innerHTML = "<input type='text' id='lastNameText" + no + "' value='" + lastNameData + "'>";
-    emailNo.innerHTML = "<input type='text' id='emailText" + no + "' value='" + emailData + "'>";
-    phoneNo.innerHTML = "<input type='text' id='phoneText" + no + "' value='" + phoneData + "'>"
+    firstNameElement.innerHTML = "<input type='text' id='first-name-edit-text-" + rowNumber + "' value='" + firstNameData + "'>";
+    lastNameElement.innerHTML = "<input type='text' id='last-name-edit-text-" + rowNumber + "' value='" + lastNameData + "'>";
+    emailNElement.innerHTML = "<input type='text' id='email-edit-text-" + rowNumber + "' value='" + emailData + "'>";
+    phoneElement.innerHTML = "<input type='text' id='phone-edit-text-" + rowNumber + "' value='" + phoneData + "'>"
 }
 
-function save_row(no) {
-    var firstNameValue = document.getElementById("firstNameText" + no).value;
-    var lastNameValue = document.getElementById("lastNameText" + no).value;
-    var emailValue = document.getElementById("emailText" + no).value;
-    var phoneValue = document.getElementById("phoneText" + no).value;
-    var idValue = ids[no]
+function saveRow(rowNumber) {
+    var newFirstNameValue = document.getElementById("first-name-edit-text-" + rowNumber).value;
+    var newLastNameValue = document.getElementById("last-name-edit-text-" + rowNumber).value;
+    var newEmailValue = document.getElementById("email-edit-text-" + rowNumber).value;
+    var newPhoneValue = document.getElementById("phone-edit-text-" + rowNumber).value;
+    var newIdValue = ids[rowNumber]
 
-    document.getElementById("firstName" + no).innerHTML = firstNameValue;
-    document.getElementById("lastName" + no).innerHTML = lastNameValue;
-    document.getElementById("email" + no).innerHTML = emailValue;
-    document.getElementById("phone" + no).innerHTML = phoneValue;
+    document.getElementById("first-name-" + rowNumber).innerHTML = newFirstNameValue;
+    document.getElementById("last-name-" + rowNumber).innerHTML = newLastNameValue;
+    document.getElementById("email-" + rowNumber).innerHTML = newEmailValue;
+    document.getElementById("phone-" + rowNumber).innerHTML = newPhoneValue;
 
-    document.getElementById("editButton" + no).style.display = "inline-block";
-    document.getElementById("saveButton" + no).style.display = "none";
+    document.getElementById("edit-button-" + rowNumber).style.display = "inline-block";
+    document.getElementById("save-button-" + rowNumber).style.display = "none";
 
     let tmp = {
-        firstName: firstNameValue,
-        lastName: lastNameValue,
-        email: emailValue,
-        phone: phoneValue,
-        id: idValue
+        firstName: newFirstNameValue,
+        lastName: newLastNameValue,
+        email: newEmailValue,
+        phone: newPhoneValue,
+        id: newIdValue
     };
 
     let jsonPayload = JSON.stringify(tmp);
@@ -172,15 +172,15 @@ function save_row(no) {
     }
 }
 
-function delete_row(no) {
-    var idValue = ids[no]
-    var firstNameValue = document.getElementById("firstName" + no).innerText;
-    var lastNameValue = document.getElementById("lastName" + no).innerText;
-    firstName = firstNameValue.substring(0, firstNameValue.length);
-    lastName = lastNameValue.substring(0, lastNameValue.length);
+function deleteRow(rowNumber) {
+    var idValue = ids[rowNumber]
+    var firstNameValue = document.getElementById("first-name-" + rowNumber).innerText;
+    var lastNameValue = document.getElementById("last-name-" + rowNumber).innerText;
+    var firstName = firstNameValue.substring(0, firstNameValue.length);
+    var lastName = lastNameValue.substring(0, lastNameValue.length);
     let check = confirm('Confirm deletion of contact: ' + firstName + ' ' + lastName);
     if (check === true) {
-        document.getElementById("row" + no + "").outerHTML = "";
+        document.getElementById("row-" + rowNumber + "").outerHTML = "";
         let tmp = {
             id: idValue
         };
@@ -210,35 +210,35 @@ function delete_row(no) {
 }
 
 function searchContacts() {
-    const content = document.getElementById("searchText");
+    const content = document.getElementById("search-text");
     const selections = content.value.toUpperCase().split(' ');
     const table = document.getElementById("contacts");
     const tr = table.getElementsByTagName("tr");// Table Row
 
     for (let i = 0; i < tr.length; i++) {
-        const tdfirstName = tr[i].getElementsByTagName("td")[0];// Table Data: First Name
+        const tdFirstName = tr[i].getElementsByTagName("td")[0];// Table Data: First Name
         const tdLastName = tr[i].getElementsByTagName("td")[1];// Table Data: Last Name
         const tdEmail = tr[i].getElementsByTagName("td")[2];// Table Data: Email
         const tdPhone = tr[i].getElementsByTagName("td")[3];// Table Data: Phone
 
-        if (tdfirstName && tdLastName) {
-            const txtValueFirstName = tdfirstName.textContent || tdfirstName.innerText;
-            const txtValueLastName = tdLastName.textContent || tdLastName.innerText;
-            const txtValueEmail = tdEmail.textContent || tdEmail.innerText;
-            const txtValuePhone = tdPhone.textContent || tdPhone.innerText;
+        if (tdFirstName && tdLastName) {
+            const textValueFirstName = tdFirstName.textContent || tdFirstName.innerText;
+            const textValueLastName = tdLastName.textContent || tdLastName.innerText;
+            const textValueEmail = tdEmail.textContent || tdEmail.innerText;
+            const textValuePhone = tdPhone.textContent || tdPhone.innerText;
             tr[i].style.display = "none";
 
             for (selection of selections) {
-                if (txtValueFirstName.toUpperCase().indexOf(selection) > -1) {
+                if (textValueFirstName.toUpperCase().indexOf(selection) > -1) {
                     tr[i].style.display = "";
                 }
-                if (txtValueLastName.toUpperCase().indexOf(selection) > -1) {
+                if (textValueLastName.toUpperCase().indexOf(selection) > -1) {
                     tr[i].style.display = "";
                 }
-                if (txtValueEmail.toUpperCase().indexOf(selection) > -1) {
+                if (textValueEmail.toUpperCase().indexOf(selection) > -1) {
                     tr[i].style.display = "";
                 }
-                if (txtValuePhone.toUpperCase().indexOf(selection) > -1) {
+                if (textValuePhone.toUpperCase().indexOf(selection) > -1) {
                     tr[i].style.display = "";
                 }
             }
@@ -248,14 +248,14 @@ function searchContacts() {
 
 function validAddContact(firstName, lastName, phone, email) {
 
-    var fNameErr = lNameErr = phoneErr = emailErr = true;
+    var firstNameError = lastNameErrot = phoneError = emailError = true;
 
     if (firstName == "") {
         console.log("FIRST NAME IS BLANK");
     }
     else {
         console.log("first name IS VALID");
-        fNameErr = false;
+        firstNameError = false;
     }
 
     if (lastName == "") {
@@ -263,7 +263,7 @@ function validAddContact(firstName, lastName, phone, email) {
     }
     else {
         console.log("LAST name IS VALID");
-        lNameErr = false;
+        lastNameErrot = false;
     }
 
     if (phone == "") {
@@ -279,7 +279,7 @@ function validAddContact(firstName, lastName, phone, email) {
         else {
 
             console.log("PHONE IS VALID");
-            phoneErr = false;
+            phoneError = false;
         }
     }
 
@@ -296,11 +296,11 @@ function validAddContact(firstName, lastName, phone, email) {
         else {
 
             console.log("EMAIL IS VALID");
-            emailErr = false;
+            emailError = false;
         }
     }
 
-    if ((phoneErr || emailErr || fNameErr || lNameErr) == true) {
+    if ((firstNameError || lastNameErrot || phoneError || emailError) == true) {
         return false;
 
     }
@@ -354,6 +354,6 @@ function readCookie() {
     }
 
     else {
-        document.getElementById("userName").innerHTML = "Welcome, " + firstName + " " + lastName + "!";
+        document.getElementById("weclome-text").innerHTML = "Welcome, " + firstName + " " + lastName + "!";
     }
 }
