@@ -118,10 +118,10 @@ function edit_row(id) {
     var emailId = document.getElementById("email" + id);
     var phoneId = document.getElementById("phone" + id);
 
-    var firstNameData = firstNameI.innerText;
-    var lastNameData = lastNameI.innerText;
-    var emailData = email.innerText;
-    var phoneData = phone.innerText;
+    var firstNameData = firstNameId.innerText;
+    var lastNameData = lastNameId.innerText;
+    var emailData = emailId.innerText;
+    var phoneData = phoneId.innerText;
 
     firstNameId.innerHTML = "<input type='text' id='firstNameText" + id + "' value='" + firstNameData + "'>";
     lastNameId.innerHTML = "<input type='text' id='lastNameText" + id + "' value='" + lastNameData + "'>";
