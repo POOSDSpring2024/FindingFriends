@@ -28,7 +28,7 @@
         if (!$row) {
             returnWithError("Record not found");
         } else {
-            $stmt = $conn->prepare("UPDATE Contacts SET FirstName=?, LastName=?, Phone=?, Email=?, /*UserID=?*/ WHERE ID=?");
+            $stmt = $conn->prepare("UPDATE Contacts SET FirstName=?, LastName=?, Phone=?, Email=? /*, UserID=?*/ WHERE ID=?");
             $stmt->bind_param(/*"sssssi"*/"ssssi", $firstName, $lastName, $phone, $email, /*$userID,*/ $inData['id']);
             $stmt->execute();
 
