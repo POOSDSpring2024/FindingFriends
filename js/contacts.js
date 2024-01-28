@@ -87,15 +87,15 @@ function loadContacts() {
                 }
                 let text = "<table border='1'>"
                 for (let i = 0; i < jsonObject.results.length; i++) {
-                    ids[i] = jsonObject.results[i].ID
-                    text += "<tr id='row" + i + "'>"
+                    ids[i] = jsonObject.results[i].id;
+                    text += "<tr id='row" + i + "'>";
                     text += "<td id='firstName" + i + "'><span>" + jsonObject.results[i].firstName + "</span></td>";
                     text += "<td id='lastName" + i + "'><span>" + jsonObject.results[i].lastName + "</span></td>";
                     text += "<td id='email" + i + "'><span>" + jsonObject.results[i].email + "</span></td>";
                     text += "<td id='phone" + i + "'><span>" + jsonObject.results[i].phone + "</span></td>";
                     text += "<td>" +
-                        "<button type='button' id='edit_button" + i + "' class='w3-button w3-circle w3-lime' onclick='edit_row(" + i + ")'>" + "<span class='glyphicon glyphicon-edit'></span>" + "</button>" +
-                        "<button type='button' id='save_button" + i + "' value='Save' class='w3-button w3-circle w3-lime' onclick='save_row(" + i + ")' style='display: none'>" + "<span class='glyphicon glyphicon-saved'></span>" + "</button>" +
+                        "<button type='button' id='editButton" + i + "' class='w3-button w3-circle w3-lime' onclick='edit_row(" + i + ")'>" + "<span class='glyphicon glyphicon-edit'></span>" + "</button>" +
+                        "<button type='button' id='saveButton" + i + "' value='Save' class='w3-button w3-circle w3-lime' onclick='save_row(" + i + ")' style='display: none'>" + "<span class='glyphicon glyphicon-saved'></span>" + "</button>" +
                         "<button type='button' onclick='delete_row(" + i + ")' class='w3-button w3-circle w3-amber'>" + "<span class='glyphicon glyphicon-trash'></span> " + "</button>" + "</td>";
                     text += "<tr/>"
                 }
@@ -110,11 +110,11 @@ function loadContacts() {
 }
 
 function edit_row(id) {
-    document.getElementById("edit_button" + id).style.display = "none";
-    document.getElementById("save_button" + id).style.display = "inline-block";
+    document.getElementById("editButton" + id).style.display = "none";
+    document.getElementById("saveButton" + id).style.display = "inline-block";
 
-    var firstNameI = document.getElementById("first_Name" + id);
-    var lastNameI = document.getElementById("last_Name" + id);
+    var firstNameI = document.getElementById("firstName" + id);
+    var lastNameI = document.getElementById("lastName" + id);
     var email = document.getElementById("email" + id);
     var phone = document.getElementById("phone" + id);
 
@@ -136,19 +136,19 @@ function save_row(no) {
     var phone_val = document.getElementById("phone_text" + no).value;
     var id_val = ids[no]
 
-    document.getElementById("first_Name" + no).innerHTML = namef_val;
-    document.getElementById("last_Name" + no).innerHTML = namel_val;
+    document.getElementById("firstName" + no).innerHTML = namef_val;
+    document.getElementById("lastName" + no).innerHTML = namel_val;
     document.getElementById("email" + no).innerHTML = email_val;
     document.getElementById("phone" + no).innerHTML = phone_val;
 
-    document.getElementById("edit_button" + no).style.display = "inline-block";
-    document.getElementById("save_button" + no).style.display = "none";
+    document.getElementById("editButton" + no).style.display = "inline-block";
+    document.getElementById("saveButton" + no).style.display = "none";
 
     let tmp = {
-        phoneNumber: phone_val,
-        emailAddress: email_val,
-        newFirstName: namef_val,
-        newLastName: namel_val,
+        firstName: namef_val,
+        lastName: namel_val,
+        phone: phone_val,
+        email: email_val,
         id: id_val
     };
 
