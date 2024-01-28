@@ -10,7 +10,7 @@
 	<!--<link rel="stylesheet" href="css/contacts.css" />-->
 	<script type="text/javascript" src="js/contacts.js"></script>
 	<!--<script type="text/javascript" src="js/cookie.js"></script>-->
-	<!--<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 	<link href='https://fonts.googleapis.com/css?family=Island Moments' rel='stylesheet'>
 	<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		document.addEventListener('DOMContentLoaded', function () {
 			readCookie();
@@ -36,16 +36,16 @@
 	<div class="sidenav">
 		<!--<img id="logo" src="images/icon.png" alt="logo image">-->
 		<button type="button" id="logoutButton" class="sidebuttons font" onclick="doLogout();">Logout</button>
+		<a href="index.html">Home</a>
 		<a href="contacts.html">Contacts</a>
 		<a href="members.html">About Us</a>
 	</div>
 	<!-- page content, each div inside content is formatted with flex-->
 	<div class="content">
 		<div class="loggedInDiv">
-			<span style="color:#007D2F" id="userName"></span><br />
+			<span style="color:#007D2F" id="userName"></span><br/><br/>
 		</div>
 		<div class="accessUIDiv">
-			<br />
 			<div class="column">
 				<div class="search-container">
 					<input onkeyup=searchContacts() type="text" name="search" id="searchText" placeholder="Search..."
