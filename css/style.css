@@ -1,0 +1,29 @@
+body{
+    margin:0px;
+    padding:0px;
+ }
+
+ .btn{
+    top: 50%;
+    left: 50%;
+ }
+
+.header{
+    height: 100px;
+    padding-top: 0px;;
+    border-style: solid;
+    border-width: 5px;
+    background: #D6B4FC
+    
+}
+
+
+.logOutbutton{
+    text-align: center;
+    font-size: 14px;
+    top:9%;
+    left:92%;
+    width:180px;
+    height:150px;
+    position: absolute;
+}
