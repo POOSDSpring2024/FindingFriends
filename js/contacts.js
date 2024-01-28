@@ -222,7 +222,7 @@ function searchContacts() {
         const tdemail = tr[i].getElementsByTagName("td")[2];// Table Data: Email
         const tdphone = tr[i].getElementsByTagName("td")[3];// Table Data: Phone
 
-        if (tdfirstName && tdlastName) {
+        if (tdfirstName && tdLastName) {
             const txtValueFirstName = tdfirstName.textContent || tdfirstName.innerText;
             const txtValueLastName = tdLastName.textContent || tdLastName.innerText;
             tr[i].style.display = "none";
