@@ -113,43 +113,43 @@ function edit_row(id) {
     document.getElementById("editButton" + id).style.display = "none";
     document.getElementById("saveButton" + id).style.display = "inline-block";
 
-    var firstNameI = document.getElementById("firstName" + id);
-    var lastNameI = document.getElementById("lastName" + id);
-    var email = document.getElementById("email" + id);
-    var phone = document.getElementById("phone" + id);
+    var firstNameId = document.getElementById("firstName" + id);
+    var lastNameId = document.getElementById("lastName" + id);
+    var emailId = document.getElementById("email" + id);
+    var phoneId = document.getElementById("phone" + id);
 
-    var namef_data = firstNameI.innerText;
-    var namel_data = lastNameI.innerText;
-    var email_data = email.innerText;
-    var phone_data = phone.innerText;
+    var firstNameData = firstNameI.innerText;
+    var lastNameData = lastNameI.innerText;
+    var emailData = email.innerText;
+    var phoneData = phone.innerText;
 
-    firstNameI.innerHTML = "<input type='text' id='namef_text" + id + "' value='" + namef_data + "'>";
-    lastNameI.innerHTML = "<input type='text' id='namel_text" + id + "' value='" + namel_data + "'>";
-    email.innerHTML = "<input type='text' id='email_text" + id + "' value='" + email_data + "'>";
-    phone.innerHTML = "<input type='text' id='phone_text" + id + "' value='" + phone_data + "'>"
+    firstNameId.innerHTML = "<input type='text' id='firstNameText" + id + "' value='" + firstNameData + "'>";
+    lastNameId.innerHTML = "<input type='text' id='lastNameText" + id + "' value='" + lastNameData + "'>";
+    emailId.innerHTML = "<input type='text' id='emailText" + id + "' value='" + emailData + "'>";
+    phoneId.innerHTML = "<input type='text' id='phoneText" + id + "' value='" + phoneData + "'>"
 }
 
 function save_row(no) {
-    var namef_val = document.getElementById("namef_text" + no).value;
-    var namel_val = document.getElementById("namel_text" + no).value;
-    var email_val = document.getElementById("email_text" + no).value;
-    var phone_val = document.getElementById("phone_text" + no).value;
-    var id_val = ids[no]
+    var firstNameValue = document.getElementById("firstNameText" + no).value;
+    var lastNameValue = document.getElementById("lastNameText" + no).value;
+    var emailValue = document.getElementById("emailText" + no).value;
+    var phoneValue = document.getElementById("phoneText" + no).value;
+    var idValue = ids[no]
 
-    document.getElementById("firstName" + no).innerHTML = namef_val;
-    document.getElementById("lastName" + no).innerHTML = namel_val;
-    document.getElementById("email" + no).innerHTML = email_val;
-    document.getElementById("phone" + no).innerHTML = phone_val;
+    document.getElementById("firstName" + no).innerHTML = firstNameValue;
+    document.getElementById("lastName" + no).innerHTML = lastNameValue;
+    document.getElementById("email" + no).innerHTML = emailValue;
+    document.getElementById("phone" + no).innerHTML = phoneValue;
 
     document.getElementById("editButton" + no).style.display = "inline-block";
     document.getElementById("saveButton" + no).style.display = "none";
 
     let tmp = {
-        firstName: namef_val,
-        lastName: namel_val,
-        phone: phone_val,
-        email: email_val,
-        id: id_val
+        firstName: firstNameValue,
+        lastName: lastNameValue,
+        email: emailValue,
+        phone: phoneValue,
+        id: idValue
     };
 
     let jsonPayload = JSON.stringify(tmp);
