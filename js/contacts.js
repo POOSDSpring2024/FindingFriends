@@ -217,19 +217,21 @@ function searchContacts() {
     const tr = table.getElementsByTagName("tr");// Table Row
 
     for (let i = 0; i < tr.length; i++) {
-        const td_fn = tr[i].getElementsByTagName("td")[0];// Table Data: First Name
-        const td_ln = tr[i].getElementsByTagName("td")[1];// Table Data: Last Name
+        const tdfirstName = tr[i].getElementsByTagName("td")[0];// Table Data: First Name
+        const tdLastName = tr[i].getElementsByTagName("td")[1];// Table Data: Last Name
+        const tdemail = tr[i].getElementsByTagName("td")[2];// Table Data: Email
+        const tdphone = tr[i].getElementsByTagName("td")[3];// Table Data: Phone
 
-        if (td_fn && td_ln) {
-            const txtValue_fn = td_fn.textContent || td_fn.innerText;
-            const txtValue_ln = td_ln.textContent || td_ln.innerText;
+        if (tdfirstName && tdlastName) {
+            const txtValueFirstName = tdfirstName.textContent || tdfirstName.innerText;
+            const txtValueLastName = tdLastName.textContent || tdLastName.innerText;
             tr[i].style.display = "none";
 
             for (selection of selections) {
-                if (txtValue_fn.toUpperCase().indexOf(selection) > -1) {
+                if (txtValueFirstName.toUpperCase().indexOf(selection) > -1) {
                     tr[i].style.display = "";
                 }
-                if (txtValue_ln.toUpperCase().indexOf(selection) > -1) {
+                if (txtValueLastName.toUpperCase().indexOf(selection) > -1) {
                     tr[i].style.display = "";
                 }
             }
