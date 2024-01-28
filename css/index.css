@@ -52,3 +52,13 @@ body {
         background-image: url('../images/backgroundmobile.png') ; 
     }
 }
+
+.header{
+    height: 100px;
+    padding-top: 0px;;
+    border-style: solid;
+    border-width: 5px;
+    background: #D6B4FC;
+    text-align: center;
+    
+}
