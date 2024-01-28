@@ -14,6 +14,7 @@
 	}else{
 		$stmt = $conn->prepare("SELECT * FROM Contacts WHERE (FirstName LIKE ? OR LastName LIKE ? OR Phone LIKE ? OR Email LIKE ?) AND UserID = ?");
 		$input = "%" . $inData["search"] . "%";
+		// Phone number needs to be binded as an Integer since phoneNumber in database is saved as "123-456-7890"
 		$stmt->bind_param("sssss", $input, $input, $input, $input, $inData["userId"]);
 		$stmt->execute();
 
@@ -25,8 +26,8 @@
 			}
 			$searchCount++;
 			// Return array of JSON objects instead of array of strings
-			// $searchResults .= '{"FirstName" : "' . $row["FirstName"]. '", "LastName" : "' . $row["LastName"]. '", "Phone" : "' . $row["Phone"]. '", "Email" : "' . $row["Email"]. '", "UserID" : "' . $row["UserID"].'", "ID" : "' . $row["ID"]. '"}';
-			$searchResults .= '{"firstName" : "' . $row["FirstName"]. '", "lastName" : "' . $row["LastName"]. '", "phone" : "' . $row["Phone"]. '", "email" : "' . $row["Email"]. '"}';
+			$searchResults .= '{"firstName" : "' . $row["FirstName"]. '", "lastName" : "' . $row["LastName"]. '", "phone" : "' . $row["Phone"]. '", "email" : "' . $row["Email"]. '", "userID" : "' . $row["UserID"].'", "id" : "' . $row["ID"]. '"}';
+			//$searchResults .= '{"firstName" : "' . $row["FirstName"]. '", "lastName" : "' . $row["LastName"]. '", "phone" : "' . $row["Phone"]. '", "email" : "' . $row["Email"]. '"}';
 		}
 
 		if( $searchCount == 0 )

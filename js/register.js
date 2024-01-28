@@ -15,6 +15,7 @@ function doSignup() {
     var login = document.getElementById("username").value;
     var password = document.getElementById("password").value;
 
+
     if (!validSignUpForm(firstName, lastName, login, password)) {
         document.getElementById("signupResult").innerHTML = "invalid signup";
         return;
@@ -23,6 +24,11 @@ function doSignup() {
     var hash = md5(password);
 
     document.getElementById("signupResult").innerHTML = "";
+
+    console.log(firstName);
+    console.log(lastName);
+    console.log(login);
+    console.log(password);
 
     var tmp = {
         firstName: firstName,

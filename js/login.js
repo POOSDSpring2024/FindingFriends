@@ -18,7 +18,11 @@ function doLogin() {
 
     //console.log(password);
     var hash = md5(password);
+    //hash = md5(password);
     //console.log(hash);
+    //console.log(hash);
+    //console.log(hash);
+    //var hash=password;
 // DEBUG
     if (!validLoginForm(login, password)) {
         document.getElementById("loginResult").innerHTML = "invalid username or password";
