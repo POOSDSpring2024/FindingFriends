@@ -22,20 +22,20 @@ function showTable() {
 
 function addContact() {
 
-    let firstname = document.getElementById("contactTextFirst").value;
-    let lastname = document.getElementById("contactTextLast").value;
-    let phonenumber = document.getElementById("contactTextNumber").value;
-    let emailaddress = document.getElementById("contactTextEmail").value;
+    let firstName = document.getElementById("contactTextFirst").value;
+    let lastName = document.getElementById("contactTextLast").value;
+    let phoneNumber = document.getElementById("contactTextNumber").value;
+    let emailAddress = document.getElementById("contactTextEmail").value;
 
-    if (!validAddContact(firstname, lastname, phonenumber, emailaddress)) {
+    if (!validAddContact(firstName, lastName, phoneNumber, emailAddress)) {
         console.log("INVALID FIRST NAME, LAST NAME, PHONE, OR EMAIL SUBMITTED");
         return;
     }
     let tmp = {
-        firstName: firstname,
-        lastName: lastname,
-        phoneNumber: phonenumber,
-        emailAddress: emailaddress,
+        firstName: firstName,
+        lastName: lastName,
+        phone: phoneNumber,
+        email: emailAddress,
         userId: userId
     };
 
