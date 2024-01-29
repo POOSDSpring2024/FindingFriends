@@ -5,15 +5,16 @@
     <!--Note that Viewpoint should probably be replaced with Bootstrap-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Title Found on the Top of the Website Tab-->
-    <title>Finding Friends Home</title>
+    <title>Finding Friends log in</title>
     <script type="text/javascript" src="js/login.js"></script>
     <script type="text/javascript" src="js/register.js"></script>
     <script type="text/javascript" src="js/md5.js"></script>
-    <!-- css formating & retrival
-     <link rel="stylesheet" href="css/login.css" />
-     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-     <link href='https://fonts.googleapis.com/css?family=Island Moments' rel='stylesheet'>
-    -->
+    
+    <link rel="stylesheet" href="css/style.css" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Island Moments' rel='stylesheet'>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+   
   </head>
 
   <body>
@@ -23,14 +24,25 @@
       -->
     <!--<br /><br /><br /><br />-->
     <!--Login/Signup Div Form-->
+    <div class="navbar">
+      <a href="index.html" class="active">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+      <div class="logOutbutton">
+          <button onclick="location.href = 'index.html';" class ="btn">Sign Out</button>
+      </div>
+    </div>
+    <div class="background"></div>
+    
     <div class="form" id="whole-form">
-      <!--Toggle Between Login & Signup-->
+      <!--Toggle Between Login & Signup
       <div class="button-box">
         <div id="toggle-form"></div>
         <button type="button" class="toggle-btn" onclick="clickRegister()" id="login-slider">Login</button>
         <button type="button" class="toggle-btn" onclick="clickLogin()">Signup</button>
       </div>
-
+    -->
       <!--Login Form-->
       <!--required pattern="(?=.*[a-zA-Z])[a-zA-Z0-9-_]{3,18}$"-->
       <!--required
