@@ -13,25 +13,33 @@
       One button for login and one for register
     -->
     <!-- css formating & retrival
-     <link rel="stylesheet" href="css/index.css"/>
      <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
      <link href='https://fonts.googleapis.com/css?family=Island Moments' rel='stylesheet'>
     -->
   </head>
-  <body style="background-color:powderblue;">
-      
-      <!-- Login Icon + Home Page Button
-        <a href="index.html"><img id="logo" src="images/icon.png" alt="logo image"></a>
-      -->
-      <div class="header">
-
-        <h1> Finding Friends </h1>
+    <body>
+      <div class="navbar">
+        <a href="index.html" class="active">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
         <div class="logOutbutton">
-          <button onclick="location.href = 'index.html';" class ="btn">Sign Out</button>
-        </div> 
-      
+            <button onclick="location.href = 'index.html';" class ="btn">Sign Out</button>
+        </div>
       </div>
-      <button onclick="location.href = 'login.html';" class ="btn">login/signup</button>
+
+      <div class="background"></div>
+      <div class="content">
+        <h1>Welcome to Finding Friends</h1>
+      </div>
+
+      <div class="button-box">
+        <button onclick="location.href = 'index.html';" class="btn1">Login</button>
+        <button onclick="location.href = 'register.html';" class="btn2">Sign Up</button>
+      </div>
+
+      <img src="/images/bubble.png" alt="Bubble Image" class="bubble" width="800" height="800">
+
       <!-- Welcone Text + GitHub Button
         <a href="https://github.com/Paradise-Pages/COP4331-Group6" id="welcome" title="Link to our github">welcome to another day in paradise...
       -->
