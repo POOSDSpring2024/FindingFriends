@@ -6,6 +6,41 @@ body{
     background-color: transparent;
 }
 
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+}
+li {
+    float: left;
+    border-right:1px solid #bbb;
+  }
+  li:last-child {
+    border-right: none;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover:not(.active) {
+    background-color: #111;
+  }
+  
+  .active {
+    background-color: #04AA6D;
+  }
+
+  
  .navbar{
     background-color: white;
     padding: 10px 20px;
@@ -26,6 +61,7 @@ body{
 .navbar a.active{
     color: blue; /* Adjust color for the active link */
 }
+
  
 .btn{
     top: 50%;
@@ -40,6 +76,7 @@ body{
     height: 100%;
     background: linear-gradient(to bottom, #0047AB, #90E0EF); /* Adjust colors as needed */
     animation: moveBackground 20s linear infinite alternate; /* Adjust duration and animation type */
+    z-index: -1;
 }
 
 @keyframes moveBackground {
@@ -68,15 +105,55 @@ body{
     z-index: 1;
 }
 
-.bubble{
+.bubble1{
     margin: 0;
     position: absolute;
 
     top: 50%;
-    left: 50%;
+    left: 64%;
     transform: translate(-50%, -50%);
     z-index: 0; /* Ensure the bubble appears above other content */
 }
+
+.bubble2{
+    margin: 0;
+    position: absolute;
+
+    top: 20%;
+    left: 7%;
+    transform: translate(-50%, -50%);
+    z-index: 0; /* Ensure the bubble appears above other content */
+}
+
+.bubble3{
+    margin: 0;
+    position: absolute;
+
+    top: 15%;
+    left: 84%;
+    transform: translate(-50%, -50%);
+    z-index: 0; /* Ensure the bubble appears above other content */
+}
+.bubble4{
+    margin: 0;
+    position: absolute;
+
+    top: 74%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    z-index: 0; /* Ensure the bubble appears above other content */
+}
+.bubble5{
+    margin: 0;
+    position: absolute;
+
+    top: 80%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    z-index: 0; /* Ensure the bubble appears above other content */
+}
+
+
 
 .logOutbutton{
     text-align: center;
@@ -121,8 +198,9 @@ body{
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     overflow: hidden;
-    height: 900px;
+    height: px;
     transition: .6s;
+    z-index: 3;
 
 }
 
@@ -140,10 +218,18 @@ body{
     position: relative;
 }
 
-.login_button{
+.buttons{
 
-    height: 100px;
-    width: 50px;
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
 }
 
 .input-field:valid {
