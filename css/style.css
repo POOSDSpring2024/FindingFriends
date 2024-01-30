@@ -6,6 +6,11 @@ body{
     background-color: transparent;
 }
 
+@font-face {
+    font-family: lost-fish;
+    src: url("../fonts/LOSTFISH-5DOZ.TTF") format('truetype');
+}
+
 ul{
     list-style-type: none;
     margin: 0;
