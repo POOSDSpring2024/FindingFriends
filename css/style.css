@@ -94,8 +94,18 @@ li {
     }
 }
 
+@keyframes rise{
+    from {
+        transform: translateY(125vh);
+    }
+    to {
+        transform: translateY(0vh);
+    }
+
+}
+
 .content {
-    position: relative;
+    position: absolute;
     padding: 20px;
     z-index: 1;
     color: white; /* Text color */
@@ -116,10 +126,20 @@ li {
     margin: 0;
     position: absolute;
 
-    top: 50%;
-    left: 64%;
-    transform: translate(-50%, -50%);
+    top: -50%;
+    left: 74%;
+    /*transform: translate(-50%, -50%);*/
     z-index: -2; /* Ensure the bubble appears above other content */
+    bottom: 0;
+    animation-name: rise;
+    animation-direction: normal;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+
+
+
 }
 
 .bubble2{
