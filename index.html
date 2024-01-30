@@ -5,7 +5,7 @@
     <!--Note that Viewpoint should probably be replaced with Bootstrap-->
 	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Title Found on the Top of the Website Tab-->
-    <title>Finding Friends</title>
+    <title>Finding Friends Login</title>
     <script type="text/javascript" src="js/login.js"></script>
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
@@ -52,7 +52,16 @@
 
       <div class="form" id="whole-form">
         <form id="login" class="input-form">
+          <h2 style= "font-size: 24px; color: white;">
+            Please Login
+          </h2>
+          <div style="left: 100%; font-size: 24px; color: white;">
+            <label class="required">Username</label>
+          </div>
           <input type="text" class="input-field" id="login-name" placeholder="username" name="username"  />
+          <div style="left: 100%; font-size: 24px; color: white;">
+            <label class="required">Password</label>
+          </div>
           <input type="password" class="input-field" id="login-password" placeholder="password" name="password" />
           <button type="button" id="login-button" class="buttons" onclick="doLogin();">Login</button>
           <br><br><br>
