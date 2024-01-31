@@ -5,14 +5,23 @@
 
 /* body formatting */
 body {
-    background-color: #2ef3f3;
+    /*background-color: #2ef3f3; 
     background-image: url('../images/backgroundmobile2.png');
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     margin: 0;
-    overflow:hidden;
+    overflow:hidden;*/
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #0047AB, #90E0EF); /* Adjust colors as needed */
+    animation: moveBackground 20s linear infinite alternate; /* Adjust duration and animation type */
+    z-index: -2;
 }
 
 
