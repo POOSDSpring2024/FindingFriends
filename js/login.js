@@ -13,8 +13,8 @@ function doLogin() {
     firstName = "";
     lastName = "";
 
-    var login = document.getElementById("loginName").value;
-    var password = document.getElementById("loginPassword").value;
+    var login = document.getElementById("login-name").value;
+    var password = document.getElementById("login-password").value;
 
     //console.log(password);
     var hash = md5(password);
@@ -25,10 +25,10 @@ function doLogin() {
     //var hash=password;
 // DEBUG
     if (!validLoginForm(login, password)) {
-        document.getElementById("loginResult").innerHTML = "invalid username or password";
+        document.getElementById("login-result").innerHTML = "invalid username or password";
         return;
     }
-    document.getElementById("loginResult").innerHTML = "";
+    document.getElementById("login-result").innerHTML = "";
     
 
     var tmp = {
@@ -52,7 +52,7 @@ function doLogin() {
                 userId = jsonObject.id;
 
                 if (userId < 1) {
-                    document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+                    document.getElementById("login-result").innerHTML = "User/Password combination incorrect";
                     return;
                 }
                 firstName = jsonObject.firstName;
@@ -65,7 +65,7 @@ function doLogin() {
 
         xhr.send(jsonPayload);
     } catch (err) {
-        document.getElementById("loginResult").innerHTML = err.message;
+        document.getElementById("login-result").innerHTML = err.message;
     }
 }
 
@@ -81,59 +81,47 @@ function doLogout() {
 function clickLogin() {
     var log = document.getElementById("login");
     var reg = document.getElementById("signup");
-    var but = document.getElementById("btn");
+    var but = document.getElementById("toggle-form");
 
     log.style.left = "-400px";
     reg.style.left = "0px";
     but.style.left = "130px";
 }
 
-function validLoginForm(logName, logPass) {
+function validLoginForm(loginName, loginPassword) {
     //DEBUG LINE
     return true;
     
-        var logNameErr = logPassErr = true;
+        var loginNameError = loginPasswordError = true;
     
-        if (logName == "") {
+        if (loginName == "") {
             console.log("USERNAME IS BLANK");
-        }
-        else {
+        }else {
             var regex = /(?=.*[a-zA-Z])[a-zA-Z0-9-_]{3,18}$/;
-    
-            if (regex.test(logName) == false) {
+            if (regex.test(loginName) == false) {
                 console.log("USERNAME IS NOT VALID");
-            }
-    
-            else {
-    
+            }else{
                 console.log("USERNAME IS VALID");
-                logNameErr = false;
+                loginNameError = false;
             }
         }
     
-        if (logPass == "") {
+        if (loginPassword == "") {
             console.log("PASSWORD IS BLANK");
-            logPassErr = true;
-        }
-        else {
+            loginPasswordError = true;
+        }else {
             var regex = /(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}/;
-    
-            if (regex.test(logPass) == false) {
+            if (regex.test(loginPassword) == false) {
                 console.log("PASSWORD IS NOT VALID");
-            }
-    
-            else {
-    
+            }else {
                 console.log("PASSWORD IS VALID");
-                logPassErr = false;
+                loginPasswordError = false;
             }
         }
-    
-        if ((logNameErr || logPassErr) == true) {
+        if ((loginNameError || loginPasswordError) == true) {
             return false;
         }
         return true;
-    
     }
 
     function saveCookie() {
@@ -172,6 +160,6 @@ function validLoginForm(logName, logPass) {
         }
     
         else {
-            document.getElementById("userName").innerHTML = "Welcome, " + firstName + " " + lastName + "!";
+            document.getElementById("weclome-text").innerHTML = "Welcome, " + firstName + " " + lastName + "!";
         }
     }
