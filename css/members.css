@@ -13,9 +13,7 @@ body {
     background-size: cover;
     margin: 0;
     overflow:hidden;
-
-    background: linear-gradient(to bottom, #0047AB, #90E0EF); /* Adjust colors as needed */
-    animation: moveBackground 20s linear infinite alternate; /* Adjust duration and animation type */
+    
     
 }
 
@@ -54,7 +52,7 @@ body {
     top: 0px;
     overflow: auto; /*disables horizontal scroll*/
     position: fixed; /*scroll bar stays in place when user is scrolling*/
-    background: rgba(240, 162, 16, 0.9);
+    background: rgba(16, 120, 189, 0.9);
 }
 
 /*navigation links*/
