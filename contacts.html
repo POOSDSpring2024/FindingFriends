@@ -4,11 +4,11 @@
 	<title>Finding Friends Contacts Page</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!--<link rel="stylesheet" href="css/contacts.css" />-->
+	<link rel="stylesheet" href="css/style.css" />
 	<script type="text/javascript" src="js/contacts.js"></script>
+	<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 	<!--<script type="text/javascript" src="js/cookie.js"></script>-->
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-	<link href='https://fonts.googleapis.com/css?family=Island Moments' rel='stylesheet'>
 	<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -29,14 +29,17 @@
 
 <body style="background-color:powderblue;">
 
-	<!--side navigation-->
-	<div class="side-nav">
-		<!--<img id="logo" src="images/icon.png" alt="logo image">-->
-		<button type="button" id="logout-button" class="side-button-font" onclick="doLogout();">Logout</button>
-		<a href="index.html">Home</a>
-		<a href="contacts.html">Contacts</a>
-		<a href="members.html">About Us</a>
-	</div>
+	<ul>
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="">About Us</a></li>
+        <li><a href="">Contact</a></li>
+
+
+        <li style="float:right"><a href="#about">Log Out</a></li>
+    </ul>
+	<button type="button" id="logout-button" class="side-button-font" onclick="doLogout();">Logout</button>
+
+	
 	<!-- page content, each div inside content is formatted with flex-->
 	<div class="content">
 		<div class="logged-in-div">

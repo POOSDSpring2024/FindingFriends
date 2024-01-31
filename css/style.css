@@ -1,9 +1,75 @@
 body{
-    margin:0px;
-    padding:0px;
- }
+    margin: 0;
+    padding: 0;
+    overflow: visable; /* Prevent scrollbars */
+    box-sizing: border-box;
+    background-color: transparent;
+}
 
- .btn{
+@font-face {
+    font-family: lost-fish;
+    src: url("../fonts/LOSTFISH-5DOZ.TTF") format('truetype');
+}
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+li {
+    float: left;
+    border-right:1px solid #bbb;
+  }
+  li:last-child {
+    border-right: none;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover:not(.active) {
+    background-color: #111;
+  }
+  
+  .active {
+    background-color: #04AA6D;
+  }
+
+  
+ .navbar{
+    background-color: white;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+}
+
+ .navbar a{
+    text-decoration: none;
+    color: black; /* Adjust text color */
+    margin-right: 20px; /* Adjust spacing between links */
+    font-weight: bold; /* Adjust font weight as needed */
+}
+
+.navbar a.active{
+    color: blue; /* Adjust color for the active link */
+}
+
+ 
+.btn{
     top: 50%;
     left: 50%;
  }
@@ -18,13 +84,207 @@ body{
     
 }
 
+.background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #0047AB, #90E0EF); /* Adjust colors as needed */
+    animation: moveBackground 20s linear infinite alternate; /* Adjust duration and animation type */
+    z-index: -2;
+}
+
+@keyframes moveBackground {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+}
+
+@keyframes rise{
+    from {
+        transform: translateY(125vh);
+    }
+    to {
+        transform: translateY(0vh);
+    }
+
+}
+
+.content {
+    position: absolute;
+    padding: 20px;
+    z-index: 1;
+    color: white; /* Text color */
+    text-align: center;
+    font-size: 36px;
+    margin-top: 50px;
+    z-index: 0;
+}
+
+.Dory{
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    z-index: -1;
+}
+
+.bubble1{
+    margin: 0;
+    position: absolute;
+
+    top: -50%;
+    left: 74%;
+    /*transform: translate(-50%, -50%);*/
+    z-index: -2; /* Ensure the bubble appears above other content */
+    bottom: 0;
+    animation-name: rise;
+    animation-direction: normal;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+
+
+
+}
+
+.bubble2{
+    margin: 0;
+    position: absolute;
+
+    top: 20%;
+    left: 7%;
+    transform: translate(-50%, -50%);
+    z-index: -2; /* Ensure the bubble appears above other content */
+}
+
+.bubble3{
+    margin: 0;
+    position: absolute;
+
+    top: 15%;
+    left: 84%;
+    transform: translate(-50%, -50%);
+    z-index: -2; /* Ensure the bubble appears above other content */
+}
+.bubble4{
+    margin: 0;
+    position: absolute;
+
+    top: 74%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    z-index: -2; /* Ensure the bubble appears above other content */
+}
+.bubble5{
+    margin: 0;
+    position: absolute;
+
+    top: 80%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    z-index: -2; /* Ensure the bubble appears above other content */
+}
+
+
 
 .logOutbutton{
     text-align: center;
     font-size: 14px;
-    top:9%;
-    left:92%;
+    top:24%;
+    left:93%;
     width:180px;
     height:150px;
     position: absolute;
+}
+
+.button-box{
+    margin: 0;
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.btn1{
+    text-align: center;
+    font-size: 22px;
+    width: 100px; 
+}
+
+.btn2{
+    text-align: center;
+    font-size: 22px;
+    width: 100px; 
+}
+
+.form {
+    border-radius: 17px;
+    position: relative;
+    background: #FF6F1D;
+    max-width: 350px;
+    margin: 0 auto 100px;
+    top: 100px;
+    padding-top: 20px;
+    padding-left: 55px;
+    padding-right: 55px;
+    padding-bottom: 20px;;
+    
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    overflow: hidden;
+    height: px;
+    transition: .6s;
+    z-index: 3;
+
+}
+
+.input-field {
+    border-radius: 17px;
+    font-family: 'Montserrat';
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    position: relative;
+}
+
+.buttons{
+
+    background-color: #04AA6D;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.input-field:valid {
+    border: 2px solid #009345;
+}
+
+.input-field:invalid {
+    border: 2px solid red;
+}
+
+.required::after{
+    content:"*";
+    color:red;
+    font-size: 20px;
 }
