@@ -260,6 +260,7 @@ body{
     background: url("images\Dory_(Finding_Nemo).png");
     min-width: 100%; 
     min-height: 100%; 
+    
   
     /* Setting width & height to auto prevents the browser from stretching or squishing the video */
     width: auto;
