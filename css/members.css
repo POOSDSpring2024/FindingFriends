@@ -82,10 +82,12 @@ body {
     color:#897261;  
 }
 .buttons:hover{
-    color:#897261;  
+    color:#897261; 
+    text-decoration: underline; 
 }
 .sidenav a:hover{
     color: #897261;
+    text-decoration: underline;
 }
 .font {
     text-align: center;
