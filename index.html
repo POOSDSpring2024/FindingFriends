@@ -5,71 +5,76 @@
     <!--Note that Viewpoint should probably be replaced with Bootstrap-->
 	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Title Found on the Top of the Website Tab-->
-    <title>Finding Friends Login</title>
-    <script type="text/javascript" src="js/login.js"></script>
-    <script type="text/javascript" src="js/md5.js"></script>
-    <link rel="stylesheet" href="css/style.css"/>
+    <title>Home</title>
+    <link rel="stylesheet" href="css/home.css"/>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
-    <!--
-      One button for login and one for register
-    -->
-    <!-- css formating & retrival
-     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-     <link href='https://fonts.googleapis.com/css?family=Island Moments' rel='stylesheet'>
-    -->
   </head>
     <body>
 
-      <ul>
-        <li><a class="active" href="index.html" style="font-family: lost-fish; font-size: 28px;">Finding Friends</a></li>
-        <li><a href="" style="font-family: Arial, Helvetica, sans-serif; font-size: 16px;">About Us</a></li>
-        <li><a href="">Contact</a></li>
-        <!--<li style="float:right"><button type="button" id="logout-button" class="side-button-font" onclick="doLogout();">Logout</button></li>-->
-        
-        <li style="float:right"><a href="#about">Log Out</a></li>
-      </ul>
+        <div class="navbar">
+            <div class="left">
+                <a class="active" href="index.html" style="font-family: lost-fish; font-size: 25px;">Finding Friends</a>
+                <a class="menuitem" href="" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px;">About Us</a>
+            </div>
+            <div class="right">
+                <a class="register-button" href="register.html"style="font-family: Arial, Helvetica, sans-serif; font-size: 17px;">Get Started</a>
+                <a class="menuitem" href="login.html"style="font-family: Arial, Helvetica, sans-serif; font-size: 17px;">Log In</a>
 
-      <!--
-      <div class="navbar">
-        <a href="index.html" class="active">Home</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
-        <div class="logOutbutton">
-            <button onclick="location.href = 'index.html';" class ="btn">Sign Out</button>
+            </div>
         </div>
-      </div>
-    -->
+
+        <!--
+      <ul>
+        <li><a class="active" href="index.html" style="font-family: lost-fish; font-size: 25px;">Finding Friends</a></li>
+        <li><a href="" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px;">About Us</a></li>
+        <li style="border-right:none"><a href="index.html"style="font-family: Arial, Helvetica, sans-serif; font-size: 17px;">Get Started</a> </li>
+        
+        <li style="float:right"><a href="index.html"style="font-family: Arial, Helvetica, sans-serif; font-size: 17px;">Log In</a> </li>
+         
+        
+      </ul>-->
+
+
+
 
       <div class="background"></div>
-      <div class="content">
-        <!--<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/PfHrNe1cSKAjC" width="40%" height="40%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/smile-hello-shark-PfHrNe1cSKAjC">via GIPHY</a></p>
-        -->
-          <h1 style="font-family: Arial, Helvetica, sans-serif;"></h1>
+      
+      <div class="flex-container">
+            <h1 id="header">Finding Friends</h1>
+            <p1 style="color: white; font-family: Arial, Helvetica, sans-serif; font-size: 32px;">Connect With all the Fish in the Sea</p1>
+            <a class="register-button" href="register.html" style="margin-top: 2%; font-family: Arial, Helvetica, sans-serif; font-size: 20px;">Sign Up for Free</a>
+            <div class="items">
+                <div class="left">
+                    <div class="box">
+                        <h1>Fast and Efficient</h1>
+                        <p1>Will suit the needs of any fish from the fastest sorwdfish to the slowest starfish </p1>
+    
+                    </div>
+                </div>
+                <div class="middle">
+                    <div class="box">
+                        <h1>Completely Free to use</h1>
+                        <p1>We will never ask for a credit card ever </p1>
 
-      </div>
+                    </div>
+                </div>
+                <div class="end">   
+                    <div class="box">
+                        <h1>Connect with any Fish</h1>
+                        <p1>There are plenty of fish in the sea, go make as many friends as you want</p1>
 
-      <div class="form" id="whole-form">
-        <form id="login" class="input-form">
-          <h2 style= "font-size: 28px; color: white; font-family: lost-fish;">
-            Log into your account
-          </h2>
-          <div style="text-align: left; font-size: 22px; color: white; font-family: Arial, Helvetica, sans-serif;">
-            <label class="required">Username</label>
-          </div>
-          <input type="text" class="input-field" id="login-name" placeholder="username" name="username"  />
-          <div style="text-align:left; font-size: 22px; color: white; font-family: Arial, Helvetica, sans-serif;">
-            <label class="required">Password</label>
-          </div>
-          <input type="password" class="input-field" id="login-password" placeholder="password" name="password" />
-          <button type="button" id="login-button" class="buttons" onclick="doLogin();">Login</button>
-          <br><br><br>
-          <a href="register.html" style="font-family: Arial, Helvetica, sans-serif; font-size: 18px;">Not a user? Register here</a>
-          <span class="text" id="login-result"></span>
-        </form>
-      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!--<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/PfHrNe1cSKAjC" width="40%" height="40%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/smile-hello-shark-PfHrNe1cSKAjC">via GIPHY</a></p>-->
+        
+    
+
+      
 
       
 <!--
@@ -79,13 +84,21 @@
       </div>
       -->
 
+      <!--
+      <div class="bubbles">
+        <img src="/images/bubble.png" alt="Bubble Image" class="bubble1" width="600" height="600">
+        <img src="/images/bubble.png" alt="Bubble Image" class="bubble2" width="400" height="400">
+        <img src="/images/bubble.png" alt="Bubble Image" class="bubble3" width="200" height="200">
+        <img src="/images/bubble.png" alt="Bubble Image" class="bubble4" width="200" height="200">
+        <img src="/images/bubble.png" alt="Bubble Image" class="bubble5" width="200" height="200">
+
+      </div>
       <img src="/images/bubble.png" alt="Bubble Image" class="bubble1" width="600" height="600">
       <img src="/images/bubble.png" alt="Bubble Image" class="bubble2" width="400" height="400">
       <img src="/images/bubble.png" alt="Bubble Image" class="bubble3" width="200" height="200">
       <img src="/images/bubble.png" alt="Bubble Image" class="bubble4" width="200" height="200">
       <img src="/images/bubble.png" alt="Bubble Image" class="bubble5" width="200" height="200">
-      <img src="/images/Dory_(Finding_Nemo).png" alt="Dory Image" class="Dory">
-
+    -->
       <!-- Welcone Text + GitHub Button
         <a href="https://github.com/Paradise-Pages/COP4331-Group6" id="welcome" title="Link to our github">welcome to another day in paradise...
       -->
