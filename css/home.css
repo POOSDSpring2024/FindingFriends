@@ -16,11 +16,18 @@ body{
 }
 
 .navbar{
-    display: flex;
+
+    position:sticky;
+    top: 0;  
+    left:0;
+    width:100%;
+    display:flex;
+    z-index: 1030; /* to prevent the navbar getting covered up by other content */
+    
     flex-direction: row;
     flex-wrap: none;
-    background-color: #006CA5;   
-}
+    background-color: #006CA5;  
+    }
 
 .menuitem{
     align-items: center;
