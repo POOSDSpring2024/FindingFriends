@@ -6,7 +6,7 @@
 /* body formatting */
 body {
     background-color: #2ef3f3;
-    background-image: url('../images/background2.png');
+   /* background-image: url('../images/background2.png');*/
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -365,7 +365,8 @@ table {
 /* make sidebar a topbar for mobile view*/
 @media screen and (max-width: 700px) {
     body {
-        background-image: url('../images/backgroundmobile2.png');
+        /*background-image: url('../images/backgroundmobile2.png');*/
+        background-color: #2ef3f3;
     }
 
     .sidenav {
