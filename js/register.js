@@ -65,6 +65,7 @@ function doSignup() {
                 firstName = jsonObject.firstName;
                 lastName = jsonObject.lastName;
                 saveCookie();
+                window.location.href = "contacts.html";
             }
         };
 
