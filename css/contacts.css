@@ -1,6 +1,6 @@
 /* body formatting */
 body {
-    background-color: #F3B02E;
+    background-color: #17c5d1;
     background-image: url('../images/background2.png');
     background-position: center center;
     background-repeat: no-repeat;
@@ -44,7 +44,7 @@ body {
 
 .column button {
     position: relative;
-    background: #ffffff;
+    background: #7aeefd;
     border-radius: 50%;
     padding: 15px;
     margin: 10px;
