@@ -5,84 +5,81 @@
     <!--Note that Viewpoint should probably be replaced with Bootstrap-->
 	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Title Found on the Top of the Website Tab-->
-    <title>Finding Friends Login</title>
-    <script type="text/javascript" src="js/login.js"></script>
-    <script type="text/javascript" src="js/md5.js"></script>
-    <link rel="stylesheet" href="css/style.css"/>
+    <title>Home</title>
+    <link rel="stylesheet" href="css/home.css"/>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
-    <!--
-      One button for login and one for register
-    -->
-    <!-- css formating & retrival
-     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-     <link href='https://fonts.googleapis.com/css?family=Island Moments' rel='stylesheet'>
-    -->
   </head>
-  
-  
-  <body>
-    <video autoplay muted loop id="background-video" class = "video-container">
-        <source src="video\Mini Loop Finding Nemo Ambience 1 Hour.mp4" type="video/mp4">
-    </video>
-    <!--
-    <div class="navbar">
-      <a href="index.html" class="active">Home</a>
-      <a href="#">About</a>
-      <a href="#">Services</a>
-      <a href="#">Contact</a>
-      <div class="logOutbutton">
-          <button onclick="location.href = 'index.html';" class ="btn">Sign Out</button>
+    <body>
+
+      <ul>
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="">About Us</a></li>
+        <li><a href="">Contact</a></li>
+        <!--<li style="float:right"><button type="button" id="logout-button" class="side-button-font" onclick="doLogout();">Logout</button></li>-->
+        
+        <li style="float:right"><a href="#about">Log Out</a></li>
+      </ul>
+
+      <!--
+      <div class="navbar">
+        <a href="index.html" class="active">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+        <div class="logOutbutton">
+            <button onclick="location.href = 'index.html';" class ="btn">Sign Out</button>
+        </div>
       </div>
-    </div>
     -->
-    
-    <!-- <div class="background"></div> -->
-    <div class="content">
-      <!--<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/PfHrNe1cSKAjC" width="40%" height="40%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/smile-hello-shark-PfHrNe1cSKAjC">via GIPHY</a></p>
+
+      <div class="background"></div>
+      <div class="content">
+        <!--<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/PfHrNe1cSKAjC" width="40%" height="40%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/smile-hello-shark-PfHrNe1cSKAjC">via GIPHY</a></p>
+        -->
+          <h1 style="font-family: Arial, Helvetica, sans-serif;"></h1>
+
+      </div>
+
+      <div class="form" id="whole-form">
+        <form id="login" class="input-form">
+          <h2 style= "font-size: 45px; color: white; font-family: lost-fish;">
+            Log into your account finding nemo
+          </h2>
+          <div style="left: 100%; font-size: 22px; color: white; font-family: Arial, Helvetica, sans-serif;">
+            <label class="required">Username</label>
+          </div>
+          <input type="text" class="input-field" id="login-name" placeholder="username" name="username"  />
+          <div style="left: 100%; font-size: 22px; color: white; font-family: Arial, Helvetica, sans-serif;">
+            <label class="required">Password</label>
+          </div>
+          <input type="password" class="input-field" id="login-password" placeholder="password" name="password" />
+          <button type="button" id="login-button" class="buttons" onclick="doLogin();">Login</button>
+          <br><br><br>
+          <a href="register.html" style="font-family: Arial, Helvetica, sans-serif; font-size: 18px;">Not a user? Register here</a>
+          <span class="text" id="login-result"></span>
+        </form>
+      </div>
+
+      
+<!--
+      <div class="button-box">
+        <button onclick="location.href = 'login.html';" class="btn1">Login</button>
+        <button onclick="location.href = 'register.html';" class="btn2">Sign Up</button>
+      </div>
       -->
-        <h1 style="font-family: Arial, Helvetica, sans-serif;"></h1>
-   </div>
 
+      <img src="/images/bubble.png" alt="Bubble Image" class="bubble1" width="600" height="600">
+      <img src="/images/bubble.png" alt="Bubble Image" class="bubble2" width="400" height="400">
+      <img src="/images/bubble.png" alt="Bubble Image" class="bubble3" width="200" height="200">
+      <img src="/images/bubble.png" alt="Bubble Image" class="bubble4" width="200" height="200">
+      <img src="/images/bubble.png" alt="Bubble Image" class="bubble5" width="200" height="200">
+      <img src="/images/Dory_(Finding_Nemo).png" alt="Dory Image" class="Dory">
 
-      
-    <div class="form" id="whole-form">
-      <form id="login" class="input-form">
-        <h2 style= "font-size: 45px; color: white; font-family: lost-fish;">
-          Log into your account finding nemo
-        </h2>
-        <div style="left: 100%; font-size: 22px; color: white; font-family: Arial, Helvetica, sans-serif;">
-          <label class="required">Username</label>
-        </div>
-        <input type="text" class="input-field" id="login-name" placeholder="username" name="username"  />
-        <div style="left: 100%; font-size: 22px; color: white; font-family: Arial, Helvetica, sans-serif;">
-          <label class="required">Password</label>
-        </div>
-        <input type="password" class="input-field" id="login-password" placeholder="password" name="password" />
-        <button type="button" id="login-button" class="buttons" onclick="doLogin();">Login</button>
-        <br><br><br>
-        <a href="register.html" style="font-family: Arial, Helvetica, sans-serif; font-size: 18px;">Not a user? Register here</a>
-        <span class="text" id="login-result"></span>
-      </form>
-    </div>
-
-      
-    <!--
-    <div class="button-box">
-      <button onclick="location.href = 'login.html';" class="btn1">Login</button>
-      <button onclick="location.href = 'register.html';" class="btn2">Sign Up</button>
-    </div>
-    -->
-    <img src="/images/bubble.png" alt="Bubble Image" class="bubble1" width="600" height="600">
-    <img src="/images/bubble.png" alt="Bubble Image" class="bubble2" width="400" height="400">
-    <img src="/images/bubble.png" alt="Bubble Image" class="bubble3" width="200" height="200">
-    <img src="/images/bubble.png" alt="Bubble Image" class="bubble4" width="200" height="200">
-    <img src="/images/bubble.png" alt="Bubble Image" class="bubble5" width="200" height="200">
-    <img src="/images/Dory_(Finding_Nemo).png" alt="Dory Image" class="Dory">
-    <!-- Welcone Text + GitHub Button
-      <a href="https://github.com/Paradise-Pages/COP4331-Group6" id="welcome" title="Link to our github">welcome to another day in paradise...
-    -->
+      <!-- Welcone Text + GitHub Button
+        <a href="https://github.com/Paradise-Pages/COP4331-Group6" id="welcome" title="Link to our github">welcome to another day in paradise...
+      -->
   </body>
 </html>
 }
