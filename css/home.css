@@ -265,7 +265,6 @@ body{
     /* Setting width & height to auto prevents the browser from stretching or squishing the video */
     width: auto;
     height: auto;
-    overflow: hidden;
     object-fit: fill;
   
     /* Center the video */
