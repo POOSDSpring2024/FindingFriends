@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Prevent scrollbars */
+     /* Prevent scrollbars */
     box-sizing: border-box;
     background-color: transparent;
 }
@@ -11,54 +11,69 @@ body{
     src: url("../fonts/LOSTFISH-5DOZ.TTF") format('truetype');
 }
 
-ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #006CA5;
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    top: 0;
-    z-index: 1;
+.navbar{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: none;
+    background-color: #006CA5;   
 }
-li {
-    float: left;
-    border-right:1px solid #bbb;
-  }
-  li:last-child {
-    border-right: none;
-    border-left:1px solid #bbb;
-  }
-  
-  li a {
-    display: block;
+
+.menuitem{
+    align-items: center;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding-top: 22px;
+    padding: 21px 22px;
     text-decoration: none;
-  }
-  
-  li a:hover:not(.active) {
+}
+
+.menuitem:hover{
     background-color: #02367B;
-  }
-  
-  .active:hover{
-    background-color: #cc5109;
+}
 
-  }
-  
-  .active {
+.right{
+    flex:1;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.left{
+    flex:1;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.active{
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding-top: 18px;
+    padding: 16px 16px;
+    text-decoration: none;
     background-color: #FF6F1D;
+}
+
+.active:hover{
+    background-color: #cc5109;
+}
+
+.register-button{
+    background-color: #FF6F1D;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
     
-  }
-
-  
-
- 
-.btn{
-    top: 50%;
-    left: 50%;
+    font-size: 17px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.register-button:hover{
+    background-color: #cc5109;
 }
 
 .background{
@@ -83,10 +98,12 @@ li {
 
 @keyframes rise{
     from {
-        transform: translateY(125vh);
+        bottom: -150px;
+        
     }
     to {
-        transform: translateY(0vh);
+        top: 100%
+        
     }
 
 }
@@ -111,39 +128,31 @@ li {
 
 .bubbles{
     position: relative;
-    overflow: hidden;
-    
+    overflow: hidden;   
 }
 
 .bubble1{
     margin: 0;
     position: absolute;
-
-    top: -50%;
+    bottom: -150px;
+    
     left: 74%;
     /*transform: translate(-50%, -50%);*/
     z-index: -2; /* Ensure the bubble appears above other content */
     
     animation-name: rise;
-    animation-direction: normal;
+    
     animation-duration: 8s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-    
-
-
-
-
 }
 
 .bubble2{
     margin: 0;
     position: absolute;
     transform: translate(-50%, -50%);
-
     top: 20%;
     left: 7%;
-    
     z-index: -2;
     animation-name: rise;
     animation-direction: normal;
@@ -155,126 +164,79 @@ li {
 .bubble3{
     margin: 0;
     position: absolute;
-
     top: 15%;
     left: 84%;
     transform: translate(-50%, -50%);
     z-index: -2; /* Ensure the bubble appears above other content */
 }
+
 .bubble4{
     margin: 0;
     position: absolute;
-
     top: 74%;
     left: 25%;
     transform: translate(-50%, -50%);
     z-index: -2; /* Ensure the bubble appears above other content */
 }
+
 .bubble5{
     margin: 0;
     position: absolute;
-
     top: 80%;
     left: 90%;
     transform: translate(-50%, -50%);
     z-index: -2; /* Ensure the bubble appears above other content */
 }
 
-
-
-.logOutbutton{
-    text-align: center;
-    font-size: 14px;
-    top:24%;
-    left:93%;
-    width:180px;
-    height:150px;
-    position: absolute;
-}
-
-.button-box{
-    margin: 0;
-    position: absolute;
-
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-}
-
-.btn1{
-    text-align: center;
-    font-size: 22px;
-    width: 100px; 
-}
-
-.btn2{
-    text-align: center;
-    font-size: 22px;
-    width: 100px; 
-}
-
-.form {
-    border-radius: 17px;
-    position: relative;
-    background: #FF6F1D;
-    max-width: 350px;
-    margin: 0 auto 100px;
-    top: 100px;
-    padding-top: 20px;
-    padding-left: 55px;
-    padding-right: 55px;
-    padding-bottom: 20px;;
+.flex-container{
+    display: flex;
+    flex-direction: column;
     
-    text-align: center;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    overflow: hidden;
-    height: px;
-    transition: .6s;
-    z-index: 3;
+    align-items: center;
+    justify-content: space-between;
+
 
 }
 
-.input-field {
-    border-radius: 17px;
-    font-family: 'Montserrat';
-    outline: 0;
-    background: #f2f2f2;
-    width: 100%;
-    border: 0;
-    margin: 0 0 15px;
-    padding: 15px;
-    box-sizing: border-box;
-    font-size: 14px;
-    position: relative;
+#header{
+    color:#FF6F1D;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    
+    padding-top: 5%;
+    font-size: 72px;
 }
 
-.buttons{
+.items{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 
-    background-color: #04AA6D;
+}
+
+.left{
+    flex: 1;
+    display: flex;
+
+}
+.end{
+    justify-content: flex-end;
+}
+
+.box{
+    background-color: white;
     border-radius: 15px;
     border: none;
-    color: white;
+    color: #006CA5;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    width: 100%;
-}
+    font-family: Arial, Helvetica, sans-serif;
+    inline-size: min-content;
+    
 
-.input-field:valid {
-    border: 2px solid #009345;
-}
+    margin:30px;
+    padding:80px;
 
-.input-field:invalid {
-    border: 2px solid red;
-}
-
-.required::after{
-    content:"*";
-    color:red;
-    font-size: 20px;
 }
