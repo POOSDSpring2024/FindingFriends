@@ -6,8 +6,7 @@
 	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Title Found on the Top of the Website Tab-->
     <title>Finding Friends Registration</title>
-    <script type="text/javascript" src="js/register.js"></script>
-    <script type="text/javascript" src="js/md5.js"></script>
+    <script type="text/javascript" src="js/user_manager.js"></script>
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
@@ -71,7 +70,7 @@
             </div>
             <input type="password" class="input-field" id="password" placeholder="password" name="password" required
                />
-            <button type="button" id="signup-button" class="buttons" onclick="doSignup();" >Sign up</button><br />
+            <button type="button" id="signup-button" class="buttons" onclick="signUpUserHTML('first-name', 'last-name', 'username', 'password', 'signup-result');" >Sign up</button><br />
             <span class="text" style="color:rgb(203, 55, 21); font-family: 'Montserrat';" id="signup-result"></span>
             
             <!--Signup Format Rules-->
