@@ -57,8 +57,9 @@
       $stmt->close();
       $conn->close();
       // http_response_code(200);
-      $searchResults .= '{'.'"id": "'.$id.''.'"}';
-      returnWithInfo($searchResults);
+      //$searchResults .= '{'.'"id": "'.$id.''.'"}';
+      //returnWithInfo($searchResults);
+      returnWithInfo($id);
       echo 'Succesfully Registered';
     }
 
@@ -81,8 +82,9 @@
 		sendResultInfoAsJson($retValue);
 	}
 
-  function returnWithInfo($searchResults){
-    $retValue = '{"results":[' . $searchResults . '],"error":""}';
+  function returnWithInfo($id){
+    //$retValue = '{"results":[' . $searchResults . '],"error":""}';
+    $retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
     sendResultInfoAsJson( $retValue );
   }
 
