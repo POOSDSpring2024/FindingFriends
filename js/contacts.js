@@ -3,14 +3,14 @@
 urlBase = 'http://cop4331-g24.xyz/LAMPAPI';
 extension = 'php';
 
-let userId = 0;
+var userId = 0;
 let firstName = "";
 let lastName = "";
 ids = []
 
 function showTable() {
-    let x = document.getElementById("add-me");
-    let contacts = document.getElementById("contact-table")
+    var x = document.getElementById("add-me");
+    var contacts = document.getElementById("contact-table")
     if (x.style.display === "none") {
         x.style.display = "block";
         contacts.style.display = "none";
