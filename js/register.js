@@ -3,9 +3,9 @@
 urlBase = 'http://cop4331-g24.xyz/LAMPAPI';
 extension = 'php';
 
-let userId = 0;
-let firstName = "";
-let lastName = "";
+var userId = 0;
+var firstName = "";
+var lastName = "";
 ids = []
 
 function doSignup() {
@@ -64,8 +64,11 @@ function doSignup() {
                 document.getElementById("signup-result").innerHTML = "User added";
                 firstName = jsonObject.firstName;
                 lastName = jsonObject.lastName;
+                console.log(userId);
+                console.log(firstName);
+                console.log(lastName);
                 saveCookie();
-                window.location.href = "contacts.html";
+                //window.location.href = "contacts.html";
             }
         };
 
