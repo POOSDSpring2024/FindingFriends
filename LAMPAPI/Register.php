@@ -57,9 +57,10 @@
       $stmt->close();
       $conn->close();
       // http_response_code(200);
-      $searchResults .= '{'.'"id": "'.$id.''.'"}';
-      returnWithInfo($searchResults);
-      //echo 'Succesfully Registered';
+      //$searchResults .= '{'.'"id": "'.$id.''.'"}';
+      //returnWithInfo($searchResults);
+      returnWithInfo($id);
+      echo 'Succesfully Registered';
     }
 
     $stmt->close();
@@ -67,26 +68,23 @@
   }
 
 
-  function getRequestInfo()
-  {
+  function getRequestInfo(){
 		return json_decode(file_get_contents('php://input'), true);
 	}
 
-	function sendResultInfoAsJson($obj)
-  {
+	function sendResultInfoAsJson($obj){
 		header('Content-type: application/json');
-		//echo $obj;
+		echo $obj;
 	}
 
-	function returnWithError($err)
-  {
+	function returnWithError($err){
 		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson($retValue);
 	}
 
-  function returnWithInfo($searchResults)
-  {
-    $retValue = $searchResults;
+  function returnWithInfo($id){
+    //$retValue = '{"results":[' . $searchResults . '],"error":""}';
+    $retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
     sendResultInfoAsJson( $retValue );
   }
 
