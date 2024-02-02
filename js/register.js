@@ -30,7 +30,7 @@ function doSignup() {
     console.log(login);
     console.log(password);
 
-    var tmp = {
+    let tmp = {
         firstName: firstName,
         lastName: lastName,
         login: login,

@@ -3,14 +3,14 @@
 urlBase = 'http://cop4331-g24.xyz/LAMPAPI';
 extension = 'php';
 
-var userId = 0;
-var firstName = "";
-var lastName = "";
+let userId = 0;
+let firstName = "";
+let lastName = "";
 ids = []
 
 function showTable() {
-    var x = document.getElementById("add-me");
-    var contacts = document.getElementById("contact-table")
+    let x = document.getElementById("add-me");
+    let contacts = document.getElementById("contact-table")
     if (x.style.display === "none") {
         x.style.display = "block";
         contacts.style.display = "none";
@@ -113,15 +113,15 @@ function editRow(rowNumber) {
     document.getElementById("edit-button-" + rowNumber).style.display = "none";
     document.getElementById("save-button-" + rowNumber).style.display = "inline-block";
 
-    var firstNameElement = document.getElementById("first-name-" + rowNumber);
-    var lastNameElement = document.getElementById("last-name-" + rowNumber);
-    var emailNElement= document.getElementById("email-" + rowNumber);
-    var phoneElement = document.getElementById("phone-" + rowNumber);
+    let firstNameElement = document.getElementById("first-name-" + rowNumber);
+    let lastNameElement = document.getElementById("last-name-" + rowNumber);
+    let emailNElement= document.getElementById("email-" + rowNumber);
+    let phoneElement = document.getElementById("phone-" + rowNumber);
 
-    var firstNameData = firstNameElement.innerText;
-    var lastNameData = lastNameElement.innerText;
-    var emailData = emailNElement.innerText;
-    var phoneData = phoneElement.innerText;
+    let firstNameData = firstNameElement.innerText;
+    let lastNameData = lastNameElement.innerText;
+    let emailData = emailNElement.innerText;
+    let phoneData = phoneElement.innerText;
 
     firstNameElement.innerHTML = "<input type='text' id='first-name-edit-text-" + rowNumber + "' value='" + firstNameData + "'>";
     lastNameElement.innerHTML = "<input type='text' id='last-name-edit-text-" + rowNumber + "' value='" + lastNameData + "'>";
@@ -130,11 +130,11 @@ function editRow(rowNumber) {
 }
 
 function saveRow(rowNumber) {
-    var newFirstNameValue = document.getElementById("first-name-edit-text-" + rowNumber).value;
-    var newLastNameValue = document.getElementById("last-name-edit-text-" + rowNumber).value;
-    var newEmailValue = document.getElementById("email-edit-text-" + rowNumber).value;
-    var newPhoneValue = document.getElementById("phone-edit-text-" + rowNumber).value;
-    var newIdValue = ids[rowNumber]
+    let newFirstNameValue = document.getElementById("first-name-edit-text-" + rowNumber).value;
+    let newLastNameValue = document.getElementById("last-name-edit-text-" + rowNumber).value;
+    let newEmailValue = document.getElementById("email-edit-text-" + rowNumber).value;
+    let newPhoneValue = document.getElementById("phone-edit-text-" + rowNumber).value;
+    let newIdValue = ids[rowNumber]
 
     document.getElementById("first-name-" + rowNumber).innerHTML = newFirstNameValue;
     document.getElementById("last-name-" + rowNumber).innerHTML = newLastNameValue;
@@ -173,11 +173,11 @@ function saveRow(rowNumber) {
 }
 
 function deleteRow(rowNumber) {
-    var idValue = ids[rowNumber]
-    var firstNameValue = document.getElementById("first-name-" + rowNumber).innerText;
-    var lastNameValue = document.getElementById("last-name-" + rowNumber).innerText;
-    var firstName = firstNameValue.substring(0, firstNameValue.length);
-    var lastName = lastNameValue.substring(0, lastNameValue.length);
+    let idValue = ids[rowNumber]
+    let firstNameValue = document.getElementById("first-name-" + rowNumber).innerText;
+    let lastNameValue = document.getElementById("last-name-" + rowNumber).innerText;
+    let firstName = firstNameValue.substring(0, firstNameValue.length);
+    let lastName = lastNameValue.substring(0, lastNameValue.length);
     let check = confirm('Confirm deletion of contact: ' + firstName + ' ' + lastName);
     if (check === true) {
         document.getElementById("row-" + rowNumber + "").outerHTML = "";
@@ -248,7 +248,7 @@ function searchContacts() {
 
 function validAddContact(firstName, lastName, phone, email) {
 
-    var firstNameError = lastNameErrot = phoneError = emailError = true;
+    let firstNameError = lastNameErrot = phoneError = emailError = true;
 
     if (firstName == "") {
         console.log("FIRST NAME IS BLANK");
