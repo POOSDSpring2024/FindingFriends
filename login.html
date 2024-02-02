@@ -1,271 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+ <html lang="en">
   <head>
     <meta charset="UTF-8">
     <!--Note that Viewpoint should probably be replaced with Bootstrap-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Title Found on the Top of the Website Tab-->
-    <title>Finding Friends Home</title>
+    <title>Finding Friends Login</title>
     <script type="text/javascript" src="js/login.js"></script>
-    <script type="text/javascript" src="js/register.js"></script>
     <script type="text/javascript" src="js/md5.js"></script>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+    <!--
+      One button for login and one for register
+    -->
     <!-- css formating & retrival
-     <link rel="stylesheet" href="css/login.css" />
      <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
      <link href='https://fonts.googleapis.com/css?family=Island Moments' rel='stylesheet'>
     -->
   </head>
+    <body>
 
-  <body>
-    <!-- Login Icon + Home Page Button (Alt Exist, but isn't working properly)
-      <a href="index.html"><img id="logo" src="images/icon.png"
-        alt="Logo for Paradise Pages. Consists of a palm tree emerging from the spine of a book. Established 2022"></a>
-      -->
-    <!--<br /><br /><br /><br />-->
-    <!--Login/Signup Div Form-->
-    <div class="form" id="whole-form">
-      <!--Toggle Between Login & Signup-->
-      <div class="button-box">
-        <div id="toggle-form"></div>
-        <button type="button" class="toggle-btn" onclick="clickRegister()" id="login-slider">Login</button>
-        <button type="button" class="toggle-btn" onclick="clickLogin()">Signup</button>
+      <ul>
+        <li><a class="active" href="index.html" style="font-family: lost-fish; font-size: 28px;">Finding Friends</a></li>
+        <li><a href="" style="font-family: Arial, Helvetica, sans-serif; font-size: 16px;">About Us</a></li>
+        <li><a href="">Contact</a></li>
+        <!--<li style="float:right"><button type="button" id="logout-button" class="side-button-font" onclick="doLogout();">Logout</button></li>-->
+        
+        <li style="float:right"><a href="#about">Log Out</a></li>
+      </ul>
+
+      <!--
+      <div class="navbar">
+        <a href="index.html" class="active">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+        <div class="logOutbutton">
+            <button onclick="location.href = 'index.html';" class ="btn">Sign Out</button>
+        </div>
+      </div>
+    -->
+
+      <div class="background"></div>
+      <div class="content">
+        <!--<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/PfHrNe1cSKAjC" width="40%" height="40%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/smile-hello-shark-PfHrNe1cSKAjC">via GIPHY</a></p>
+        -->
+          <h1 style="font-family: Arial, Helvetica, sans-serif;"></h1>
+
       </div>
 
-      <!--Login Form-->
-      <!--required pattern="(?=.*[a-zA-Z])[a-zA-Z0-9-_]{3,18}$"-->
-      <!--required
-          pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}" -->
-      <form id="login" class="input-form">
-        <input type="text" class="input-field" id="login-name" placeholder="username" name="username"  />
-        <input type="password" class="input-field" id="login-password" placeholder="password" name="password" />
-        <button type="button" id="login-button" class="buttons" onclick="doLogin();">Login</button>
-        <span class="text" id="login-result"></span>
-      </form>
+      <div class="form" id="whole-form">
+        <form id="login" class="input-form">
+          <h2 style= "font-size: 28px; color: white; font-family: lost-fish;">
+            Log into your account
+          </h2>
+          <div style="text-align: left; font-size: 22px; color: white; font-family: Arial, Helvetica, sans-serif;">
+            <label class="required">Username</label>
+          </div>
+          <input type="text" class="input-field" id="login-name" placeholder="username" name="username"  />
+          <div style="text-align:left; font-size: 22px; color: white; font-family: Arial, Helvetica, sans-serif;">
+            <label class="required">Password</label>
+          </div>
+          <input type="password" class="input-field" id="login-password" placeholder="password" name="password" />
+          <button type="button" id="login-button" class="buttons" onclick="doLogin();">Login</button>
+          <br><br><br>
+          <a href="register.html" style="font-family: Arial, Helvetica, sans-serif; font-size: 18px;">Not a user? Register here</a>
+          <span class="text" id="login-result"></span>
+        </form>
+      </div>
 
-      <!--Signup From-->
-      <!--
-          pattern="(?=.*[a-zA-Z])[a-zA-Z0-9-_]{3,18}"
-          title="Must be between 3-13 characters and must contain at least one letter"-->
-      <!--pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}"
-          title="Must be between 8-32 characters and must contain at least one number and one special character"-->
-      <!---->
       
-      <form id="signup" class="input-form">
-        <input type="text" class="input-field" id="first-name" placeholder="first&nbsp;name" name="firstName" required />
-        <input type="text" class="input-field" id="last-name" placeholder="last&nbsp;name" name="lastName" required />
-        <input type="text" class="input-field" id="username" placeholder="username" name="login"  required/>
-        <input type="password" class="input-field" id="password" placeholder="password" name="password" required
-           />
-        <button type="button" id="signup-button" class="buttons" onclick="doSignup();">Signup</button><br />
-        <span class="text" style="color:rgb(203, 55, 21); font-family: 'Montserrat';" id="signup-result"></span>
-        
-        <!--Signup Format Rules-->
-        <div id="explanation-for-password">
-          <h3>Password must contain the following:</h3>
-          <p id="password-length-requirement" class="invalid">
-            8 to 32 characters
-          </p>
-          <p id="password-letter-requirement" class="invalid">
-            At least one letter
-          </p>
-          <p id="password-number-requirement" class="invalid">
-            At least one number
-          </p>
-          <p id="passward-special-character-requirement" class="invalid">
-            At least one special character
-          </p>
-        </div>
-        <div id="explanation-for-user">
-          <h3>Username must contain the following:</h3>
-          <p id="user-letter-requirement" class="invalid">
-            At least one letter
-          </p>
-          <p id="user-length-requirement" class="invalid">
-            3 to 18 characters
-          </p>
-          <h3> Username may contain the following: </h3>
-          <p id="user-number-optional" class="opt">
-            Numbers
-          </p>
-          <p id="user-underscore-optional" class="opt">
-            Underscores
-          </p>
-          <p id="user-hypen-optional" class="opt">
-            Hyphens
-          </p>
-        </div>
-      </form>
+<!--
+      <div class="button-box">
+        <button onclick="location.href = 'login.html';" class="btn1">Login</button>
+        <button onclick="location.href = 'register.html';" class="btn2">Sign Up</button>
+      </div>
+      -->
 
-      <!--code for username criteria message-->
-      <!--Script should be ported to JS (RegisterExpinantionFormatter.js & UsernameValidator.js)-->
-      <script>
-        let firstNameElement = document.getElementById("first-name");
-        let lastNameElement = document.getElementById("last-name");
-        let usernameElement = document.getElementById("username");
-        // wholeFrom is from Signup Div Id
-        let wholeFormElement = document.getElementById("whole-form");
-        let userNumberOptionalElement = document.getElementById("user-number-optional");
-        let userLetterRequirementElement = document.getElementById("user-letter-requirement");
-        let userLengthRequirementElement = document.getElementById("user-length-requirement");
-        let userHypenOptionalElement = document.getElementById("user-hypen-optional");
-        let userUnderscoreOptionalElement = document.getElementById("user-underscore-optional");
+      <img src="/images/bubble.png" alt="Bubble Image" class="bubble1" width="600" height="600">
+      <img src="/images/bubble.png" alt="Bubble Image" class="bubble2" width="400" height="400">
+      <img src="/images/bubble.png" alt="Bubble Image" class="bubble3" width="200" height="200">
+      <img src="/images/bubble.png" alt="Bubble Image" class="bubble4" width="200" height="200">
+      <img src="/images/bubble.png" alt="Bubble Image" class="bubble5" width="200" height="200">
+      <img src="/images/Dory_(Finding_Nemo).png" alt="Dory Image" class="Dory">
 
-        // to activate transitions
-        // Toggle off Explaination when clicking First Name Field (By making it very small)
-        firstNameElement.onclick = function () {
-          wholeFormElement.style.minHeight = "360.001px";
-        }
-
-        // Toggle off Explanation when clicking Last Name Field (By making it very small)
-        lastNameElement.onclick = function () {
-          wholeFormElement.style.minHeight = "360.001px";
-        }
-    
-        //password message displays
-        // Toggle on Explaination when Clicking Form
-        // However, it appears it prioritizes the above 2 functions over this one
-        usernameElement.onfocus = function () {
-          document.getElementById("explanationUser").style.display = "block";
-          wholeFormElement.style.minHeight = "675px";
-        }
-
-        //password message goes away
-        // Toggle off Explaination when clicking out of the form
-        usernameElement.onblur = function () {
-          document.getElementById("explanationUser").style.display = "none";
-          wholeFormElement.style.minHeight = "360px";
-        }
-
-        //Password validation
-        //Check Formating After User finishes typing in a character
-        usernameElement.onkeyup = function () {
-          // Regex for Formatting
-          var numberRegex = /[0-9]/g;
-          var lettRegex = /[a-zA-Z]/g;
-          var hypenRegex = /[-]/g;
-          var underscoreRegex = /[_]/g;
-
-          //check length
-          if(usernameElement.value.length >= 3 && usernameElement.value.length <= 18) {
-            userLengthRequirementElement.classList.remove("invalid");
-            userLengthRequirementElement.classList.add("valid");
-          }else{
-            userLengthRequirementElement.classList.remove("valid");
-            userLengthRequirementElement.classList.add("invalid");
-          }
-
-          /*//check letters
-          if(usernameElement.value.match(lettRegex)) {
-            userLetterRequirementElement.classList.remove("invalid");
-            userLetterRequirementElement.classList.add("valid");
-          }else {
-            userLetterRequirementElement.classList.remove("valid");
-            userLetterRequirementElement.classList.add("invalid");
-          }
-
-          //check numbers
-          if(usernameElement.value.match(numberRegex)) {
-            userNumberOptionalElement.classList.remove("opt");
-            userNumberOptionalElement.classList.add("valid");
-          }else {
-            userNumberOptionalElement.classList.remove("valid");
-            userNumberOptionalElement.classList.add("opt");
-          }
-
-          //check hyphens
-          if (usernameElement.value.match(hypenRegex)) {
-            userHypenOptionalElement.classList.remove("opt");
-            userHypenOptionalElement.classList.add("valid");
-          }else {
-            userHypenOptionalElement.classList.remove("valid");
-            userHypenOptionalElement.classList.add("opt");
-          }
-
-          // check underscores
-          if (usernameElement.value.match(underscoreRegex)) {
-            userUnderscoreOptionalElement.classList.remove("opt");
-            userUnderscoreOptionalElement.classList.add("valid");
-          }else {
-            userUnderscoreOptionalElement.classList.remove("valid");
-            userUnderscoreOptionalElement.classList.add("opt");
-          }*/
-        }
-      </script>
-
-
-      <!--code for password criteria message-->
-      <!--Script should be ported to JS (RegisterExpinantionFormatter.js & PasswordValidator.js)-->
-      <script>
-        let passwordElement = document.getElementById("password");
-        let passwordNumberRequirementElement = document.getElementById("password-number-requirement");
-        let passwordLetterRequirementElement = document.getElementById("password-letter-requirement");
-        let passwordSpecialCharacterRequirementElement = document.getElementById("passward-special-character-requirement");
-        let passwordLengthRequirementElement = document.getElementById("password-length-requirement");
-
-        //password message displays
-        // Toggle On Explination when password is selected
-        passwordElement.onfocus = function () {
-          document.getElementById("explanation-for-password").style.display = "block";
-          totalform.style.minHeight = "570px";
-        };
-
-        //password message goes away
-        // Toggle Off Explaination when password is no longer select
-        passwordElement.onblur = function () {
-          document.getElementById("explanation-for-password").style.display = "none";
-          totalform.style.minHeight = "360px";
-        }
-
-        //password validation
-        passwordElement.onkeyup = function () {
-          // Regex for Formatting
-          var numberRegex = /[0-9]/g;
-          var letterRegex = /[a-zA-Z]/g;
-          var specialCharacterRegex = /[!@#$%^&*]/g;
-          
-// Debug Line
-for(var i =0;i<4;i++){
-  pLenInput.classList.remove("invalid");
-  pLenInput.classList.add("valid");
-}
-          /*//check length
-          if(passwordElement.value.length >= 4 && passwordElement.value.length <= 32) {
-            passwordLengthRequirementElement.classList.remove("invalid");
-            passwordLengthRequirementElement.classList.add("valid");
-          }else{
-            passwordLengthRequirementElement.classList.remove("valid");
-            passwordLengthRequirementElement.classList.add("invalid");
-          }
-
-          //check numbers
-          if (passwordElement.value.match(numberRegex)) {
-            passwordNumberRequirementElement.classList.remove("invalid");
-            passwordNumberRequirementElement.classList.add("valid");
-          }else{
-            passwordNumberRequirementElement.classList.remove("valid");
-            passwordNumberRequirementElement.classList.add("invalid");
-          }
-
-          //check letters
-          if (passwordElement.value.match(letterRegex)) {
-            passwordLetterRequirementElement.classList.remove("invalid");
-            passwordLetterRequirementElement.classList.add("valid");
-          }else{
-            passwordLetterRequirementElement.classList.remove("valid");
-            passwordLetterRequirementElement.classList.add("invalid");
-          }
-
-          //check special characters
-          if (passwordElement.value.match(specialCharacterRegex)) {
-            passwordSpecialCharacterRequirementElement.classList.remove("invalid");
-            passwordSpecialCharacterRequirementElement.classList.add("valid");
-          }else {
-            passwordSpecialCharacterRequirementElement.classList.remove("valid");
-            passwordSpecialCharacterRequirementElement.classList.add("invalid");
-          }*/
-        }
-      </script>
-    </div>
+      <!-- Welcone Text + GitHub Button
+        <a href="https://github.com/Paradise-Pages/COP4331-Group6" id="welcome" title="Link to our github">welcome to another day in paradise...
+      -->
   </body>
-
 </html>
