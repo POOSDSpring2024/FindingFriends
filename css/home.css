@@ -1,0 +1,283 @@
+body{
+    margin: 0;
+    padding: 0;
+    /* Prevent scrollbars */
+    overflow: visible;
+    box-sizing: border-box;
+    background-color: transparent;
+    -webkit-text-stroke: 0.2px black;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+@font-face {
+    font-family: lost-fish;
+    src: url("../fonts/LOSTFISH-5DOZ.TTF") format('truetype');
+}
+
+.navbar{
+
+    position:sticky;
+    top: 0;  
+    left:0;
+    width:100%;
+    display:flex;
+    z-index: 1030; /* to prevent the navbar getting covered up by other content */
+    
+    flex-direction: row;
+    flex-wrap: none;
+    background-color: #006CA5;  
+    }
+
+.menuitem{
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding-top: 22px;
+    padding: 21px 22px;
+    text-decoration: none;
+}
+
+.menuitem:hover{
+    background-color: #02367B;
+}
+
+.right{
+    flex:1;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.left{
+    flex:1;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.active{
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding-top: 18px;
+    padding: 16px 16px;
+    text-decoration: none;
+    background-color: #FF6F1D;
+}
+
+.active:hover{
+    background-color: #cc5109;
+}
+
+.register-button{
+    background-color: #FF6F1D;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    
+    font-size: 17px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.register-button:hover{
+    background-color: #cc5109;
+}
+
+.background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #00BFFF, #00072D); /* Adjust colors as needed */
+    animation: moveBackground 20s linear infinite alternate; /* Adjust duration and animation type */
+    z-index: -2;
+}
+
+@keyframes moveBackground {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+}
+
+@keyframes rise{
+    from {
+        bottom: -150px;
+        
+    }
+    to {
+        top: 100%
+        
+    }
+
+}
+
+.content {
+    /*position: absolute;*/
+    padding: 20px;
+    
+    color: white; /* Text color */
+    text-align: center;
+    font-size: 36px;
+    margin-top: 50px;
+    z-index: 0;
+}
+
+.Dory{
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    z-index: -1;
+}
+
+.bubbles{
+    overflow: hidden;
+    
+}
+
+.bubble1{
+    margin: 0;
+    position: absolute;
+    overflow: hidden;
+    top: -50%;
+    left: 74%;
+    /*transform: translate(-50%, -50%);*/
+    z-index: -2; /* Ensure the bubble appears above other content */
+    
+    animation-name: rise;
+    animation-direction:normal;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    
+
+
+
+
+}
+
+.bubble2{
+    margin: 0;
+    position: absolute;
+    overflow: hidden;
+    transform: translate(-50%, -50%);
+
+    top: 20%;
+    left: 7%;
+    
+    z-index: -2;
+    animation-name: rise;
+    animation-direction: normal;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; /* Ensure the bubble appears above other content */
+}
+
+.bubble3{
+    margin: 0;
+    position: absolute;
+    overflow: hidden;
+
+    top: 15%;
+    left: 84%;
+    transform: translate(-50%, -50%);
+    z-index: -2; /* Ensure the bubble appears above other content */
+}
+.bubble4{
+    margin: 0;
+    position: absolute;
+    overflow: hidden;
+
+    top: 74%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    z-index: -2; /* Ensure the bubble appears above other content */
+}
+.bubble5{
+    margin: 0;
+    position: absolute;
+    overflow: hidden;
+
+    top: 80%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    z-index: -2; /* Ensure the bubble appears above other content */
+}
+
+.flex-container{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+#header{
+    color:#FF6F1D;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    
+    padding-top: 5%;
+    font-size: 72px;
+}
+
+.items{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.left{
+    flex: 1;
+    display: flex;
+
+}
+.end{
+    justify-content: flex-end;
+}
+
+.box{
+    background-color: white;
+    border-radius: 15px;
+    border: none;
+    color: #006CA5;
+    text-align: center;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    /*inline-size: min-content;*/
+    
+
+    margin: 20px;
+    padding: 80px 50px;
+
+}
+
+.video-container {
+    /* Make video to at least 100% wide and tall */
+    background: url("images\Dory_(Finding_Nemo).png");
+    min-width: 100%; 
+    min-height: 100%; 
+    
+  
+    /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+    width: auto;
+    height: auto;
+    object-fit: fill;
+  
+    /* Center the video */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 1.0;
+    transform: translate(-50%,-50%);
+  }
