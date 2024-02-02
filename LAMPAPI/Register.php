@@ -59,7 +59,7 @@
       // http_response_code(200);
       $searchResults .= '{'.'"id": "'.$id.''.'"}';
       returnWithInfo($searchResults);
-      echo 'Succesfully Registered';
+      //echo 'Succesfully Registered';
     }
 
     $stmt->close();
@@ -75,7 +75,7 @@
 	function sendResultInfoAsJson($obj)
   {
 		header('Content-type: application/json');
-		echo $obj;
+		//echo $obj;
 	}
 
 	function returnWithError($err)
