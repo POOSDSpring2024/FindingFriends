@@ -173,11 +173,11 @@ function saveRow(rowNumber) {
 }
 
 function deleteRow(rowNumber) {
-    let idValue = ids[rowNumber]
-    let firstNameValue = document.getElementById("first-name-" + rowNumber).innerText;
-    let lastNameValue = document.getElementById("last-name-" + rowNumber).innerText;
-    let firstName = firstNameValue.substring(0, firstNameValue.length);
-    let lastName = lastNameValue.substring(0, lastNameValue.length);
+    var idValue = ids[rowNumber]
+    var firstNameValue = document.getElementById("first-name-" + rowNumber).innerText;
+    var lastNameValue = document.getElementById("last-name-" + rowNumber).innerText;
+    var firstName = firstNameValue.substring(0, firstNameValue.length);
+    var lastName = lastNameValue.substring(0, lastNameValue.length);
     let check = confirm('Confirm deletion of contact: ' + firstName + ' ' + lastName);
     if (check === true) {
         document.getElementById("row-" + rowNumber + "").outerHTML = "";
@@ -248,7 +248,7 @@ function searchContacts() {
 
 function validAddContact(firstName, lastName, phone, email) {
 
-    let firstNameError = lastNameErrot = phoneError = emailError = true;
+    var firstNameError = lastNameErrot = phoneError = emailError = true;
 
     if (firstName == "") {
         console.log("FIRST NAME IS BLANK");
