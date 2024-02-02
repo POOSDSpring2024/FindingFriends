@@ -3,9 +3,9 @@
 urlBase = 'http://cop4331-g24.xyz/LAMPAPI';
 extension = 'php';
 
-var userId = 0;
-var firstName = "";
-var lastName = "";
+let userId = 0;
+let firstName = "";
+let lastName = "";
 ids = []
 
 function doLogin() {
@@ -13,16 +13,16 @@ function doLogin() {
     firstName = "";
     lastName = "";
 
-    var login = document.getElementById("login-name").value;
-    var password = document.getElementById("login-password").value;
+    let login = document.getElementById("login-name").value;
+    let password = document.getElementById("login-password").value;
 
     //console.log(password);
-    var hash = md5(password);
+    let hash = md5(password);
     //hash = md5(password);
     //console.log(hash);
     //console.log(hash);
     //console.log(hash);
-    //var hash=password;
+    //let hash=password;
 // DEBUG
     if (!validLoginForm(login, password)) {
         document.getElementById("login-result").innerHTML = "invalid username or password";
@@ -31,15 +31,15 @@ function doLogin() {
     document.getElementById("login-result").innerHTML = "";
     
 
-    var tmp = {
+    let tmp = {
         login: login,
         password: hash
     };
 
-    var jsonPayload = JSON.stringify(tmp);
+    let jsonPayload = JSON.stringify(tmp);
 
-    var url = urlBase + '/Login.' + extension;
-    var xhr = new XMLHttpRequest();
+    let url = urlBase + '/Login.' + extension;
+    let xhr = new XMLHttpRequest();
     console.log("Attempting xhr Post");
     xhr.open("POST", url, true);
     console.log("Finished Post");
@@ -48,7 +48,7 @@ function doLogin() {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
 
-                var jsonObject = JSON.parse(xhr.responseText);
+                let jsonObject = JSON.parse(xhr.responseText);
                 userId = jsonObject.id;
 
                 if (userId < 1) {
@@ -79,9 +79,9 @@ function doLogout() {
 }
 
 function clickLogin() {
-    var log = document.getElementById("login");
-    var reg = document.getElementById("signup");
-    var but = document.getElementById("toggle-form");
+    let log = document.getElementById("login");
+    let reg = document.getElementById("signup");
+    let but = document.getElementById("toggle-form");
 
     log.style.left = "-400px";
     reg.style.left = "0px";
@@ -92,12 +92,12 @@ function validLoginForm(loginName, loginPassword) {
     //DEBUG LINE
     return true;
     
-        var loginNameError = loginPasswordError = true;
+        let loginNameError = loginPasswordError = true;
     
         if (loginName == "") {
             console.log("USERNAME IS BLANK");
         }else {
-            var regex = /(?=.*[a-zA-Z])[a-zA-Z0-9-_]{3,18}$/;
+            let regex = /(?=.*[a-zA-Z])[a-zA-Z0-9-_]{3,18}$/;
             if (regex.test(loginName) == false) {
                 console.log("USERNAME IS NOT VALID");
             }else{
@@ -110,7 +110,7 @@ function validLoginForm(loginName, loginPassword) {
             console.log("PASSWORD IS BLANK");
             loginPasswordError = true;
         }else {
-            var regex = /(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}/;
+            let regex = /(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}/;
             if (regex.test(loginPassword) == false) {
                 console.log("PASSWORD IS NOT VALID");
             }else {
@@ -125,8 +125,8 @@ function validLoginForm(loginName, loginPassword) {
     }
 
     function saveCookie() {
-        var minutes = 20;
-        var date = new Date();
+        let minutes = 20;
+        let date = new Date();
         date.setTime(date.getTime() + (minutes * 60 * 1000));
     
         document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
@@ -134,13 +134,13 @@ function validLoginForm(loginName, loginPassword) {
     
     function readCookie() {
         userId = -1;
-        var data = document.cookie;
-        var splits = data.split(",");
+        let data = document.cookie;
+        let splits = data.split(",");
     
-        for (var i = 0; i < splits.length; i++) {
+        for (let i = 0; i < splits.length; i++) {
     
-            var thisOne = splits[i].trim();
-            var tokens = thisOne.split("=");
+            let thisOne = splits[i].trim();
+            let tokens = thisOne.split("=");
     
             if (tokens[0] == "firstName") {
                 firstName = tokens[1];
