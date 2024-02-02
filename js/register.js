@@ -58,7 +58,7 @@ function doSignup() {
             }
 
             if (this.status == 200) {
-
+                console(xhr.responseText);
                 let jsonObject = JSON.parse(xhr.responseText);
                 userId = jsonObject.id;
                 document.getElementById("signup-result").innerHTML = "User added";
