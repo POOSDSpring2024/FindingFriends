@@ -6,8 +6,7 @@
 	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Title Found on the Top of the Website Tab-->
     <title>Finding Friends Login</title>
-    <script type="text/javascript" src="js/login.js"></script>
-    <script type="text/javascript" src="js/md5.js"></script>
+    <script type="text/javascript" src="js/user_manager.js"></script>
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
@@ -64,7 +63,7 @@
             <label class="required">Password</label>
           </div>
           <input type="password" class="input-field" id="login-password" placeholder="password" name="password" />
-          <button type="button" id="login-button" class="buttons" onclick="doLogin();">Login</button>
+          <button type="button" id="login-button" class="buttons" onclick="authenticateLoginHTML('login-name', 'login-password', 'null');">Login</button>
           <br><br><br>
           <a href="register.html" style="font-family: Arial, Helvetica, sans-serif; font-size: 18px;">Not a user? Register here</a>
           <span class="text" id="login-result"></span>

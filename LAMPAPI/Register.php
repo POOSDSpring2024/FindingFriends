@@ -54,13 +54,13 @@
       $stmt->bind_param("ssss", $firstName, $lastName, $login, $password);
       $stmt->execute();
       $id = $conn->insert_id;
-      $stmt->close();
-      $conn->close();
+      returnWithInfo($id, $firstName, $lastName);
       // http_response_code(200);
       //$searchResults .= '{'.'"id": "'.$id.''.'"}';
       //returnWithInfo($searchResults);
-      returnWithInfo($id);
-      echo 'Succesfully Registered';
+      
+      
+      //echo 'Succesfully Registered';
     }
 
     $stmt->close();
@@ -78,11 +78,12 @@
 	}
 
 	function returnWithError($err){
+    http_response_code(409);
 		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson($retValue);
 	}
 
-  function returnWithInfo($id){
+  function returnWithInfo($id, $firstName, $lastName){
     //$retValue = '{"results":[' . $searchResults . '],"error":""}';
     $retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
     sendResultInfoAsJson( $retValue );
