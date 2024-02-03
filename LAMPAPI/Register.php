@@ -54,7 +54,7 @@
       $stmt->bind_param("ssss", $firstName, $lastName, $login, $password);
       $stmt->execute();
       $id = $conn->insert_id;
-      returnWithInfo($id, $firstName, $lastName);
+      returnWithInfo($id);
       // http_response_code(200);
       //$searchResults .= '{'.'"id": "'.$id.''.'"}';
       //returnWithInfo($searchResults);
@@ -83,9 +83,9 @@
 		sendResultInfoAsJson($retValue);
 	}
 
-  function returnWithInfo($id, $firstName, $lastName){
+  function returnWithInfo($id){
     //$retValue = '{"results":[' . $searchResults . '],"error":""}';
-    $retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+    $retValue .= '{'.'"id": "'.$id.''.'"}';
     sendResultInfoAsJson( $retValue );
   }
 

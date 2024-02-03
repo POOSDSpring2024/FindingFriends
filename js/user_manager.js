@@ -237,8 +237,6 @@ function signUpUserString(firstName, lastName, username, password, outputElement
                     document.getElementById(outputElementID).innerHTML = "User added";
                 else 
                     console.log("User added");
-                firstName = jsonObject.firstName;
-                lastName = jsonObject.lastName;
                 // console.log(userId);
                 // console.log(firstName);
                 // console.log(lastName);
