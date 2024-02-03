@@ -47,6 +47,7 @@
     $rows = mysqli_num_rows($result);
 
     if($rows > 0){
+      http_response_code(409);
 			returnWithError("Login taken. Try a different login");
     }
     else{
@@ -78,7 +79,6 @@
 	}
 
 	function returnWithError($err){
-    http_response_code(409);
 		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson($retValue);
 	}
