@@ -1,12 +1,13 @@
 //import './md5.js';
-
+document.write('<script src="js/md5.js"></script>');
 const urlBase = 'http://cop4331-g24.xyz/LAMPAPI';
 const extension = 'php';
 
 let userId = 0;
 let firstName = "";
 let lastName = "";
-
+let hasOutputElementID = false;
+let outputElementID = "";
 let ids = []
 
 function authenticateLoginHTML(usernameElementID, passwordElementID, outputElementID){
@@ -30,21 +31,8 @@ function authenticateLoginString(username, password, outputElementID){
         throw new TypeError('username must be a string');
     if (typeof password !== 'string') 
         throw new TypeError('password must be a string');
+    setOutputElementID(outputElementID);
     
-    let hasOutputElementID;
-    if (typeof outputElementID !== 'string'){
-        console.log('Incorrect OutputElementID Format. Defaulted to Null');
-        hasOutputElementID=false;
-    }else{
-        if(outputElementID.toUpperCase==='NULL'){
-            console.log('OutputElementID is "NULL". Defaulted to Null');
-            hasOutputElementID=false;
-        }else{
-            hasOutputElementID=true;
-        }
-    }
-        
-
     // Reset Details
     userId = 0;
     firstName = "";
@@ -127,18 +115,7 @@ function saveCookie() {
 }
 
 function readCookie(outputElementID) {
-    let hasOutputElementID;
-    if (typeof outputElementID !== 'string'){
-        console.log('Incorrect OutputElementID Format. Defaulted to Null');
-        hasOutputElementID=false;
-    }else{
-        if(outputElementID.toUpperCase==='NULL'){
-            console.log('OutputElementID is "NULL". Defaulted to Null');
-            hasOutputElementID=false;
-        }else{
-            hasOutputElementID=true;
-        }
-    }
+    setOutputElementID(outputElementID);
 
     userId = -1;
     let splits = document.cookie.split(",");
@@ -175,7 +152,6 @@ function userExist(id){
 }
 
 function signUpUserHTML(firstNameElementID, lastNameElementID, usernameElementID, passwordElementID, outputElementID){
-    console.log("BUTTON CLICK");
     if (typeof firstNameElementID !== 'string') 
         throw new TypeError('firstNameElementID must be a string');
     if (typeof lastNameElementID !== 'string') 
@@ -203,19 +179,7 @@ function signUpUserString(firstName, lastName, username, password, outputElement
     if (typeof password !== 'string') 
         throw new TypeError('password must be a string');
 
-    let hasOutputElementID;
-    if (typeof outputElementID !== 'string'){
-        console.log('Incorrect OutputElementID Format. Defaulted to Null');
-        hasOutputElementID=false;
-    }else{
-        if(outputElementID.toUpperCase()==='NULL'){
-            console.log('OutputElementID is "NULL". Defaulted to Null');
-            hasOutputElementID=false;
-        }else{
-            console.log('OutputElementID is '+outputElementID+'.');
-            hasOutputElementID=true;
-        }
-    }
+    setOutputElementID(outputElementID);
 
     // Validate Username & Password
     returnString = "";
@@ -246,7 +210,7 @@ function signUpUserString(firstName, lastName, username, password, outputElement
     let jsonInfo = {
         firstName: firstName,
         lastName: lastName,
-        login: login,
+        login: username,
         password: hash
     };
 
@@ -263,7 +227,7 @@ function signUpUserString(firstName, lastName, username, password, outputElement
                 return;
             }
             if (this.status == 409) {
-                document.getElementById("signup-result").innerHTML = "User already exists";
+                document.getElementById(outputElementID).innerHTML = "User already exists";
                 return;
             }
             if (this.status == 200) {
@@ -275,9 +239,9 @@ function signUpUserString(firstName, lastName, username, password, outputElement
                     console.log("User added");
                 firstName = jsonObject.firstName;
                 lastName = jsonObject.lastName;
-                console.log(userId);
-                console.log(firstName);
-                console.log(lastName);
+                // console.log(userId);
+                // console.log(firstName);
+                // console.log(lastName);
                 saveCookie();
                 window.location.href = "contacts.html";
             }
@@ -292,13 +256,39 @@ function signUpUserString(firstName, lastName, username, password, outputElement
 
 }
 
-/*function signUpUserHTML(firstNameElementID, lastNameElementID, usernameElementID, passwordElementID, retypePassowrdElementID, outputElementID){
+function signUpUserDoublePasswordHTML(firstNameElementID, lastNameElementID, usernameElementID, passwordElementID, confirmPassowrdElementID, outputElementID){
+    if (typeof firstNameElementID !== 'string') 
+        throw new TypeError('firstNameElementID must be a string');
+    if (typeof lastNameElementID !== 'string') 
+        throw new TypeError('lastNameElementID must be a string');
+    if (typeof usernameElementID !== 'string') 
+        throw new TypeError('usernameElementID must be a string');
+    if (typeof passwordElementID !== 'string') 
+        throw new TypeError('passwordElementID must be a string');
+    if (typeof confirmPassowrdElementID !== 'string') 
+        throw new TypeError('confirmPassowrdElementID must be a string');
 
+    userId = 0;
+    firstName = document.getElementById(firstNameElementID).value;
+    lastName = document.getElementById(lastNameElementID).value;
+    let username = document.getElementById(usernameElementID).value;
+    let password = document.getElementById(passwordElementID).value;
+    let confirmPassword = document.getElementById(confirmPassowrdElementID).value;
+    signUpUserDoublePasswordString(firstName, lastName, username, password, confirmPassword, outputElementID);
 }
 
-function signUpUserString(firstNameElementID, lastNameElementID, usernameElementID, passwordElementID, retypePassowrdElementID, outputElementID){
+function signUpUserDoublePasswordString(firstName, lastName, username, password, confirmPassowrd, outputElementID){
+    setOutputElementID(outputElementID);
 
-}*/
+    if (password!==confirmPassowrd) {
+        if(hasOutputElementID)
+            document.getElementById(outputElementID).innerHTML = "Password & Confirmd Password aren't the same.";
+        else 
+            console.log("Password & Confirmd Password aren't the same.");
+        return;
+    }
+    signUpUserString(firstName, lastName, username, password, outputElementID)
+}
 
 function validFirstName(firstName){
     if (firstName == "") {
@@ -348,5 +338,22 @@ function validPassword(password) {
     }else {
         console.log("PASSWORD IS VALID");
         return true;
+    }
+}
+
+function setOutputElementID(newOutputElementID){
+    if (typeof newOutputElementID !== 'string'){
+        console.log('Incorrect OutputElementID Format. Defaulted to Null');
+        outputElementID="";
+        hasOutputElementID=false;
+    }else{
+        if(newOutputElementID.toUpperCase()==='NULL'||newOutputElementID===""){
+            console.log('OutputElementID is "NULL". Defaulted to Null');
+            outputElementID="";
+            hasOutputElementID=false;
+        }else{
+            outputElementID="";
+            hasOutputElementID=true;
+        }
     }
 }
