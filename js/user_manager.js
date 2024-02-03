@@ -25,6 +25,167 @@ function authenticateLoginHTML(usernameElementID, passwordElementID, outputEleme
     authenticateLoginString(username, password, outputElementID);
 }
 
+function doLogout() {
+    userId = 0;
+    firstName = "";
+    lastName = "";
+
+    document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+    window.location.href = "index.html";
+}
+
+function signUpUserHTML(firstNameElementID, lastNameElementID, usernameElementID, passwordElementID, outputElementID){
+    if (typeof firstNameElementID !== 'string') 
+        throw new TypeError('firstNameElementID must be a string');
+    if (typeof lastNameElementID !== 'string') 
+        throw new TypeError('lastNameElementID must be a string');
+    if (typeof usernameElementID !== 'string') 
+        throw new TypeError('usernameElementID must be a string');
+    if (typeof passwordElementID !== 'string') 
+        throw new TypeError('passwordElementID must be a string');
+
+    userId = 0;
+    firstName = document.getElementById(firstNameElementID).value;
+    lastName = document.getElementById(lastNameElementID).value;
+    let username = document.getElementById(usernameElementID).value;
+    let password = document.getElementById(passwordElementID).value;
+    signUpUserString(firstName, lastName, username, password, outputElementID);
+}
+
+function signUpUserDoublePasswordHTML(firstNameElementID, lastNameElementID, usernameElementID, passwordElementID, confirmPassowrdElementID, outputElementID){
+    if (typeof firstNameElementID !== 'string') 
+        throw new TypeError('firstNameElementID must be a string');
+    if (typeof lastNameElementID !== 'string') 
+        throw new TypeError('lastNameElementID must be a string');
+    if (typeof usernameElementID !== 'string') 
+        throw new TypeError('usernameElementID must be a string');
+    if (typeof passwordElementID !== 'string') 
+        throw new TypeError('passwordElementID must be a string');
+    if (typeof confirmPassowrdElementID !== 'string') 
+        throw new TypeError('confirmPassowrdElementID must be a string');
+
+    userId = 0;
+    firstName = document.getElementById(firstNameElementID).value;
+    lastName = document.getElementById(lastNameElementID).value;
+    let username = document.getElementById(usernameElementID).value;
+    let password = document.getElementById(passwordElementID).value;
+    let confirmPassword = document.getElementById(confirmPassowrdElementID).value;
+    signUpUserDoublePasswordString(firstName, lastName, username, password, confirmPassword, outputElementID);
+}
+
+function saveCookie() {
+    let minutes = 20;
+    let date = new Date();
+    date.setTime(date.getTime() + (minutes * 60 * 1000));
+
+    document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
+}
+
+function readCookie(outputElementID) {
+    setOutputElementID(outputElementID);
+
+    userId = -1;
+    let splits = document.cookie.split(",");
+
+    for (let i = 0; i < splits.length; i++) {
+        let tokens = splits[i].trim().split("=");
+        switch(tokens[0]){
+            case "firstName":
+                firstName = tokens[1];
+                break;
+            case "lastName":
+                lastName = tokens[1];
+                break; 
+            case "userId":
+                userId = tokens[1];
+                break; 
+        }
+    }
+
+    if (!userExist(id)) {
+        window.location.href = "index.html";
+    }
+
+    else {
+        if(hasOutputElementID)
+            document.getElementById("weclome-text").innerHTML = "Welcome, " + firstName + " " + lastName + "!";
+        else 
+            console.log(returnString);
+    }
+}
+
+function setOutputElementID(newOutputElementID){
+    if (typeof newOutputElementID !== 'string'){
+        console.log('Incorrect OutputElementID Format. Defaulted to Null');
+        outputElementID="";
+        hasOutputElementID=false;
+    }else{
+        if(newOutputElementID.toUpperCase()==='NULL'||newOutputElementID===""){
+            console.log('OutputElementID is "NULL". Defaulted to Null');
+            outputElementID="";
+            hasOutputElementID=false;
+        }else{
+            outputElementID="";
+            hasOutputElementID=true;
+        }
+    }
+}
+
+function userExist(id){
+    return id > 0;
+}
+
+function validFirstName(firstName){
+    if (firstName == "") {
+        console.log("FIRST NAME IS BLANK");
+        return false;
+    }else {
+        console.log("first name IS VALID");
+        return true;
+    }
+}
+
+function validLastName(lastName){
+    if (lastName == "") {
+        console.log("LAST NAME IS BLANK");
+        return false;
+    }else {
+        console.log("LAST name IS VALID");
+        return true;
+    }
+}
+
+function validUsername(username) {
+
+    if (username == "") {
+        console.log("USERNAME IS BLANK");
+        return false;
+    }
+    let regex = /(?=.*[a-zA-Z])[a-zA-Z0-9-_]{3,18}$/;
+    if (regex.test(username) == false) {
+        console.log("USERNAME IS NOT VALID");
+        return false;
+    }else{
+        console.log("USERNAME IS VALID");
+        return true;
+    }
+}
+
+function validPassword(password) {
+    if (password == "") {
+        console.log("PASSWORD IS BLANK");
+        return false;
+    }
+    let regex = /(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}/;
+    if (regex.test(password) == false) {
+        console.log("PASSWORD IS NOT VALID");
+        return false;
+    }else {
+        console.log("PASSWORD IS VALID");
+        return true;
+    }
+}
+
 function authenticateLoginString(username, password, outputElementID){
     // Check Parameter Type
     if (typeof username !== 'string')
@@ -95,78 +256,6 @@ function authenticateLoginString(username, password, outputElementID){
         else 
             console.log(returnString);
     }
-}
-
-function doLogout() {
-    userId = 0;
-    firstName = "";
-    lastName = "";
-
-    document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
-    window.location.href = "index.html";
-}
-
-function saveCookie() {
-    let minutes = 20;
-    let date = new Date();
-    date.setTime(date.getTime() + (minutes * 60 * 1000));
-
-    document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
-}
-
-function readCookie(outputElementID) {
-    setOutputElementID(outputElementID);
-
-    userId = -1;
-    let splits = document.cookie.split(",");
-
-    for (let i = 0; i < splits.length; i++) {
-        let tokens = splits[i].trim().split("=");
-        switch(tokens[0]){
-            case "firstName":
-                firstName = tokens[1];
-                break;
-            case "lastName":
-                lastName = tokens[1];
-                break; 
-            case "userId":
-                userId = tokens[1];
-                break; 
-        }
-    }
-
-    if (!userExist(id)) {
-        window.location.href = "index.html";
-    }
-
-    else {
-        if(hasOutputElementID)
-            document.getElementById("weclome-text").innerHTML = "Welcome, " + firstName + " " + lastName + "!";
-        else 
-            console.log(returnString);
-    }
-}
-
-function userExist(id){
-    return id > 0;
-}
-
-function signUpUserHTML(firstNameElementID, lastNameElementID, usernameElementID, passwordElementID, outputElementID){
-    if (typeof firstNameElementID !== 'string') 
-        throw new TypeError('firstNameElementID must be a string');
-    if (typeof lastNameElementID !== 'string') 
-        throw new TypeError('lastNameElementID must be a string');
-    if (typeof usernameElementID !== 'string') 
-        throw new TypeError('usernameElementID must be a string');
-    if (typeof passwordElementID !== 'string') 
-        throw new TypeError('passwordElementID must be a string');
-
-    userId = 0;
-    firstName = document.getElementById(firstNameElementID).value;
-    lastName = document.getElementById(lastNameElementID).value;
-    let username = document.getElementById(usernameElementID).value;
-    let password = document.getElementById(passwordElementID).value;
-    signUpUserString(firstName, lastName, username, password, outputElementID);
 }
 
 function signUpUserString(firstName, lastName, username, password, outputElementID){
@@ -254,27 +343,6 @@ function signUpUserString(firstName, lastName, username, password, outputElement
 
 }
 
-function signUpUserDoublePasswordHTML(firstNameElementID, lastNameElementID, usernameElementID, passwordElementID, confirmPassowrdElementID, outputElementID){
-    if (typeof firstNameElementID !== 'string') 
-        throw new TypeError('firstNameElementID must be a string');
-    if (typeof lastNameElementID !== 'string') 
-        throw new TypeError('lastNameElementID must be a string');
-    if (typeof usernameElementID !== 'string') 
-        throw new TypeError('usernameElementID must be a string');
-    if (typeof passwordElementID !== 'string') 
-        throw new TypeError('passwordElementID must be a string');
-    if (typeof confirmPassowrdElementID !== 'string') 
-        throw new TypeError('confirmPassowrdElementID must be a string');
-
-    userId = 0;
-    firstName = document.getElementById(firstNameElementID).value;
-    lastName = document.getElementById(lastNameElementID).value;
-    let username = document.getElementById(usernameElementID).value;
-    let password = document.getElementById(passwordElementID).value;
-    let confirmPassword = document.getElementById(confirmPassowrdElementID).value;
-    signUpUserDoublePasswordString(firstName, lastName, username, password, confirmPassword, outputElementID);
-}
-
 function signUpUserDoublePasswordString(firstName, lastName, username, password, confirmPassowrd, outputElementID){
     setOutputElementID(outputElementID);
 
@@ -286,72 +354,4 @@ function signUpUserDoublePasswordString(firstName, lastName, username, password,
         return;
     }
     signUpUserString(firstName, lastName, username, password, outputElementID)
-}
-
-function validFirstName(firstName){
-    if (firstName == "") {
-        console.log("FIRST NAME IS BLANK");
-        return false;
-    }else {
-        console.log("first name IS VALID");
-        return true;
-    }
-}
-
-function validLastName(lastName){
-    if (lastName == "") {
-        console.log("LAST NAME IS BLANK");
-        return false;
-    }else {
-        console.log("LAST name IS VALID");
-        return true;
-    }
-}
-
-function validUsername(username) {
-
-    if (username == "") {
-        console.log("USERNAME IS BLANK");
-        return false;
-    }
-    let regex = /(?=.*[a-zA-Z])[a-zA-Z0-9-_]{3,18}$/;
-    if (regex.test(username) == false) {
-        console.log("USERNAME IS NOT VALID");
-        return false;
-    }else{
-        console.log("USERNAME IS VALID");
-        return true;
-    }
-}
-
-function validPassword(password) {
-    if (password == "") {
-        console.log("PASSWORD IS BLANK");
-        return false;
-    }
-    let regex = /(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}/;
-    if (regex.test(password) == false) {
-        console.log("PASSWORD IS NOT VALID");
-        return false;
-    }else {
-        console.log("PASSWORD IS VALID");
-        return true;
-    }
-}
-
-function setOutputElementID(newOutputElementID){
-    if (typeof newOutputElementID !== 'string'){
-        console.log('Incorrect OutputElementID Format. Defaulted to Null');
-        outputElementID="";
-        hasOutputElementID=false;
-    }else{
-        if(newOutputElementID.toUpperCase()==='NULL'||newOutputElementID===""){
-            console.log('OutputElementID is "NULL". Defaulted to Null');
-            outputElementID="";
-            hasOutputElementID=false;
-        }else{
-            outputElementID="";
-            hasOutputElementID=true;
-        }
-    }
 }
