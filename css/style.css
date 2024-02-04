@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    overflow: visable; /* Prevent scrollbars */
+    /*overflow: hidden;*/ /* Prevent scrollbars */
     box-sizing: border-box;
     background-color: transparent;
 }
@@ -16,7 +16,7 @@ ul{
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #006CA5;
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 0;
@@ -25,50 +25,33 @@ ul{
 li {
     float: left;
     border-right:1px solid #bbb;
-  }
-  li:last-child {
+}
+li:last-child {
     border-right: none;
-  }
+
+    border-left:1px solid #bbb;
+}
   
-  li a {
+li a {
     display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+}
+  li a:hover:not(.active) {
+    background-color: #02367B;
   }
   
-  li a:hover:not(.active) {
-    background-color: #111;
-    text-decoration: underline;
+  .active:hover{
+    background-color: #cc5109;
+
   }
   
   .active {
-    background-color: #16deec;
+    background-color: #FF6F1D;
+    
   }
-
-  
- .navbar{
-    background-color: white;
-    padding: 10px 20px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 9999;
-}
-
- .navbar a{
-    text-decoration: none;
-    color: black; /* Adjust text color */
-    margin-right: 20px; /* Adjust spacing between links */
-    font-weight: bold; /* Adjust font weight as needed */
-}
-
-.navbar a.active{
-    color: blue; /* Adjust color for the active link */
-}
-
  
 .btn{
     top: 50%;
@@ -81,7 +64,7 @@ li {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, #0047AB, #90E0EF); /* Adjust colors as needed */
+    background: linear-gradient(to bottom, #00BFFF, #00072D); /* Adjust colors as needed */
     animation: moveBackground 20s linear infinite alternate; /* Adjust duration and animation type */
     z-index: -2;
 }
@@ -106,9 +89,9 @@ li {
 }
 
 .content {
-    position: absolute;
+    /*position: absolute;*/
     padding: 20px;
-    z-index: 1;
+    
     color: white; /* Text color */
     text-align: center;
     font-size: 36px;
@@ -123,6 +106,12 @@ li {
     z-index: -1;
 }
 
+.bubbles{
+    position: relative;
+    overflow: hidden;
+    
+}
+
 .bubble1{
     margin: 0;
     position: absolute;
@@ -131,12 +120,13 @@ li {
     left: 74%;
     /*transform: translate(-50%, -50%);*/
     z-index: -2; /* Ensure the bubble appears above other content */
-    bottom: 0;
+    
     animation-name: rise;
     animation-direction: normal;
     animation-duration: 8s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+    
 
 
 
@@ -146,11 +136,17 @@ li {
 .bubble2{
     margin: 0;
     position: absolute;
+    transform: translate(-50%, -50%);
 
     top: 20%;
     left: 7%;
-    transform: translate(-50%, -50%);
-    z-index: -2; /* Ensure the bubble appears above other content */
+    
+    z-index: -2;
+    animation-name: rise;
+    animation-direction: normal;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; /* Ensure the bubble appears above other content */
 }
 
 .bubble3{
@@ -278,4 +274,36 @@ li {
     content:"*";
     color:red;
     font-size: 20px;
+}
+
+/* Style the video: 100% width and height to cover the entire window 
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+
+}*/
+
+.form{
+    overflow:visible; /* Prevent scrollbars */
+}
+
+.video-container {
+  /* Make video to at least 100% wide and tall */
+  background: url("images\Dory_(Finding_Nemo).png");
+  min-width: 100%; 
+  min-height: 100%; 
+
+  /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  object-fit: fill;
+
+  /* Center the video */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 1.0;
+  transform: translate(-50%,-50%);
 }

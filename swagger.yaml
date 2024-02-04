@@ -1,0 +1,265 @@
+swagger: '2.0'
+info:
+  description: This is the API documentation for group 24's small project contact manager
+  version: 1.0.0
+  title: Finding Friends
+  # put the contact info for your development or API team
+  contact:
+    email: ka353716@ucf.edu
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+paths:
+  /Login.php:
+    post:
+      tags:
+      - Users
+      summary: Logs in to the Finding Friends site
+      operationId: doLogin
+      description: Logs in to the Finding Friends site
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: loginItem
+        description: Login
+        schema:
+          $ref: '#/definitions/Login'
+      responses:
+        200:
+          description: OK
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error
+  /Register.php:
+    post:
+      tags:
+      - Users
+      summary: Registers user on the Finding Friends site
+      operationId: doRegister
+      description: Registers user on the Finding Friends site
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: registerItem
+        description: Register
+        schema:
+          $ref: '#/definitions/Register'
+      responses:
+        200:
+          description: OK
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error
+  /AddContacts.php:
+    post:
+      tags:
+      - Add Contacts
+      summary: Adds a contact
+      operationId: addContact
+      description: Adds a contact to the Finding Friends database
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: addItem
+        description: Add
+        schema:
+          $ref: '#/definitions/AddContacts'
+      responses:
+        200:
+          description: OK
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error
+  /DeleteContacts.php:
+    post:
+      tags:
+      - Delete Contacts
+      summary: Deletes a contact
+      operationId: deleteContact
+      description: deletes a contact from the Finding Friends database
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: deleteItem
+        description: Delete
+        schema:
+          $ref: '#/definitions/DeleteContacts'
+      responses:
+        200:
+          description: OK
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error
+  /SearchContacts.php:
+    post:
+      tags:
+      - Search Contacts
+      summary: Searches contacts
+      operationId: searchContacts
+      description: Searches contacts from the site's database
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: searchItem
+        description: Contacts search
+        schema:
+          $ref: '#/definitions/SearchContacts'
+      responses:
+        200:
+          description: OK
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error
+  /UpdateContacts.php:
+    post:
+      tags:
+      - Update Contacts
+      summary: Update a contact
+      operationId: updateContact
+      description: Updates a contact in the Finding Friends database
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: updateItem
+        description: Update
+        schema:
+          $ref: '#/definitions/UpdateContacts'
+      responses:
+        200:
+          description: OK
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error
+
+definitions:
+  Login:
+    type: object
+    required:
+    - login
+    - password
+    properties:
+      login:
+        type: string
+        example: "fred"
+      password:
+        type: string
+        example: "secret"
+  Register:
+    type: object
+    required:
+    - firstName
+    - lastName
+    - login
+    - password
+    properties:
+      firstName:
+        type: string
+        example: "fred"
+      lastName:
+        type: string
+        example: "smith"
+      login:
+        type: string
+        example: "fred"
+      password:
+        type: string
+        example: "secret"
+  AddContacts:
+    type: object
+    required:
+    - firstName
+    - lastName
+    - phone
+    - email
+    - userId
+    properties:
+      firstName:
+        type: string
+        example: "fred"
+      lastName:
+        type: string
+        example: "smith"
+      phone:
+        type: string
+        example: "123-456-7890"
+      email:
+        type: string
+        example: "fredsmith@gmail.com"
+      userId:
+        type: integer
+        example: 1
+  DeleteContacts:
+    type: object
+    required:
+    - id
+    properties:
+      id:
+        type: integer
+        example: 1
+  SearchContacts:
+    type: object
+    required:
+    - userId
+    - search
+    properties:
+      userId:
+        type: integer
+        example: 1
+      search:
+        type: string
+        example: "fr"
+  UpdateContacts:
+    type: object
+    required:
+    - firstName
+    - lastName
+    - phone
+    - email
+    - id
+    properties:
+      firstName:
+        type: string
+        example: "freddy"
+      lastName:
+        type: string
+        example: "smith"
+      phone:
+        type: string
+        example: "123-456-7890"
+      email:
+        type: string
+        example: "freddysmith@gmail.com"
+      id:
+        type: integer
+        example: 1
+
+host: cop4331-g24.xyz
+basePath: /LAMPAPI
+schemes:
+- http

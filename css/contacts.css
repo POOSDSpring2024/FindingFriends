@@ -1,18 +1,9 @@
-:root {
-    --radius: 5px;
-    --padding: 10px;
-}
-
-/* body formatting */
 body {
-    background-color: #2ef3f3;
-   /* background-image: url('../images/background2.png');*/
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
     margin: 0;
-    overflow: hidden;
+    padding: 0;
+    overflow: hidden; /* Prevent scrollbars */
+    box-sizing: border-box;
+    background-color: transparent;
 }
 
 /* content from leinecker */
@@ -146,7 +137,7 @@ body {
 
 /* button formatting */
 .btn {
-    color: #f5f5f5;
+    color: #007D2F;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: bolder;
@@ -291,7 +282,7 @@ table {
 }
 
 /*side navigation menu*/
-.sidenav img{
+.sidenav img {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -305,9 +296,11 @@ table {
     padding: 0;
     left: 0px;
     top: 0px;
-    overflow: auto; /*disables horizontal scroll*/
-    position: fixed; /*scroll bar stays in place when user is scrolling*/
-    background: rgba(16, 120, 189, 0.9);
+    overflow: auto;
+    /*disables horizontal scroll*/
+    position: fixed;
+    /*scroll bar stays in place when user is scrolling*/
+    background: rgba(155, 188, 115, 0.9);
 }
 
 /*navigation links*/
@@ -321,8 +314,7 @@ table {
     font-weight: 600;
     font-size: 25px;
     line-height: 44px;
-    color: #FF6F1D;
-
+    color: #007D2F;
 }
 
 .buttons {
@@ -365,8 +357,7 @@ table {
 /* make sidebar a topbar for mobile view*/
 @media screen and (max-width: 700px) {
     body {
-        /*background-image: url('../images/backgroundmobile2.png');*/
-        background-color: #2ef3f3;
+        background-image: url('../images/backgroundmobile2.png');
     }
 
     .sidenav {

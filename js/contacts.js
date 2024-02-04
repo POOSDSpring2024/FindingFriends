@@ -3,9 +3,9 @@
 urlBase = 'http://cop4331-g24.xyz/LAMPAPI';
 extension = 'php';
 
-let userId = 0;
-let firstName = "";
-let lastName = "";
+var userId = 0;
+var firstName = "";
+var lastName = "";
 ids = []
 
 function showTable() {
@@ -270,7 +270,7 @@ function validAddContact(firstName, lastName, phone, email) {
         console.log("PHONE IS BLANK");
     }
     else {
-        var regex = /^[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/;
+        let regex = /^[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/;
 
         if (regex.test(phone) == false) {
             console.log("PHONE IS NOT VALID");
@@ -287,7 +287,7 @@ function validAddContact(firstName, lastName, phone, email) {
         console.log("EMAIL IS BLANK");
     }
     else {
-        var regex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+        let regex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
 
         if (regex.test(email) == false) {
             console.log("EMAIL IS NOT VALID");
@@ -331,7 +331,7 @@ function readCookie() {
     let data = document.cookie;
     let splits = data.split(",");
 
-    for (var i = 0; i < splits.length; i++) {
+    for (let i = 0; i < splits.length; i++) {
 
         let thisOne = splits[i].trim();
         let tokens = thisOne.split("=");

@@ -47,6 +47,7 @@
     $rows = mysqli_num_rows($result);
 
     if($rows > 0){
+      http_response_code(409);
 			returnWithError("Login taken. Try a different login");
     }
     else{
@@ -54,12 +55,13 @@
       $stmt->bind_param("ssss", $firstName, $lastName, $login, $password);
       $stmt->execute();
       $id = $conn->insert_id;
-      $stmt->close();
-      $conn->close();
+      returnWithInfo($id);
       // http_response_code(200);
-      $searchResults .= '{'.'"id": "'.$id.''.'"}';
-      returnWithInfo($searchResults);
-      echo 'Succesfully Registered';
+      //$searchResults .= '{'.'"id": "'.$id.''.'"}';
+      //returnWithInfo($searchResults);
+      
+      
+      //echo 'Succesfully Registered';
     }
 
     $stmt->close();
@@ -67,26 +69,23 @@
   }
 
 
-  function getRequestInfo()
-  {
+  function getRequestInfo(){
 		return json_decode(file_get_contents('php://input'), true);
 	}
 
-	function sendResultInfoAsJson($obj)
-  {
+	function sendResultInfoAsJson($obj){
 		header('Content-type: application/json');
 		echo $obj;
 	}
 
-	function returnWithError($err)
-  {
+	function returnWithError($err){
 		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson($retValue);
 	}
 
-  function returnWithInfo($searchResults)
-  {
-    $retValue = '{"results":[' . $searchResults . '],"error":""}';
+  function returnWithInfo($id){
+    //$retValue = '{"results":[' . $searchResults . '],"error":""}';
+    $retValue .= '{'.'"id": "'.$id.''.'"}';
     sendResultInfoAsJson( $retValue );
   }
 
