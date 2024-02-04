@@ -1,12 +1,12 @@
 // Field where User Enters Info
 let firstNameFieldElement;
 let lastNameFieldElement;
-let usermameFieldElement;
+let usernameFieldElement;
 let passwordFieldElement;
 
 let nameRequirementElement
 let nameReqLengthElement;
-let nameReqCharacterElement;
+let nameReqExcludedElement;
 
 let usernameRequirementElement;
 let usernameReqLengthElement;
@@ -19,19 +19,20 @@ let passwordReqLengthElement;
 let passwordReqLetterElement;
 let passwordReqNumberElement;
 let passwordReqSpecialCharacterElement;
+let passwordReqExcludedElement;
 let passwordExtraInfoElement;
 
-function setFieldElement(firstNameFieldElementIDString, lastNameFieldElementIDString,usermameFieldElementIDString,passwordFieldElementIDString){
+function setFieldElement(firstNameFieldElementIDString, lastNameFieldElementIDString,usernameFieldElementIDString,passwordFieldElementIDString){
     firstNameFieldElement=document.getElementById(firstNameFieldElementIDString);
     lastNameFieldElement=document.getElementById(lastNameFieldElementIDString);
-    usermameFieldElement=document.getElementById(usermameFieldElementIDString);
+    usernameFieldElement=document.getElementById(usernameFieldElementIDString);
     passwordFieldElement=document.getElementById(passwordFieldElementIDString);
 }
 
-function setNameReqElement(nameRequirementElementIDString, nameReqLengthElementIDString, nameReqCharacterElementIDString){
+function setNameReqElement(nameRequirementElementIDString, nameReqLengthElementIDString, nameReqExcludedElementIDString){
     nameRequirementElement=document.getElementById(nameRequirementElementIDString);
     nameReqLengthElement=document.getElementById(nameReqLengthElementIDString);
-    nameReqCharacterElement=document.getElementById(nameReqCharacterElementIDString);
+    nameReqExcludedElement=document.getElementById(nameReqExcludedElementIDString);
 
     updateNameRequirement();
 }
@@ -46,12 +47,13 @@ function setUsernameReqElement(usernameRequirementElementIDString, usernameReqLe
     updateUsernameRequirement();
 }
 
-function setPasswordReqElement(passwordRequirementElementIDString, passwordReqLengthElementIDSting, passwordReqLetterElementIDString, passwordReqNumberElementIDString, passwordReqSpecialCharacterElementIDString, passwordExtraInfoElementIDString){
+function setPasswordReqElement(passwordRequirementElementIDString, passwordReqLengthElementIDSting, passwordReqLetterElementIDString, passwordReqNumberElementIDString, passwordReqSpecialCharacterElementIDString, passwordReqExcludedElementIDString, passwordExtraInfoElementIDString){
     passwordRequirementElement=document.getElementById(passwordRequirementElementIDString);
     passwordReqLengthElement=document.getElementById(passwordReqLengthElementIDSting);
     passwordReqLetterElement=document.getElementById(passwordReqLetterElementIDString);
     passwordReqNumberElement=document.getElementById(passwordReqNumberElementIDString);
     passwordReqSpecialCharacterElement=document.getElementById(passwordReqSpecialCharacterElementIDString);
+    passwordReqExcludedElement=document.getElementById(passwordReqExcludedElementIDString);
     passwordExtraInfoElement=document.getElementById(passwordExtraInfoElementIDString);
 
     updatePasswordRequirement();
@@ -92,7 +94,7 @@ function getUsernameRequirementList(){
     const arrayUsernameRequirement=[];
     arrayUsernameRequirement.push('Username MUST be 3-18 Characters Long (inclusive)');
     arrayUsernameRequirement.push('Username MUST be have at least one letter (a-z or A-Z)');
-    arrayUsernameRequirement.push("Username can ONLY be letters (a-z or A-Z), numbers (0-9), underscores(_) or hypens(-)");
+    arrayUsernameRequirement.push("Username can ONLY be letters, numbers, underscores or hypens");
     return arrayUsernameRequirement;
     // Username can only have a-z, A-Z, 0-9, _, -
 }
@@ -124,7 +126,7 @@ function isNameLengthValid(name){
 
 function isNameExcludedValid(name){
     //  ^ @ the beginning   [^<>]* Exclude < and > For Multiple Occurance   $ end of regex
-    return /^[^<>]*$/.test(name);
+    return /^[^<>]+$/.test(name);
 }
 
 function isValidUsername(username) {
@@ -151,7 +153,7 @@ function isUsernameAllowedValid(username){
         Username can only have a-z, A-Z, 0-9, _, -
         $ end of regex
     */
-    return /^[a-zA-Z0-9_-]*$/.test(username)
+    return /^[a-zA-Z0-9_-]+$/.test(username)
 }
 
 function isUsernameLetterValid(username){
@@ -160,18 +162,8 @@ function isUsernameLetterValid(username){
 }
 
 function isValidPassword(password) {
-    if (password == "") {
-        console.log("PASSWORD IS BLANK");
-        return false;
-    }
-    let regex = /(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*()-=_+[\]{}|;:\'",./?~`]).{8,32}/;
-    if (regex.test(password) == false) {
-        console.log("PASSWORD IS NOT VALID");
-        return false;
-    }else {
-        console.log("PASSWORD IS VALID");
-        return true;
-    }
+    return isPasswordLengthValid(password) && isPasswordLetterValid(password) && isPasswordNumberValid(password)
+        && isPasswordSpecialValid(password) && isPasswordExcludedValid(password);
 }
 
 function isPasswordLengthValid(password){
@@ -191,51 +183,81 @@ function isPasswordNumberValid(password){
 
 function isPasswordSpecialValid(password){
     //  [!@#$%^&*()-=_+[\]{}|;:\'",./?~`] Has Special Character 
-    return /[!@#$%^&*()-=_+[\]{}|;:\'",./?~`]/.test(password);
+    return /[!@#$%^&*()\-=_+[\]{}|;:\'",./?~`]/.test(password);
 }
 
 function isPasswordExcludedValid(password){
     //  ^ @ the beginning   [^<>]* Exclude < and > For Multiple Occurance   $ end of regex
-    return /^[^<>]*$/.test(password);
+    return /^[^<>]+$/.test(password);
 }
 
 function updateNameRequirement(){
     let nameReqArr = getNameRequirementList();
     firstNameFieldElement.onkeyup = function(){
-        if(isValidName(firstNameFieldElement.value)&&isValidName(lastNameFieldElement.value))
+        if(isValidName(firstNameFieldElement.value)&&isValidName(lastNameFieldElement.value)){
             nameRequirementElement.innerText= "✅First & Last Names are Good✅";
-        else
-            nameRequirementElement.innerText = "❌First and/or Last Name isn't in Correct Format❌";
-
+        }else{
+            let returnStr = "";
+            if(firstNameFieldElement.value===""&&lastNameFieldElement.value===""){
+                returnStr="First Name & Last Name is Blank";
+            }else if(firstNameFieldElement.value===""){
+                returnStr="First Name is Blank";
+            }else if(lastNameFieldElement.value===""){
+                returnStr="Last Name is Blank";
+            }else if(!isValidName(firstNameFieldElement.value)&&!isValidName(lastNameFieldElement.value)){
+                returnStr="First & Last Name isn't in Correct Format";
+            }else if(!isValidName(firstNameFieldElement.value)){
+                returnStr="First Name isn't in Correct Format";
+            }else if(!isValidName(lastNameFieldElement.value)){
+                returnStr="Last Name isn't in Correct Format";
+            }
+            
+            nameRequirementElement.innerText = `❌${returnStr}❌`;
+        }
         if(isNameLengthValid(firstNameFieldElement.value)&&isNameLengthValid(lastNameFieldElement.value))
             nameReqLengthElement.innerText = "✅"+nameReqArr[0]+"✅";
         else
             nameReqLengthElement.innerText = "❌"+nameReqArr[0]+"❌";
         if(isNameExcludedValid(firstNameFieldElement.value)&&isNameExcludedValid(lastNameFieldElement.value))
-            nameReqCharacterElement.innerText = "✅"+nameReqArr[1]+"✅";
+            nameReqExcludedElement.innerText = "✅"+nameReqArr[1]+"✅";
         else
-            nameReqCharacterElement.innerText = "❌"+nameReqArr[1]+"❌";
+            nameReqExcludedElement.innerText = "❌"+nameReqArr[1]+"❌";
     }
     lastNameFieldElement.onkeyup = function(){
-        if(isValidName(firstNameFieldElement.value)&&isValidName(lastNameFieldElement.value))
-            nameRequirementElement.innerText = "✅First & Last Names are Good✅";
-        else
-            nameRequirementElement.innerText = "❌First and/or Last Name isn't in Correct Format❌";
-
+        if(isValidName(firstNameFieldElement.value)&&isValidName(lastNameFieldElement.value)){
+            nameRequirementElement.innerText= "✅First & Last Names are Good✅";
+        }else{
+            let returnStr = "";
+            if(firstNameFieldElement.value===""&&lastNameFieldElement.value===""){
+                returnStr="First Name & Last Name is Blank";
+            }else if(firstNameFieldElement.value===""){
+                returnStr="First Name is Blank";
+            }else if(lastNameFieldElement.value===""){
+                returnStr="Last Name is Blank";
+            }else if(!isValidName(firstNameFieldElement.value)&&!isValidName(lastNameFieldElement.value)){
+                returnStr="First & Last Name isn't in Correct Format";
+            }else if(!isValidName(firstNameFieldElement.value)){
+                returnStr="First Name isn't in Correct Format";
+            }else if(!isValidName(lastNameFieldElement.value)){
+                returnStr="Last Name isn't in Correct Format";
+            }
+            
+            nameRequirementElement.innerText = `❌${returnStr}❌`;
+        }
         if(isNameLengthValid(firstNameFieldElement.value)&&isNameLengthValid(lastNameFieldElement.value))
             nameReqLengthElement.innerText = "✅"+nameReqArr[0]+"✅";
         else
             nameReqLengthElement.innerText = "❌"+nameReqArr[0]+"❌";
         if(isNameExcludedValid(firstNameFieldElement.value)&&isNameExcludedValid(lastNameFieldElement.value))
-            nameReqCharacterElement.innerText = "✅"+nameReqArr[1]+"✅";
+            nameReqExcludedElement.innerText = "✅"+nameReqArr[1]+"✅";
         else
-            nameReqCharacterElement.innerText = "❌"+nameReqArr[1]+"❌";
+            nameReqExcludedElement.innerText = "❌"+nameReqArr[1]+"❌";
     }
 }
 
 function updateUsernameRequirement(){
     let usernameReqArr = getUsernameRequirementList();
-    usernameFieldElement.onkeyup = function(){
+    usernameFieldElement.onkeyup = function(){        
         if(isValidUsername(usernameFieldElement.value))
             usernameRequirementElement.innerText = "✅Username is Good✅";
         else
@@ -286,10 +308,10 @@ function updatePasswordRequirement(){
         else
             passwordReqSpecialCharacterElement.innerText = "❌"+passwordReqArr[3]+"❌";
         if(isPasswordExcludedValid(passwordFieldElement.value)){
-            passwordReqExcludedElement.innerText = "✅"+usernameReqArr[5]+"✅";
+            passwordReqExcludedElement.innerText = "✅"+passwordReqArr[5]+"✅";
             passwordExtraInfoElement.innerText = "";
         }else{
-            passwordReqExcludedElement.innerText = "✅"+usernameReqArr[5]+"✅";
+            passwordReqExcludedElement.innerText = "❌"+passwordReqArr[5]+"❌";
             outputIncorrectCharacter(passwordFieldElement.value, getPasswordCharSet(), passwordExtraInfoElement);
         }
     }

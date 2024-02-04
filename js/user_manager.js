@@ -1,5 +1,4 @@
 //import './md5.js';
-document.write('<script src="js/output_manager.js"></script>');
 document.write('<script src="js/md5.js"></script>');
 document.write('<script src="js/validator.js"></script>');
 const urlBase = 'http://cop4331-g24.xyz/LAMPAPI';
@@ -9,6 +8,36 @@ let userId = 0;
 let firstName = "";
 let lastName = "";
 let ids = []
+
+let hasOutputElementID = false;
+let outputElementID = "";
+
+function setOutputElementID(newOutputElementID){
+    console.log(newOutputElementID);
+    if (typeof newOutputElementID !== 'string'){
+        console.log('Incorrect OutputElementID Format. Defaulted to Null');
+        outputElementID="";
+        hasOutputElementID=false;
+    }else{
+        if(newOutputElementID.toUpperCase()==='NULL'||newOutputElementID===""){
+            console.log('OutputElementID is "NULL". Defaulted to Null');
+            outputElementID="";
+            hasOutputElementID=false;
+        }else{
+            outputElementID=newOutputElementID;
+            hasOutputElementID=true;
+        }
+    }
+}
+
+function outputString(outputStr){
+    if(hasOutputElementID){
+        if(document.getElementById(outputElementID)===null){
+            console.log(`Null outputElementID ${outputElementID}`)
+        }else document.getElementById(outputElementID).innerHTML = outputStr;
+    } 
+    else console.log(outputStr);
+}
 
 function authenticateLoginHTML(usernameElementID, passwordElementID, outputElementID){
     if (typeof usernameElementID !== 'string')
@@ -133,11 +162,11 @@ function authenticateLoginString(username, password, outputElementID){
     returnString = "";
     isValidForm=true;
     if (!isValidUsername(username)) {
-        returnString+="Invalid Username. "
+        returnString+="Incorrect Username. "
         isValidForm=false;
     }
     if (!isValidPassword(password)) {
-        returnString+="Invalid Password. "
+        returnString+="Incorrect Password. "
         isValidForm=false;
     }
     outputString(returnString);
@@ -165,11 +194,13 @@ function authenticateLoginString(username, password, outputElementID){
                     userId = jsonObject.id;
                     if (!userExist(userId)) {
                         outputString("User/Password Combination Incorrect");
+                    }else{
+                        firstName = jsonObject.firstName;
+                        lastName = jsonObject.lastName;
+                        saveCookie();
+                        window.location.href = "contacts.html";
                     }
-                    firstName = jsonObject.firstName;
-                    lastName = jsonObject.lastName;
-                    saveCookie();
-                    window.location.href = "contacts.html";
+                    
                 }
             };
         xhr.send(jsonPayload);
@@ -187,9 +218,9 @@ function signUpUserString(firstName, lastName, username, password, outputElement
         throw new TypeError('username must be a string');
     if (typeof password !== 'string') 
         throw new TypeError('password must be a string');
-
+    console.log(`Before signUpUserString [${outputElementID}]`);
     setOutputElementID(outputElementID);
-
+    console.log(`After signUpUserString [${outputElementID}]`);
     // Validate Username & Password
     returnString = "";
     isValidForm=true;
@@ -227,12 +258,14 @@ function signUpUserString(firstName, lastName, username, password, outputElement
     let xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+    console.log(`Before SignUp XML [${outputElementID}]`);
     try {
         xhr.onreadystatechange = function () {
             if (this.readyState != 4) {
                 return;
             }
             if (this.status == 409) {
+                console.log(`After SignUp 409 [${outputElementID}]`);
                 document.getElementById(outputElementID).innerHTML = "User already exists";
                 return;
             }
@@ -258,7 +291,7 @@ function signUpUserDoublePasswordString(firstName, lastName, username, password,
     setOutputElementID(outputElementID);
 
     if (password!==confirmPassowrd) {
-        outputString("Password & Confirmd Password aren't the same.");
+        outputString("Password & Confirmed Password aren't the same.");
         return;
     }
     signUpUserString(firstName, lastName, username, password, outputElementID)

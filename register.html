@@ -10,7 +10,15 @@
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-
+    <!--Bootstrap Import-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <!--
       One button for login and one for register
     -->
@@ -19,7 +27,14 @@
      <link href='https://fonts.googleapis.com/css?family=Island Moments' rel='stylesheet'>
     -->
   </head>
-    <body>
+    <body 
+      onload="setFieldElement('first-name-field', 'last-name-field', 'username-field', 'password-field');
+              setNameReqElement('name-requirement', 'name-length-requirement', 'name-excluded-requirement');
+              setUsernameReqElement('username-requirement', 'username-length-requirement', 'username-letter-requirement', 'username-character-requirement', 'username-extra-info');
+              setPasswordReqElement('password-requirement', 'password-length-requirement', 'password-letter-requirement', 'password-number-requirement', 
+                'password-special-character-requirement', 'password-excluded-requirement','password-extra-info');
+              setOutputElementID('signup-result');"
+    >
 
       <ul>
         <li><a class="active" href="index.html">Home</a></li>
@@ -47,235 +62,63 @@
         <!--<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/PfHrNe1cSKAjC" width="40%" height="40%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/smile-hello-shark-PfHrNe1cSKAjC">via GIPHY</a></p>
         -->
           <h1 style="font-family: Arial, Helvetica, sans-serif; font-size: 32px;"></h1>
-
       </div>
 
-      <div class="form" id="whole-form">
-        <form method="post" id="signup" class="input-form">
-            <h2 style="font-family: Arial, Helvetica, sans-serif; font-size: 26px; color: white;">Please Create your account</h2>
-            <div style="text-align: left; font-size: 22px; color: white; font-family: Arial, Helvetica, sans-serif;">
-                <label class="required">First Name</label>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form">
+              <form method="post" id="signup" class="input-form">
+                  <h2 style="font-family: Arial, Helvetica, sans-serif; font-size: 26px; color: white;">Please Create your account</h2>
+                  <div style="text-align: left; font-size: 22px; color: white; font-family: Arial, Helvetica, sans-serif;">
+                      <label class="required">First Name</label>
+                  </div>
+                  <input type="text" class="input-field" id="first-name-field" placeholder="eg: John" name="firstName" required />
+                  <div style="text-align: left; font-size: 22px; color: white; font-family: Arial, Helvetica, sans-serif;">
+                      <label class="required">Last Name</label>
+                  </div>
+                  <input type="text" class="input-field" id="last-name-field" placeholder="eg: Doe" name="lastName" required />
+                  <div style="text-align: left; font-size: 22px; color: white; font-family: Arial, Helvetica, sans-serif;">
+                      <label class="required">Username</label>
+                  </div>
+                  <input type="text" class="input-field" id="username-field" placeholder="username" name="login"  required/>
+                  <div style="text-align: left; font-size: 22px; color: white; font-family: Arial, Helvetica, sans-serif;">
+                      <label class="required">Password</label>
+                  </div>
+                  <input type="password" class="input-field" id="password-field" placeholder="password" name="password" required
+                     />
+                  <button type="button" id="signup-button" class="buttons" onclick="signUpUserHTML('first-name-field', 'last-name-field', 'username-field', 'password-field', 'signup-result');" >Sign up</button><br />
+                  <span class="text" style="color:rgb(203, 55, 21); font-family: 'Montserrat';" id="signup-result"></span>
+              </form>
             </div>
-            <input type="text" class="input-field" id="first-name" placeholder="eg: John" name="firstName" required />
-            <div style="text-align: left; font-size: 22px; color: white; font-family: Arial, Helvetica, sans-serif;">
-                <label class="required">Last Name</label>
+          </div>
+          <div class="col-md-8">
+            <div class="reqirement-info" id="name-requirement-list">
+              <h4 id="name-requirement">📜Name must contain the following📜</h3>
+              <p id="name-length-requirement">📜Name MUST be 1-32 Characters Long (inclusive)📜</p>
+              <p id="name-excluded-requirement">📜Name CANNOT have '&lt' or '&gt'📜</p>
             </div>
-            <input type="text" class="input-field" id="last-name" placeholder="eg: Doe" name="lastName" required />
-            <div style="text-align: left; font-size: 22px; color: white; font-family: Arial, Helvetica, sans-serif;">
-                <label class="required">Username</label>
+            <div class="reqirement-info" id="username-requirement-list">
+              <h4 id="username-requirement">📜Username must contain the following📜</h3>
+              <p id="username-length-requirement">📜Username MUST be 3-18 Characters Long (inclusive)📜</p>
+              <p id="username-letter-requirement">📜Username MUST be have at least one letter (a-z or A-Z)📜</p>
+              <p id="username-character-requirement">📜Username can ONLY be letters, numbers, underscores or hypens📜</p>
+              <h6 id="username-extra-info"></h6>
             </div>
-            <input type="text" class="input-field" id="username" placeholder="username" name="login"  required/>
-            <div style="text-align: left; font-size: 22px; color: white; font-family: Arial, Helvetica, sans-serif;">
-                <label class="required">Password</label>
+            <div class="reqirement-info" id="password-requirement-list">
+              <h4 id="password-requirement">📜Password MUST be 8-32 Characters Long (inclusive)📜</h3>
+              <p id="password-length-requirement">📜Password MUST be have at least one letter (a-z or A-Z)📜</p>
+              <p id="password-letter-requirement">📜Username MUST be have at least one letter (a-z or A-Z)📜</p>
+              <p id="password-number-requirement">📜Password MUST be have at least one number (0-9)📜</p>
+              <p id="password-special-character-requirement">📜Password MUST be have at the following special character.📜</p>
+              <p>Special Character Include: ! @ # $ % ^ & * (  ) - = _ + [ \ ] { } | ; : \ ' " , . / ? ~ `</p>
+              <p id="password-excluded-requirement">📜Password CANNOT have '&lt' or '&gt'📜</p>
+              <h6 id="password-extra-info"></h6>
             </div>
-            <input type="password" class="input-field" id="password" placeholder="password" name="password" required
-               />
-            <button type="button" id="signup-button" class="buttons" onclick="signUpUserHTML('first-name', 'last-name', 'username', 'password', 'signup-result');" >Sign up</button><br />
-            <span class="text" style="color:rgb(203, 55, 21); font-family: 'Montserrat';" id="signup-result"></span>
-            
-            <!--Signup Format Rules-->
-            <!--
-            <div id="explanation-for-password">
-              <h3>Password must contain the following:</h3>
-              <p id="password-length-requirement" class="invalid">
-                8 to 32 characters
-              </p>
-              <p id="password-letter-requirement" class="invalid">
-                At least one letter
-              </p>
-              <p id="password-number-requirement" class="invalid">
-                At least one number
-              </p>
-              <p id="passward-special-character-requirement" class="invalid">
-                At least one special character
-              </p>
-            </div>
-            <div id="explanation-for-user">
-              <h3>Username must contain the following:</h3>
-              <p id="user-letter-requirement" class="invalid">
-                At least one letter
-              </p>
-              <p id="user-length-requirement" class="invalid">
-                3 to 18 characters
-              </p>
-              <h3> Username may contain the following: </h3>
-              <p id="user-number-optional" class="opt">
-                Numbers
-              </p>
-              <p id="user-underscore-optional" class="opt">
-                Underscores
-              </p>
-              <p id="user-hypen-optional" class="opt">
-                Hyphens
-              </p>
-            </div>
-          -->
-          </form>
-
-          <script>
-            let firstNameElement = document.getElementById("first-name");
-            let lastNameElement = document.getElementById("last-name");
-            let usernameElement = document.getElementById("username");
-            // wholeFrom is from Signup Div Id
-            let wholeFormElement = document.getElementById("whole-form");
-            let userNumberOptionalElement = document.getElementById("user-number-optional");
-            let userLetterRequirementElement = document.getElementById("user-letter-requirement");
-            let userLengthRequirementElement = document.getElementById("user-length-requirement");
-            let userHypenOptionalElement = document.getElementById("user-hypen-optional");
-            let userUnderscoreOptionalElement = document.getElementById("user-underscore-optional");
-    
-            // to activate transitions
-            // Toggle off Explaination when clicking First Name Field (By making it very small)
-            firstNameElement.onclick = function () {
-              wholeFormElement.style.minHeight = "360.001px";
-            }
-    
-            // Toggle off Explanation when clicking Last Name Field (By making it very small)
-            lastNameElement.onclick = function () {
-              wholeFormElement.style.minHeight = "360.001px";
-            }
-        
-            //password message displays
-            // Toggle on Explaination when Clicking Form
-            // However, it appears it prioritizes the above 2 functions over this one
-            usernameElement.onfocus = function () {
-              document.getElementById("explanationUser").style.display = "block";
-              wholeFormElement.style.minHeight = "675px";
-            }
-    
-            //password message goes away
-            // Toggle off Explaination when clicking out of the form
-            usernameElement.onblur = function () {
-              document.getElementById("explanationUser").style.display = "none";
-              wholeFormElement.style.minHeight = "360px";
-            }
-    
-            //Password validation
-            //Check Formating After User finishes typing in a character
-            usernameElement.onkeyup = function () {
-              // Regex for Formatting
-              var numberRegex = /[0-9]/g;
-              var lettRegex = /[a-zA-Z]/g;
-              var hypenRegex = /[-]/g;
-              var underscoreRegex = /[_]/g;
-    
-              //check length
-              if(usernameElement.value.length >= 3 && usernameElement.value.length <= 18) {
-                userLengthRequirementElement.classList.remove("invalid");
-                userLengthRequirementElement.classList.add("valid");
-              }else{
-                userLengthRequirementElement.classList.remove("valid");
-                userLengthRequirementElement.classList.add("invalid");
-              }
-    
-              /*//check letters
-              if(usernameElement.value.match(lettRegex)) {
-                userLetterRequirementElement.classList.remove("invalid");
-                userLetterRequirementElement.classList.add("valid");
-              }else {
-                userLetterRequirementElement.classList.remove("valid");
-                userLetterRequirementElement.classList.add("invalid");
-              }
-    
-              //check numbers
-              if(usernameElement.value.match(numberRegex)) {
-                userNumberOptionalElement.classList.remove("opt");
-                userNumberOptionalElement.classList.add("valid");
-              }else {
-                userNumberOptionalElement.classList.remove("valid");
-                userNumberOptionalElement.classList.add("opt");
-              }
-    
-              //check hyphens
-              if (usernameElement.value.match(hypenRegex)) {
-                userHypenOptionalElement.classList.remove("opt");
-                userHypenOptionalElement.classList.add("valid");
-              }else {
-                userHypenOptionalElement.classList.remove("valid");
-                userHypenOptionalElement.classList.add("opt");
-              }
-    
-              // check underscores
-              if (usernameElement.value.match(underscoreRegex)) {
-                userUnderscoreOptionalElement.classList.remove("opt");
-                userUnderscoreOptionalElement.classList.add("valid");
-              }else {
-                userUnderscoreOptionalElement.classList.remove("valid");
-                userUnderscoreOptionalElement.classList.add("opt");
-              }*/
-            }
-          </script>
-    
-    
-          <!--code for password criteria message-->
-          <!--Script should be ported to JS (RegisterExpinantionFormatter.js & PasswordValidator.js)-->
-          <script>
-            let passwordElement = document.getElementById("password");
-            let passwordNumberRequirementElement = document.getElementById("password-number-requirement");
-            let passwordLetterRequirementElement = document.getElementById("password-letter-requirement");
-            let passwordSpecialCharacterRequirementElement = document.getElementById("passward-special-character-requirement");
-            let passwordLengthRequirementElement = document.getElementById("password-length-requirement");
-    
-            //password message displays
-            // Toggle On Explination when password is selected
-            passwordElement.onfocus = function () {
-              document.getElementById("explanation-for-password").style.display = "block";
-              totalform.style.minHeight = "570px";
-            };
-    
-            //password message goes away
-            // Toggle Off Explaination when password is no longer select
-            passwordElement.onblur = function () {
-              document.getElementById("explanation-for-password").style.display = "none";
-              totalform.style.minHeight = "360px";
-            }
-    
-            //password validation
-            passwordElement.onkeyup = function () {
-              // Regex for Formatting
-              var numberRegex = /[0-9]/g;
-              var letterRegex = /[a-zA-Z]/g;
-              var specialCharacterRegex = /[!@#$%^&*]/g;
-              
-    
-              /*//check length
-              if(passwordElement.value.length >= 4 && passwordElement.value.length <= 32) {
-                passwordLengthRequirementElement.classList.remove("invalid");
-                passwordLengthRequirementElement.classList.add("valid");
-              }else{
-                passwordLengthRequirementElement.classList.remove("valid");
-                passwordLengthRequirementElement.classList.add("invalid");
-              }
-    
-              //check numbers
-              if (passwordElement.value.match(numberRegex)) {
-                passwordNumberRequirementElement.classList.remove("invalid");
-                passwordNumberRequirementElement.classList.add("valid");
-              }else{
-                passwordNumberRequirementElement.classList.remove("valid");
-                passwordNumberRequirementElement.classList.add("invalid");
-              }
-    
-              //check letters
-              if (passwordElement.value.match(letterRegex)) {
-                passwordLetterRequirementElement.classList.remove("invalid");
-                passwordLetterRequirementElement.classList.add("valid");
-              }else{
-                passwordLetterRequirementElement.classList.remove("valid");
-                passwordLetterRequirementElement.classList.add("invalid");
-              }
-    
-              //check special characters
-              if (passwordElement.value.match(specialCharacterRegex)) {
-                passwordSpecialCharacterRequirementElement.classList.remove("invalid");
-                passwordSpecialCharacterRequirementElement.classList.add("valid");
-              }else {
-                passwordSpecialCharacterRequirementElement.classList.remove("valid");
-                passwordSpecialCharacterRequirementElement.classList.add("invalid");
-              }*/
-            }
-          </script>
+          </div>
+        </div>
       </div>
+    </div>
 
       
 <!--
