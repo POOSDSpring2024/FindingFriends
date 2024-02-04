@@ -216,11 +216,32 @@ li a {
     position: relative;
     background: #FF6F1D;
     max-width: 350px;
-    margin: 0 auto 100px;
+    margin: 0 auto 30px;
     top: 100px;
     padding-top: 20px;
-    padding-left: 55px;
-    padding-right: 55px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 20px;;
+    
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    overflow: hidden;
+    height: px;
+    transition: .6s;
+    z-index: 3;
+
+}
+
+.reqirement-info {
+    border-radius: 17px;
+    position: relative;
+    background: #FF6F1D;
+    max-width: auto;
+    margin: 0 auto 30px;
+    top: 100px;
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
     padding-bottom: 20px;;
     
     text-align: center;

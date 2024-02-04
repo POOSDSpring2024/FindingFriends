@@ -1,14 +1,43 @@
 //import './md5.js';
 document.write('<script src="js/md5.js"></script>');
+document.write('<script src="js/validator.js"></script>');
 const urlBase = 'http://cop4331-g24.xyz/LAMPAPI';
 const extension = 'php';
 
 let userId = 0;
 let firstName = "";
 let lastName = "";
+let ids = []
+
 let hasOutputElementID = false;
 let outputElementID = "";
-let ids = []
+
+function setOutputElementID(newOutputElementID){
+    console.log(newOutputElementID);
+    if (typeof newOutputElementID !== 'string'){
+        console.log('Incorrect OutputElementID Format. Defaulted to Null');
+        outputElementID="";
+        hasOutputElementID=false;
+    }else{
+        if(newOutputElementID.toUpperCase()==='NULL'||newOutputElementID===""){
+            console.log('OutputElementID is "NULL". Defaulted to Null');
+            outputElementID="";
+            hasOutputElementID=false;
+        }else{
+            outputElementID=newOutputElementID;
+            hasOutputElementID=true;
+        }
+    }
+}
+
+function outputString(outputStr){
+    if(hasOutputElementID){
+        if(document.getElementById(outputElementID)===null){
+            console.log(`Null outputElementID ${outputElementID}`)
+        }else document.getElementById(outputElementID).innerHTML = outputStr;
+    } 
+    else console.log(outputStr);
+}
 
 function authenticateLoginHTML(usernameElementID, passwordElementID, outputElementID){
     if (typeof usernameElementID !== 'string')
@@ -107,83 +136,13 @@ function readCookie(outputElementID) {
     }
 
     else {
-        if(hasOutputElementID)
-            document.getElementById("weclome-text").innerHTML = "Welcome, " + firstName + " " + lastName + "!";
-        else 
-            console.log(returnString);
-    }
-}
-
-function setOutputElementID(newOutputElementID){
-    if (typeof newOutputElementID !== 'string'){
-        console.log('Incorrect OutputElementID Format. Defaulted to Null');
-        outputElementID="";
-        hasOutputElementID=false;
-    }else{
-        if(newOutputElementID.toUpperCase()==='NULL'||newOutputElementID===""){
-            console.log('OutputElementID is "NULL". Defaulted to Null');
-            outputElementID="";
-            hasOutputElementID=false;
-        }else{
-            outputElementID="";
-            hasOutputElementID=true;
-        }
+        setOutputElementID("weclome-text");
+        outputString("Welcome, " + firstName + " " + lastName + "!");
     }
 }
 
 function userExist(id){
     return id > 0;
-}
-
-function validFirstName(firstName){
-    if (firstName == "") {
-        console.log("FIRST NAME IS BLANK");
-        return false;
-    }else {
-        console.log("first name IS VALID");
-        return true;
-    }
-}
-
-function validLastName(lastName){
-    if (lastName == "") {
-        console.log("LAST NAME IS BLANK");
-        return false;
-    }else {
-        console.log("LAST name IS VALID");
-        return true;
-    }
-}
-
-function validUsername(username) {
-
-    if (username == "") {
-        console.log("USERNAME IS BLANK");
-        return false;
-    }
-    let regex = /(?=.*[a-zA-Z])[a-zA-Z0-9-_]{3,18}$/;
-    if (regex.test(username) == false) {
-        console.log("USERNAME IS NOT VALID");
-        return false;
-    }else{
-        console.log("USERNAME IS VALID");
-        return true;
-    }
-}
-
-function validPassword(password) {
-    if (password == "") {
-        console.log("PASSWORD IS BLANK");
-        return false;
-    }
-    let regex = /(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}/;
-    if (regex.test(password) == false) {
-        console.log("PASSWORD IS NOT VALID");
-        return false;
-    }else {
-        console.log("PASSWORD IS VALID");
-        return true;
-    }
 }
 
 function authenticateLoginString(username, password, outputElementID){
@@ -201,20 +160,17 @@ function authenticateLoginString(username, password, outputElementID){
     
     // Validate Username & Password
     returnString = "";
-    validForm=true;
-    if (!validUsername(username)) {
-        returnString+="Invalid Username. "
-        validForm=false;
+    isValidForm=true;
+    if (!isValidUsername(username)) {
+        returnString+="Incorrect Username. "
+        isValidForm=false;
     }
-    if (!validPassword(password)) {
-        returnString+="Invalid Password. "
-        validForm=false;
+    if (!isValidPassword(password)) {
+        returnString+="Incorrect Password. "
+        isValidForm=false;
     }
-    if(hasOutputElementID)
-        document.getElementById(outputElementID).innerHTML = returnString;
-    else 
-        console.log(returnString);
-    if(!validForm)return;
+    outputString(returnString);
+    if(!isValidForm)return;
 
     // Hash Password
     let hash = md5(password);
@@ -237,24 +193,19 @@ function authenticateLoginString(username, password, outputElementID){
                     let jsonObject = JSON.parse(xhr.responseText);
                     userId = jsonObject.id;
                     if (!userExist(userId)) {
-                        if(hasOutputElementID)
-                            document.getElementById(outputElementID).innerHTML = "User/Password Combination Incorrect";
-                        else 
-                            console.log(returnString);
-                        return;
+                        outputString("User/Password Combination Incorrect");
+                    }else{
+                        firstName = jsonObject.firstName;
+                        lastName = jsonObject.lastName;
+                        saveCookie();
+                        window.location.href = "contacts.html";
                     }
-                    firstName = jsonObject.firstName;
-                    lastName = jsonObject.lastName;
-                    saveCookie();
-                    window.location.href = "contacts.html";
+                    
                 }
             };
         xhr.send(jsonPayload);
     } catch (err) {
-        if(hasOutputElementID)
-            document.getElementById(outputElementID).innerHTML = err.message;
-        else 
-            console.log(returnString);
+        outputString(err.message);
     }
 }
 
@@ -267,33 +218,30 @@ function signUpUserString(firstName, lastName, username, password, outputElement
         throw new TypeError('username must be a string');
     if (typeof password !== 'string') 
         throw new TypeError('password must be a string');
-
+    console.log(`Before signUpUserString [${outputElementID}]`);
     setOutputElementID(outputElementID);
-
+    console.log(`After signUpUserString [${outputElementID}]`);
     // Validate Username & Password
     returnString = "";
-    validForm=true;
-    if (!validFirstName(firstName)) {
+    isValidForm=true;
+    if (!isValidName(firstName)) {
         returnString+="Invalid First Name. "
-        validForm=false;
+        isValidForm=false;
     }
-    if (!validLastName(lastName)) {
+    if (!isValidName(lastName)) {
         returnString+="Invalid Last Name. "
-        validForm=false;
+        isValidForm=false;
     }
-    if (!validUsername(username)) {
+    if (!isValidUsername(username)) {
         returnString+="Invalid Username. "
-        validForm=false;
+        isValidForm=false;
     }
-    if (!validPassword(password)) {
+    if (!isValidPassword(password)) {
         returnString+="Invalid Password. "
-        validForm=false;
+        isValidForm=false;
     }
-    if(hasOutputElementID)
-        document.getElementById(outputElementID).innerHTML = returnString;
-    else 
-        console.log(returnString);
-    if(!validForm)return;
+    outputString(returnString);
+    if(!isValidForm)return;
 
     let hash = md5(password);
     let jsonInfo = {
@@ -310,22 +258,21 @@ function signUpUserString(firstName, lastName, username, password, outputElement
     let xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+    console.log(`Before SignUp XML [${outputElementID}]`);
     try {
         xhr.onreadystatechange = function () {
             if (this.readyState != 4) {
                 return;
             }
             if (this.status == 409) {
+                console.log(`After SignUp 409 [${outputElementID}]`);
                 document.getElementById(outputElementID).innerHTML = "User already exists";
                 return;
             }
             if (this.status == 200) {
                 let jsonObject = JSON.parse(xhr.responseText);
                 userId = jsonObject.id;
-                if(hasOutputElementID)
-                    document.getElementById(outputElementID).innerHTML = "User added";
-                else 
-                    console.log("User added");
+                outputString("User added");
                 // console.log(userId);
                 // console.log(firstName);
                 // console.log(lastName);
@@ -335,10 +282,7 @@ function signUpUserString(firstName, lastName, username, password, outputElement
         };
         xhr.send(jsonPayload);
     } catch (err) {
-        if(hasOutputElementID)
-            document.getElementById(outputElementID).innerHTML = err.message;
-        else 
-            console.log(returnString);
+        outputString(err.message);
     }
 
 }
@@ -347,10 +291,7 @@ function signUpUserDoublePasswordString(firstName, lastName, username, password,
     setOutputElementID(outputElementID);
 
     if (password!==confirmPassowrd) {
-        if(hasOutputElementID)
-            document.getElementById(outputElementID).innerHTML = "Password & Confirmd Password aren't the same.";
-        else 
-            console.log("Password & Confirmd Password aren't the same.");
+        outputString("Password & Confirmed Password aren't the same.");
         return;
     }
     signUpUserString(firstName, lastName, username, password, outputElementID)
