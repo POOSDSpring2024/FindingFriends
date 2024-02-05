@@ -95,7 +95,7 @@ body {
     /*padding: 1px 8px;*/
     height: 1000px;
     margin-top: 25px;
-    margin-left: 10px;
+    margin-left: 25px;
     margin-right: 10px;
     display: flex;
     flex-direction: column;
@@ -273,7 +273,7 @@ body {
 }
 
 .search-container .search-btn .fas {
-    color: rgba(155, 188, 115, 0.9);
+    color: #FF6F1D;
 }
 
 .search-container:hover {
@@ -314,7 +314,7 @@ table {
 
 #contacts td,
 #contacts th {
-    border: 1px solid rgba(155, 188, 115, 0.9);
+    border: 1px solid #FF6F1D;
 }
 
 #contacts tr:hover {
@@ -328,8 +328,8 @@ table {
     font-weight: 500;
     font-size: 16px;
     font-weight: bold;
-    color: #007D2F;
-    background-color: rgba(155, 188, 115, 0.9);
+    color: #00072D;
+    background-color: #FF6F1D;
     text-transform: uppercase;
 }
 
@@ -440,9 +440,7 @@ table {
 
 /* make sidebar a topbar for mobile view*/
 @media screen and (max-width: 700px) {
-    body {
-        background-image: url('../images/backgroundmobile2.png');
-    }
+    
 
     .sidenav {
         width: 100%;
