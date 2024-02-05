@@ -25,14 +25,33 @@
 	</script> -->
 </head>
 <body onload="readCookie(); loadContacts('');">
+	
+	<div class="navbar sticky-top">
+		<div class="left">
+			<a href="index.html" >
+			  <img src="/images/Finding Friends.png" alt="Finding Friends Logo & Go to Home" height="40" style="padding-left: 10px; padding-right: 0px;">
+			</a>
+			<!-- <a class="active" href="index.html" style="font-family: lost-fish; font-size: 25px;">Finding Friends</a> -->
+			<!--<a class="menuitem" href="" style="font-size: 17px;">About Us</a>-->
+			<a class="menuitem" href="members.html"style="font-size: 17px;">About Us</a>
+			<!--<a href="members.html"> <button>About Us</button>-->
+			</a>
+			
+		</div>
+		<div class="right">
+			<a class="register-button" href="register.html"style="font-family: Arial, Helvetica, sans-serif; font-size: 17px;">Get Started</a>
+			<a class="menuitem" href="login.html"style="font-size: 17px;">Log In</a>
+
+		</div>
+	</div>
+	
+
+
+
+
+
 	<div class="bodyContainer"></div>
 
-	<div class="sidenav">
-		<img id="logo" src="images/Dory_(Finding_Nemo).png" alt="logo image">
-		<button type="button" id="logoutButton" class="sidebuttons font" onclick="doLogout();">Logout</button>
-		<a href="contacts.html">Contacts</a>
-		<a href="members.html">About Us</a>
-	</div>
 	
 	
 	<!-- page content, each div inside content is formatted with flex-->
@@ -94,6 +113,8 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="background"></div>
 </body>
 
 </html>
