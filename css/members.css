@@ -1,0 +1,202 @@
+:root {
+    --radius: 5px;
+    --padding: 10px;
+}
+
+/* body formatting */
+body {
+    background-color: #2ef3f3; 
+    background-image: url('../images/backgroundmobile2.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    overflow:hidden;
+    
+    
+}
+
+
+/* button formatting */
+.btn {
+    color: #f5f5f5;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: bolder;
+    font-size: 2.3vw;
+    background:none;
+    border:none;
+    cursor: pointer;
+    padding:0.3em 1.2em;
+    margin:0.6em 0.3em 0.3em 0;
+    float: right;
+}
+.btn:hover{
+    color:#897261;
+}
+/*side navigation menu*/
+.sidenav img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    position: relative;
+}
+.sidenav {
+    width: 264px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    left: 0px;
+    top: 0px;
+    overflow: auto; /*disables horizontal scroll*/
+    position: fixed; /*scroll bar stays in place when user is scrolling*/
+    background: rgba(16, 120, 189, 0.9);
+}
+
+/*navigation links*/
+.sidenav a {
+    padding: 10px 0px 15px 0px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 44px;
+    color: #FF6F1D;
+}
+.buttons {
+    padding: 10px 0px 15px 0px;
+    display: block;
+}
+
+/*buttons that are on the sidebar*/
+.sidebuttons {
+    padding: 10px 0px 15px 0px;
+    display: inline-block;
+}
+.sidebuttons:hover{
+    color:#897261;  
+}
+.buttons:hover{
+    color:#897261; 
+    text-decoration: underline; 
+}
+.sidenav a:hover{
+    color: #897261;
+    text-decoration: underline;
+}
+.font {
+    text-align: center;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 44px;
+    color: #ffffff;
+    background:none;
+    border:none;
+    cursor: pointer;
+    margin-left: 80px;
+}
+
+.container {
+    width: 100%;
+    margin-top: 70px;
+    overflow:hidden;
+  }
+  /* grid w/images and names */
+  .grid-container {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-gap: 10px;
+    padding: 10px;
+    margin-left: 250px;
+    margin-right: 50px;
+  }
+  .grid-item {
+    text-align: center;
+    font-size: 50px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-family: 'Montserrat';
+    color: #f3f3f3; 
+    padding: 20px 0;
+    opacity: 60%;
+  }
+  .grid-item img {
+    width: 45%;
+    height: auto;
+    opacity: 80%;
+  }
+
+  .container2 {
+    width: 100%;
+    margin-top: 70px;
+    overflow:hidden;
+  }
+  /* grid w/images and names */
+  .grid-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 10px;
+    padding: 10px;
+    margin-left: 250px;
+    margin-right: 50px;
+  }
+  .grid-item {
+    text-align: center;
+    font-size: 50px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-family: 'Montserrat';
+    color: #f3f3f3; 
+    padding: 20px 0;
+    opacity: 60%;
+  }
+  .grid-item img {
+    width: 45%;
+    height: auto;
+    opacity: 80%;
+  }
+/*--------------------
+#footer {
+    grid-area: content3;
+    display: grid;
+    text-align: center;
+    bottom: 0;
+    display: block;
+    text-align: center center;
+    text-decoration: none;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 3vw;
+    line-height: 44px;
+    color: black;
+    margin: auto;
+}*/
+
+/*tablets*/
+@media only screen and (min-width:768px) {
+    body {
+        background-image: url('../images/backgroundmobile2.png');
+    }
+}
+
+/*desktop*/
+@media only screen and (min-width: 769px) {
+
+    /* body formatting */
+    body {
+        background-image: url('../images/background2.png');
+    }
+
+    .buttons:hover,
+    #sidebar a:hover {
+        color: #897261;
+    }
+}

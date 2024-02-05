@@ -8,6 +8,7 @@
     <title>Finding Friends Login</title>
     <script type="text/javascript" src="js/user_manager.js"></script>
     <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/home.css"/>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <!--Bootstrap Import-->
@@ -29,26 +30,24 @@
   </head>
     <body onload="setOutputElementID('signup-result');">
 
-      <ul>
-        <li><a class="active" href="index.html" style="font-family: lost-fish; font-size: 28px;">Finding Friends</a></li>
-        <li><a href="" style="font-family: Arial, Helvetica, sans-serif; font-size: 16px;">About Us</a></li>
-        <li><a href="">Contact</a></li>
-        <!--<li style="float:right"><button type="button" id="logout-button" class="side-button-font" onclick="doLogout();">Logout</button></li>-->
-        
-        <li style="float:right"><a href="#about">Log Out</a></li>
-      </ul>
-
-      <!--
-      <div class="navbar">
-        <a href="index.html" class="active">Home</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
-        <div class="logOutbutton">
-            <button onclick="location.href = 'index.html';" class ="btn">Sign Out</button>
+      <div class="navbar sticky-top">
+        <div class="left">
+            <a href="index.html" >
+              <img src="/images/Finding Friends.png" alt="Finding Friends Logo & Go to Home" height="40" style="padding-left: 10px; padding-right: 0px;">
+            </a>
+            <!-- <a class="active" href="index.html" style="font-family: lost-fish; font-size: 25px;">Finding Friends</a> -->
+            <!--<a class="menuitem" href="" style="font-size: 17px;">About Us</a>-->
+            <a class="menuitem" href="members.html"style="font-size: 17px;">About Us</a>
+            <!--<a href="members.html"> <button>About Us</button>-->
+            </a>
+            
         </div>
-      </div>
-    -->
+        <div class="right">
+            <a class="register-button" href="register.html"style="font-family: Arial, Helvetica, sans-serif; font-size: 17px;">Get Started</a>
+            <a class="menuitem" href="login.html"style="font-size: 17px;">Log In</a>
+
+        </div>
+    </div>
 
       <div class="background"></div>
       <div class="content">
