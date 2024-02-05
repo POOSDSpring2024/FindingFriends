@@ -92,10 +92,10 @@ body {
 
 /* content from leinecker */
 .content {
-    padding: 1px 16px;
+    /*padding: 1px 8px;*/
     height: 1000px;
     margin-top: 25px;
-    margin-left: 270px;
+    margin-left: 10px;
     margin-right: 10px;
     display: flex;
     flex-direction: column;
@@ -106,7 +106,7 @@ body {
 .loggedInDiv {
     font-family: 'Montserrat';
     font-weight: bolder;
-    font-size: 2vw;
+    font-size: 7vw;
     align-self: center;
 }
 
@@ -154,7 +154,7 @@ body {
 #addMe {
     font-family: 'Montserrat';
     display: none;
-    border-radius: 17px;
+    border-radius: 15px;
     position: relative;
     background: rgba(234, 207, 155, 0.9);
     max-width: 350px;
@@ -165,7 +165,7 @@ body {
 }
 
 #addMe input {
-    border-radius: 17px;
+    border-radius: 15px;
     font-family: 'Montserrat';
     outline: 0;
     background: #f2f2f2;
@@ -192,7 +192,7 @@ body {
 }
 
 #addMe button {
-    border-radius: 17px;
+    border-radius: 15px;
     font-family: 'Montserrat';
     outline: 0;
     background: #78500b;
