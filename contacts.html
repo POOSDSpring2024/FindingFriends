@@ -17,15 +17,15 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		document.addEventListener('DOMContentLoaded', function () {
 			readCookie();
-			loadContacts();
+			loadContacts("");
 		}, false);
-	</script>
+	</script> -->
 </head>
 
-<body>
+<body onload="readCookie(); loadContacts('');">
 
 	<ul>
         <li><a class="active" href="index.html">Home</a></li>
@@ -49,15 +49,15 @@
 		</div>
 		<div class="access-ui-div">
 			<div class="column">
-				<div class="search-container">
-					<input onkeyup=searchContacts() type="text" name="search" id="search-text" placeholder="Search..."
+				<div class="search-container" id="search-container">
+					<input onkeyup="loadContactsHTML('search-text');" type="text" name="search" id="search-text" placeholder="Search..."
 						class="search-input">
 					<a href="#" class="search-btn" type="button" id="search-contact-button" class="button-font"
-						onclick="searchContacts();"><i class="fas fa-search"></i></a>
+						onclick="loadContactsHTML('search-text');"><i class="fas fa-search"></i></a>
 				</div>
 			</div>
 			<div class="column">
-				<button type="button" onclick=loadContacts()>
+				<button type="button" onclick='loadContacts("");'>
 					<i class="fa fa-refresh"style="font-size:30px;color:rgba(155, 188, 115, 0.9)" aria-hidden="true"></i>
 				</button>
 			</div>
