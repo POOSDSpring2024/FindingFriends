@@ -54,7 +54,7 @@ function addContact() {
                 // Clear input fields in form 
                 document.getElementById("add-me").reset();
                 // reload contacts table and switch view to show
-                loadContacts();
+                loadContacts('');
                 showTable();
             }
         };
@@ -64,9 +64,13 @@ function addContact() {
     }
 }
 
-function loadContacts() {
+function loadContactsHTML(searchHtmlId){
+    loadContacts(document.getElementById(searchHtmlId).value);
+}
+
+function loadContacts(searchString) {
     let tmp = {
-        search: "",
+        search: searchString,
         userId: userId
     };
 
@@ -163,7 +167,7 @@ function saveRow(rowNumber) {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 console.log("Contact has been updated");
-                loadContacts();
+                loadContacts('');
             }
         };
         xhr.send(jsonPayload);
@@ -197,7 +201,7 @@ function deleteRow(rowNumber) {
                 if (this.readyState == 4 && this.status == 200) {
 
                     console.log("Contact has been deleted");
-                    loadContacts();
+                    loadContacts('');
                 }
             };
             xhr.send(jsonPayload);
