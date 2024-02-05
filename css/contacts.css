@@ -6,47 +6,76 @@ body {
     background-color: transparent;
 }
 
-ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #006CA5;
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    top: 0;
-    z-index: 1;
-}
-li {
-    float: left;
-    border-right:1px solid #bbb;
-}
-li:last-child {
-    border-right: none;
+.navbar{
 
-    border-left:1px solid #bbb;
-}
-  
-li a {
-    display: block;
+    position:sticky;
+    top: 0;  
+    left:0;
+    width:100%;
+    display:flex;
+    z-index: 1030; /* to prevent the navbar getting covered up by other content */
+    
+    flex-direction: row;
+    flex-wrap: none;
+    background-color: #006CA5;  
+    }
+
+.menuitem{
+    align-items: center;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding-top: 22px;
+    padding: 21px 22px;
     text-decoration: none;
 }
 
-li a:hover:not(.active) {
+.menuitem:hover{
     background-color: #02367B;
 }
-  
+
+.right{
+    flex:1;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.left{
+    flex:1;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.active{
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding-top: 18px;
+    padding: 16px 16px;
+    text-decoration: none;
+    background-color: #FF6F1D;
+}
+
 .active:hover{
     background-color: #cc5109;
-
 }
-  
-.active {
+
+.register-button{
     background-color: #FF6F1D;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
     
+    font-size: 17px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.register-button:hover{
+    background-color: #cc5109;
 }
 
 .background{
