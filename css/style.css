@@ -4,6 +4,7 @@ body{
     overflow: visible; /* Prevent scrollbars */
     box-sizing: border-box;
     background-color: transparent;
+    -webkit-text-stroke: 0.1px black;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -302,7 +303,7 @@ body{
     position: relative;
     background: #FF6F1D;
     max-width: 350px;
-    margin: 0 auto 30px;
+    margin: 0px auto 30px;
     top: 100px;
     padding-top: 20px;
     padding-left: 30px;
