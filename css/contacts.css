@@ -88,6 +88,22 @@ body {
     animation: moveBackground 20s linear infinite alternate; /* Adjust duration and animation type */
     z-index: -2;
 }
+
+#logout-button{
+    background-color: #FF6F1D;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;    
+    font-size: 17px;
+    margin: 4px 2px;
+    cursor: pointer;   
+}
+
+#logout-button:hover{
+    background-color: #cc5109;
+}
  
 
 /* content from leinecker */
