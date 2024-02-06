@@ -245,6 +245,10 @@ body{
     background-color: transparent;
   }
 
+  .small-image img {
+    width: 150px; /* Set a smaller width for this specific image */
+  }
+
   .row {
     display: flex;
     justify-content: space-between;
