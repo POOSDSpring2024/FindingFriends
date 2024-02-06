@@ -92,7 +92,7 @@ function loadContacts(searchString) {
                     console.log(jsonObject.error);
                     return;
                 }
-                let text = "<table border='1'>"
+                let text = "<table border='1' class='table'>"
                 for (let i = 0; i < jsonObject.results.length; i++) {
                     ids[i] = jsonObject.results[i].id;
                     text += "<tr id='row-" + i + "'>";
