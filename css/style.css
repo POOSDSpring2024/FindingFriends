@@ -31,11 +31,11 @@ body{
     text-align: center;
     padding-top: 22px;
     padding: 21px 22px;
-    /*text-decoration: none;*/
+    text-decoration: none;
 }
 
 .menuitem:hover{
-    background-color: #02367B;
+    background-color: #04244e;
 }
 
 .right{
