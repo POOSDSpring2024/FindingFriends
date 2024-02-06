@@ -1,94 +1,287 @@
-:root {
-    --radius: 5px;
-    --padding: 10px;
-}
-
-/* body formatting */
-body {
-    background-color: #2ef3f3; 
-    background-image: url('../images/backgroundmobile2.png');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    margin: 0;
-    overflow:hidden;
-    
-    
-}
-
-
-/* button formatting */
-.btn {
-    color: #f5f5f5;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: bolder;
-    font-size: 2.3vw;
-    background:none;
-    border:none;
-    cursor: pointer;
-    padding:0.3em 1.2em;
-    margin:0.6em 0.3em 0.3em 0;
-    float: right;
-}
-.btn:hover{
-    color:#897261;
-}
-/*side navigation menu*/
-.sidenav img{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 70%;
-    position: relative;
-}
-.sidenav {
-    width: 264px;
-    height: 100%;
+body{
     margin: 0;
     padding: 0;
-    left: 0px;
-    top: 0px;
-    overflow: auto; /*disables horizontal scroll*/
-    position: fixed; /*scroll bar stays in place when user is scrolling*/
-    background: rgba(16, 120, 189, 0.9);
+    /* Prevent scrollbars */
+    overflow: visible;
+    box-sizing: border-box;
+    background-color: transparent;
+    -webkit-text-stroke: 0.2px black;
+    font-family: Arial, Helvetica, sans-serif;
+
 }
 
-/*navigation links*/
-.sidenav a {
-    padding: 10px 0px 15px 0px;
-    display: block;
+@font-face {
+    font-family: lost-fish;
+    src: url("../fonts/LOSTFISH-5DOZ.TTF") format('truetype');
+}
+
+.navbar{
+
+    position:sticky;
+    top: 0;  
+    left:0;
+    width:100%;
+    display:flex;
+    z-index: 1030; /* to prevent the navbar getting covered up by other content */
+    
+    flex-direction: row;
+    flex-wrap: none;
+    background-color: #006CA5;  
+    }
+
+.menuitem{
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding-top: 22px;
+    padding: 21px 22px;
+    /*text-decoration: none;*/
+}
+
+.menuitem:hover{
+    background-color: #04244e;
+}
+
+.right{
+    flex:1;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.left{
+    flex:1;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.active{
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding-top: 18px;
+    padding: 16px 16px;
+    text-decoration: none;
+    background-color: #FF6F1D;
+}
+
+.active:hover{
+    background-color: #cc5109;
+}
+
+.register-button{
+    background-color: #FF6F1D;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    
+    
+    font-size: 17px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.register-button:hover{
+    background-color: #cc5109;
+}
+
+.background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #00BFFF, #00072D); /* Adjust colors as needed */
+    animation: moveBackground 20s linear infinite alternate; /* Adjust duration and animation type */
+    z-index: -2;
+}
+
+@keyframes moveBackground {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+}
+
+@keyframes rise{
+    from {
+        bottom: -150px;
+        
+    }
+    to {
+        top: 100%
+        
+    }
+
+}
+
+.content {
+    /*position: absolute;*/
+    padding: 20px;
+    
+    color: white; /* Text color */
+    text-align: center;
+    font-size: 36px;
+    margin-top: 50px;
+    z-index: 0;
+}
+
+.Dory{
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    z-index: -1;
+}
+
+.bubbles{
+    overflow: hidden;
+    
+}
+
+.bubble1{
+    margin: 0;
+    position: absolute;
+    overflow: hidden;
+    top: -50%;
+    left: 74%;
+    /*transform: translate(-50%, -50%);*/
+    z-index: -2; /* Ensure the bubble appears above other content */
+    
+    animation-name: rise;
+    animation-direction:normal;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    
+
+
+
+
+}
+
+.bubble2{
+    margin: 0;
+    position: absolute;
+    overflow: hidden;
+    transform: translate(-50%, -50%);
+
+    top: 20%;
+    left: 7%;
+    
+    z-index: -2;
+    animation-name: rise;
+    animation-direction: normal;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; /* Ensure the bubble appears above other content */
+}
+
+.bubble3{
+    margin: 0;
+    position: absolute;
+    overflow: hidden;
+
+    top: 15%;
+    left: 84%;
+    transform: translate(-50%, -50%);
+    z-index: -2; /* Ensure the bubble appears above other content */
+}
+.bubble4{
+    margin: 0;
+    position: absolute;
+    overflow: hidden;
+
+    top: 74%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    z-index: -2; /* Ensure the bubble appears above other content */
+}
+.bubble5{
+    margin: 0;
+    position: absolute;
+    overflow: hidden;
+
+    top: 80%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    z-index: -2; /* Ensure the bubble appears above other content */
+}
+
+.flex-container{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+#header{
+    color:#FF6F1D;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    
+    padding-top: 5%;
+    font-size: 72px;
+}
+
+.items{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.left{
+    flex: 1;
+    display: flex;
+
+}
+.end{
+    justify-content: flex-end;
+}
+
+.box{
+    background-color: white;
+    border-radius: 15px;
+    border: none;
+    color: #006CA5;
     text-align: center;
     text-decoration: none;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 25px;
-    line-height: 44px;
-    color: #FF6F1D;
-}
-.buttons {
-    padding: 10px 0px 15px 0px;
-    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    /*inline-size: min-content;*/
+    
+
+    margin: 20px;
+    padding: 80px 50px;
+
 }
 
-/*buttons that are on the sidebar*/
-.sidebuttons {
-    padding: 10px 0px 15px 0px;
-    display: inline-block;
-}
-.sidebuttons:hover{
-    color:#897261;  
-}
-.buttons:hover{
-    color:#897261; 
-    text-decoration: underline; 
-}
-.sidenav a:hover{
-    color: #897261;
-    text-decoration: underline;
-}
+.video-container {
+    /* Make video to at least 100% wide and tall */
+    background: url("images\Dory_(Finding_Nemo).png");
+    min-width: 100%; 
+    min-height: 100%; 
+    
+  
+    /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+    width: auto;
+    height: auto;
+    object-fit: fill;
+  
+    /* Center the video */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 1.0;
+    transform: translate(-50%,-50%);
+  }
+
 .font {
     text-align: center;
     font-family: 'Montserrat';
@@ -114,7 +307,7 @@ body {
     grid-template-columns: 33% 33% 33%;
     grid-gap: 10px;
     padding: 10px;
-    margin-left: 250px;
+    margin-left: 50px;
     margin-right: 50px;
   }
   .grid-item {
@@ -125,43 +318,16 @@ body {
     font-family: 'Montserrat';
     color: #f3f3f3; 
     padding: 20px 0;
-    opacity: 60%;
+    background-color: transparent;
+    
   }
   .grid-item img {
     width: 45%;
-    height: auto;
-    opacity: 80%;
+    height: 50%;
+    
+    background-color: transparent;
   }
 
-  .container2 {
-    width: 100%;
-    margin-top: 70px;
-    overflow:hidden;
-  }
-  /* grid w/images and names */
-  .grid-container {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-gap: 10px;
-    padding: 10px;
-    margin-left: 250px;
-    margin-right: 50px;
-  }
-  .grid-item {
-    text-align: center;
-    font-size: 50px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    font-family: 'Montserrat';
-    color: #f3f3f3; 
-    padding: 20px 0;
-    opacity: 60%;
-  }
-  .grid-item img {
-    width: 45%;
-    height: auto;
-    opacity: 80%;
-  }
 /*--------------------
 #footer {
     grid-area: content3;
@@ -190,7 +356,7 @@ body {
 /*desktop*/
 @media only screen and (min-width: 769px) {
 
-    /* body formatting */
+     body formatting 
     body {
         background-image: url('../images/background2.png');
     }

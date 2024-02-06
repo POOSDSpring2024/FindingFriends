@@ -4,58 +4,83 @@ body{
     overflow: hidden; /* Prevent scrollbars */
     box-sizing: border-box;
     background-color: transparent;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 @font-face {
     font-family: lost-fish;
     src: url("../fonts/LOSTFISH-5DOZ.TTF") format('truetype');
 }
+.navbar{
 
-ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #006CA5;
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    top: 0;
-    z-index: 1;
-}
-li {
-    float: left;
-    border-right:1px solid #bbb;
-}
-li:last-child {
-    border-right: none;
+    position:sticky;
+    top: 0;  
+    left:0;
+    width:100%;
+    display:flex;
+    z-index: 1030; /* to prevent the navbar getting covered up by other content */
+    
+    flex-direction: row;
+    flex-wrap: none;
+    background-color: #006CA5;  
+    }
 
-    border-left:1px solid #bbb;
-}
-  
-li a {
-    display: block;
+.menuitem{
+    align-items: center;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding-top: 22px;
+    padding: 21px 22px;
     text-decoration: none;
 }
-  li a:hover:not(.active) {
-    background-color: #02367B;
-  }
-  
-  .active:hover{
-    background-color: #cc5109;
 
-  }
-  
-  .active {
+.menuitem:hover{
+    background-color: #04244e;
+}
+
+.right{
+    flex:1;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.left{
+    flex:1;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.active{
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding-top: 18px;
+    padding: 16px 16px;
+    text-decoration: none;
     background-color: #FF6F1D;
+}
+
+.active:hover{
+    background-color: #cc5109;
+}
+
+.register-button{
+    background-color: #FF6F1D;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
     
-  }
- 
-.btn{
-    top: 50%;
-    left: 50%;
+    
+    font-size: 17px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.register-button:hover{
+    background-color: #cc5109;
 }
 
 .background{
@@ -78,16 +103,54 @@ li a {
     }
 }
 
-@keyframes rise{
-    from {
-        transform: translateY(125vh);
+@keyframes rise1{
+    0%{
+        transform: translateY(100%);
     }
-    to {
-        transform: translateY(0vh);
+    
+    100%{
+        transform: translateY(-180%);
     }
-
 }
 
+@keyframes rise2{
+    0%{
+        transform: translateY(100%);
+    }
+    
+    100%{
+        transform: translateY(-300%);
+    }
+}
+@keyframes rise3{
+    0%{
+        transform: translateY(100%);
+    }
+    
+    100%{
+        transform: translateY(-600%);
+    }
+}
+
+@keyframes rise4{
+    0%{
+        transform: translateY(100%);
+    }
+    
+    100%{
+        transform: translateY(-600%);
+    }
+}
+
+@keyframes rise5{
+    0%{
+        transform: translateY(100%);
+    }
+    
+    100%{
+        transform: translateY(-600%);
+    }
+}
 .content {
     /*position: absolute;*/
     padding: 20px;
@@ -107,75 +170,98 @@ li a {
 }
 
 .bubbles{
-    position: relative;
+    position: fixed;
     overflow: hidden;
     
 }
 
 .bubble1{
-    margin: 0;
-    position: absolute;
-
-    top: -50%;
-    left: 74%;
-    /*transform: translate(-50%, -50%);*/
-    z-index: -2; /* Ensure the bubble appears above other content */
-    
-    animation-name: rise;
+    position: fixed;
+    bottom:0;
+    left: 80%;
+    z-index: -2;
+    animation-name: rise1;
     animation-direction: normal;
     animation-duration: 8s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-    
-
-
-
-
 }
 
 .bubble2{
-    margin: 0;
-    position: absolute;
-    transform: translate(-50%, -50%);
-
-    top: 20%;
-    left: 7%;
-    
+    position: fixed;
+    bottom:0;
+    left: 20%;
     z-index: -2;
-    animation-name: rise;
+    animation-name: rise2;
     animation-direction: normal;
-    animation-duration: 8s;
+    animation-duration: 6s;
     animation-iteration-count: infinite;
-    animation-timing-function: linear; /* Ensure the bubble appears above other content */
+    animation-timing-function: linear;
 }
 
 .bubble3{
-    margin: 0;
-    position: absolute;
-
-    top: 15%;
-    left: 84%;
-    transform: translate(-50%, -50%);
-    z-index: -2; /* Ensure the bubble appears above other content */
+    position: fixed;
+    bottom:0;
+    left: 10%;
+    z-index: -2;
+    animation-name: rise3;
+    animation-direction: normal;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;  
 }
+
 .bubble4{
-    margin: 0;
-    position: absolute;
-
-    top: 74%;
-    left: 25%;
-    transform: translate(-50%, -50%);
-    z-index: -2; /* Ensure the bubble appears above other content */
+    position: fixed;
+    bottom:0;
+    left: 39%;
+    z-index: -2;
+    animation-name: rise4;
+    animation-direction: normal;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    
 }
+
 .bubble5{
-    margin: 0;
-    position: absolute;
-
-    top: 80%;
-    left: 90%;
-    transform: translate(-50%, -50%);
-    z-index: -2; /* Ensure the bubble appears above other content */
+    position: fixed;
+    bottom:0;
+    left: 60%;
+    z-index: -2;
+    animation-name: rise5;
+    animation-direction: normal;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    
 }
+.bubble6{
+    position: fixed;
+    bottom:0;
+    left: -4%;
+    z-index: -2;
+    animation-name: rise2;
+    animation-direction: normal;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    
+}
+.bubble7{
+    position: fixed;
+    bottom:0;
+    left: 67%;
+    z-index: -2;
+    animation-name: rise2;
+    animation-direction: normal;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    
+}
+
+
 
 
 
