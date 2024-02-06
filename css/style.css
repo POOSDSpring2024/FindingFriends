@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    /*overflow: hidden;*/ /* Prevent scrollbars */
+    overflow: hidden; /* Prevent scrollbars */
     box-sizing: border-box;
     background-color: transparent;
 }
@@ -254,7 +254,7 @@ li a {
 }
 
 .input-field {
-    border-radius: 17px;
+    border-radius: 15px;
     font-family: 'Montserrat';
     outline: 0;
     background: #f2f2f2;
@@ -266,6 +266,46 @@ li a {
     font-size: 14px;
     position: relative;
 }
+
+#login-button{
+    background-color: #04AA6D;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    margin-top: 18px;
+    cursor: pointer;
+    width: 100%;
+}
+
+#login-button:hover{
+    background-color: #027249 ;
+}
+
+#signup-button{
+    background-color: #04AA6D;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    margin-top: 18px;
+    cursor: pointer;
+    width: 100%;
+}
+#signup-button:hover{
+    background-color: #027249 ;
+}
+
 
 .buttons{
 

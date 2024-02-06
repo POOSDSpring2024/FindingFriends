@@ -6,12 +6,112 @@ body {
     background-color: transparent;
 }
 
+.navbar{
+
+    position:sticky;
+    top: 0;  
+    left:0;
+    width:100%;
+    display:flex;
+    z-index: 1030; /* to prevent the navbar getting covered up by other content */
+    
+    flex-direction: row;
+    flex-wrap: none;
+    background-color: #006CA5;  
+    }
+
+.menuitem{
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding-top: 22px;
+    padding: 21px 22px;
+    text-decoration: none;
+}
+
+.menuitem:hover{
+    background-color: #02367B;
+}
+
+.right{
+    flex:1;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.left{
+    flex:1;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.active{
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding-top: 18px;
+    padding: 16px 16px;
+    text-decoration: none;
+    background-color: #FF6F1D;
+}
+
+.active:hover{
+    background-color: #cc5109;
+}
+
+.register-button{
+    background-color: #FF6F1D;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    
+    font-size: 17px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.register-button:hover{
+    background-color: #cc5109;
+}
+
+.background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #00BFFF, #00072D); /* Adjust colors as needed */
+    animation: moveBackground 20s linear infinite alternate; /* Adjust duration and animation type */
+    z-index: -2;
+}
+
+#logout-button{
+    background-color: #FF6F1D;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;    
+    font-size: 17px;
+    margin: 4px 2px;
+    cursor: pointer;   
+}
+
+#logout-button:hover{
+    background-color: #cc5109;
+}
+ 
+
 /* content from leinecker */
 .content {
-    padding: 1px 16px;
+    /*padding: 1px 8px;*/
     height: 1000px;
     margin-top: 25px;
-    margin-left: 270px;
+    margin-left: 25px;
     margin-right: 10px;
     display: flex;
     flex-direction: column;
@@ -22,7 +122,7 @@ body {
 .loggedInDiv {
     font-family: 'Montserrat';
     font-weight: bolder;
-    font-size: 2vw;
+    font-size: 7vw;
     align-self: center;
 }
 
@@ -70,7 +170,7 @@ body {
 #addMe {
     font-family: 'Montserrat';
     display: none;
-    border-radius: 17px;
+    border-radius: 15px;
     position: relative;
     background: rgba(234, 207, 155, 0.9);
     max-width: 350px;
@@ -81,7 +181,7 @@ body {
 }
 
 #addMe input {
-    border-radius: 17px;
+    border-radius: 15px;
     font-family: 'Montserrat';
     outline: 0;
     background: #f2f2f2;
@@ -108,7 +208,7 @@ body {
 }
 
 #addMe button {
-    border-radius: 17px;
+    border-radius: 15px;
     font-family: 'Montserrat';
     outline: 0;
     background: #78500b;
@@ -189,7 +289,7 @@ body {
 }
 
 .search-container .search-btn .fas {
-    color: rgba(155, 188, 115, 0.9);
+    color: #FF6F1D;
 }
 
 .search-container:hover {
@@ -230,7 +330,7 @@ table {
 
 #contacts td,
 #contacts th {
-    border: 1px solid rgba(155, 188, 115, 0.9);
+    border: 1px solid #FF6F1D;
 }
 
 #contacts tr:hover {
@@ -244,8 +344,8 @@ table {
     font-weight: 500;
     font-size: 16px;
     font-weight: bold;
-    color: #007D2F;
-    background-color: rgba(155, 188, 115, 0.9);
+    color: #00072D;
+    background-color: #FF6F1D;
     text-transform: uppercase;
 }
 
@@ -257,15 +357,15 @@ table {
     font-weight: 300;
     font-size: 15px;
     font-weight: bold;
-    color: #66471b;
-    background-color: antiquewhite;
+    color: #000000;
+    background-color: white;
 }
 #contacts td span {
     display: block;
     white-space: nowrap;
     overflow: hidden;
     font-size: 100%;
-    color: #66471b;
+    color: #000000;
 }
 
 /* for custom scrollbar for webkit browser*/
@@ -281,64 +381,13 @@ table {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
-/*side navigation menu*/
-.sidenav img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 70%;
-    position: relative;
-}
-.sidenav {
-    width: 264px;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    left: 0px;
-    top: 0px;
-    overflow: auto;
-    /*disables horizontal scroll*/
-    position: fixed;
-    /*scroll bar stays in place when user is scrolling*/
-    background: rgba(155, 188, 115, 0.9);
-}
 
-/*navigation links*/
-.sidenav a {
-    padding: 10px 0px 15px 0px;
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 25px;
-    line-height: 44px;
-    color: #007D2F;
-}
 
 .buttons {
     padding: 10px 0px 15px 0px;
     display: block;
 }
 
-/*buttons that are on the sidebar*/
-.sidebuttons {
-    padding: 10px 0px 15px 0px;
-    display: inline-block;
-}
-
-.sidebuttons:hover {
-    color: #897261;
-}
-
-.buttons:hover {
-    color: #897261;
-}
-
-.sidenav a:hover {
-    color: #897261;
-}
 
 .font {
     text-align: center;
@@ -356,9 +405,7 @@ table {
 
 /* make sidebar a topbar for mobile view*/
 @media screen and (max-width: 700px) {
-    body {
-        background-image: url('../images/backgroundmobile2.png');
-    }
+    
 
     .sidenav {
         width: 100%;
