@@ -220,7 +220,6 @@ body{
   /* grid w/images and names */
   .grid-container {
     display: grid;
-    grid-template-columns: 33% 33% 33%;
     grid-gap: 10px;
     padding: 10px;
     margin-left: 50px;
@@ -238,8 +237,8 @@ body{
     
   }
   .grid-item img {
-    width: 45%;
-    height: 50%;
+    width: auto;
+    height: auto;
     
     background-color: transparent;
   }
