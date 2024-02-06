@@ -72,57 +72,57 @@
                   <div style="text-align: left; font-size: 22px; color: white; font-family: Arial, Helvetica, sans-serif;">
                       <label class="required">First Name</label>
                   </div>
-                  <input type="text" class="input-field" id="first-name-field" placeholder="firstname" name="firstName" required>
+                  <input type="text" class="input-field" id="first-name-field" placeholder="Insert First Name Here" name="firstName" required>
 
                   <div style="text-align: left; font-size: 22px; color: white; font-family: Arial, Helvetica, sans-serif;">
                       <label class="required">Last Name</label>
                   </div>
-                  <input type="text" class="input-field" id="last-name-field" placeholder="lastname" name="lastName" required />
+                  <input type="text" class="input-field" id="last-name-field" placeholder="Insert Last Name Here" name="lastName" required />
 
                   <div style="text-align: left; font-size: 22px; color: white; font-family: Arial, Helvetica, sans-serif;">
                       <label class="required">Username</label>
                   </div>
-                  <input type="text" class="input-field" id="username-field" placeholder="username" name="login"  required/>
+                  <input type="text" class="input-field" id="username-field" placeholder="Insert Username Here" name="login"  required/>
                   
                   <div style="text-align: left; font-size: 22px; color: white; font-family: Arial, Helvetica, sans-serif;">
                       <label class="required">Password</label>
                   </div>
-                  <input type="password" class="input-field" id="password-field" placeholder="password" name="password" required>
+                  <input type="password" class="input-field" id="password-field" placeholder="Insert Password Here" name="password" required>
                   
                   <div style="text-align: left; font-size: 22px; color: white; font-family: Arial, Helvetica, sans-serif;">
                     <label class="required">Confirm Password</label>
                   </div>
-                  <input type="password" class="input-field" id="confirm-password-field" placeholder="confirm password" name="confirmPassword" required>
+                  <input type="password" class="input-field" id="confirm-password-field" placeholder="Retype Password Here" name="confirmPassword" required>
 
                   <button type="button" id="signup-button" class="buttons" onclick="signUpUserDoublePasswordHTML('first-name-field', 'last-name-field', 'username-field', 'password-field','confirm-password-field', 'signup-result');" >Sign up</button><br />
                   <span class="text" style="color:rgb(203, 55, 21); font-family: 'Montserrat';" id="signup-result"></span>
                   <br>
-                  <a href="login.html" style="font-family: Arial, Helvetica, sans-serif; font-size: 18px;">Already have an Account? Login here</a>
+                  <a href="login.html" style="font-family: Arial, Helvetica, sans-serif; font-size: 20px;">Already have an Account?<br>Login here</a>
               </form>
             </div>
           </div>
           <div class="col-md-8">
             <div class="reqirement-info" id="name-requirement-list">
-              <h4 id="name-requirement">📜Name must contain the following📜</h3>
-              <p id="name-length-requirement">📜Name MUST be 1-32 Characters Long (inclusive)📜</p>
-              <p id="name-excluded-requirement">📜Name CANNOT have '&lt' or '&gt'📜</p>
+              <h2 id="name-requirement">📜Name must contain the following📜</h2>
+              <h5 id="name-length-requirement">📜Name MUST be 1-32 Characters Long (inclusive)📜</h5>
+              <h5 id="name-excluded-requirement">📜Name CANNOT have '&lt' or '&gt'📜</h5>
             </div>
             <div class="reqirement-info" id="username-requirement-list">
-              <h4 id="username-requirement">📜Username must contain the following📜</h3>
-              <p id="username-length-requirement">📜Username MUST be 3-18 Characters Long (inclusive)📜</p>
-              <p id="username-letter-requirement">📜Username MUST be have at least one letter (a-z or A-Z)📜</p>
-              <p id="username-character-requirement">📜Username can ONLY be letters, numbers, underscores or hypens📜</p>
-              <h6 id="username-extra-info"></h6>
+              <h2 id="username-requirement">📜Username must contain the following📜</h2>
+              <h5 id="username-length-requirement">📜Username MUST be 3-18 Characters Long (inclusive)📜</h5>
+              <h5 id="username-letter-requirement">📜Username MUST be have at least one letter (a-z or A-Z)📜</h5>
+              <h5 id="username-character-requirement">📜Username can ONLY be letters, numbers, underscores or hypens📜</h5>
+              <h4 id="username-extra-info"></h6>
             </div>
             <div class="reqirement-info" id="password-requirement-list">
-              <h4 id="password-requirement">📜Password MUST be 8-32 Characters Long (inclusive)📜</h3>
-              <p id="password-length-requirement">📜Password MUST be have at least one letter (a-z or A-Z)📜</p>
-              <p id="password-letter-requirement">📜Username MUST be have at least one letter (a-z or A-Z)📜</p>
-              <p id="password-number-requirement">📜Password MUST be have at least one number (0-9)📜</p>
-              <p id="password-special-character-requirement">📜Password MUST be have at the following special character.📜</p>
-              <p>Special Character Include: ! @ # $ % ^ & * (  ) - = _ + [ \ ] { } | ; : \ ' " , . / ? ~ `</p>
-              <p id="password-excluded-requirement">📜Password CANNOT have '&lt' or '&gt'📜</p>
-              <h6 id="password-extra-info"></h6>
+              <h2 id="password-requirement">📜Password must contain the following📜</h2>
+              <h5 id="password-length-requirement">📜Password MUST be 8-32 Characters Long (inclusive)📜</h5>
+              <h5 id="password-letter-requirement">📜Username MUST be have at least one letter (a-z or A-Z)📜</h5>
+              <h5 id="password-number-requirement">📜Password MUST be have at least one number (0-9)📜</h5>
+              <h5 id="password-special-character-requirement">📜Password MUST be at least one of the following special character:📜</h5>
+              <h5>Special Character: ! @ # $ % ^ & * (  ) - = _ + [ \ ] { } | ; : \ ' " , .  / ? ~ `</h5>
+              <h5 id="password-excluded-requirement">📜Password CANNOT have '&lt' or '&gt'📜</h5>
+              <h4 id="password-extra-info"></h4>
             </div>
           </div>
         </div>
