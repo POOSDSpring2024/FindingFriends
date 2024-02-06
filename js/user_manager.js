@@ -131,7 +131,7 @@ function readCookie(outputElementID) {
         }
     }
 
-    if (!userExist(id)) {
+    if (!userExist(userId)) {
         window.location.href = "login.html";
     }
 
@@ -162,7 +162,7 @@ function readCookieLogin(outputElementID) {
         }
     }
 
-    if (!userExist(id)) {
+    if (!userExist(userId)) {
         //window.location.href = "index.html";
     }
 
