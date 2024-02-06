@@ -9,15 +9,15 @@ var lastName = "";
 ids = []
 
 function showTable() {
-    var x = document.getElementById("add-me");
-    var contacts = document.getElementById("contact-table")
-    if (x.style.display === "none") {
-        x.style.display = "block";
-        contacts.style.display = "none";
-    } else {
-        x.style.display = "none";
-        contacts.style.display = "block";
-    }
+    // var addMe = document.getElementById("add-me");
+    // var contacts = document.getElementById("contact-table")
+    // if (addMe.style.display === "none") {
+    //     addMe.style.display = "block";
+    //     contacts.style.display = "none";
+    // } else {
+    //     addMe.style.display = "none";
+    //     contacts.style.display = "block";
+    // }
 }
 
 function addContact() {
@@ -51,6 +51,7 @@ function addContact() {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 console.log("Contact has been added");
+                document.getElementById("new-contacts-info").innerHTML="Contacted Added Sucessfuly.<br>Add New Contacts Here:";
                 // Clear input fields in form 
                 document.getElementById("add-me").reset();
                 // reload contacts table and switch view to show
@@ -73,6 +74,8 @@ function loadContacts(searchString) {
         search: searchString,
         userId: userId
     };
+
+    document.getElementById('search-text').value=searchString;
 
     let jsonPayload = JSON.stringify(tmp);
 
@@ -253,9 +256,10 @@ function searchContacts() {
 function validAddContact(firstName, lastName, phone, email) {
 
     var firstNameError = lastNameErrot = phoneError = emailError = true;
-
+    let strOutput = "";
     if (firstName == "") {
         console.log("FIRST NAME IS BLANK");
+        strOutput+="First Name is Blank. ";
     }
     else {
         console.log("first name IS VALID");
@@ -264,6 +268,7 @@ function validAddContact(firstName, lastName, phone, email) {
 
     if (lastName == "") {
         console.log("LAST NAME IS BLANK");
+        strOutput+="Last Name is Blank. ";
     }
     else {
         console.log("LAST name IS VALID");
@@ -272,12 +277,14 @@ function validAddContact(firstName, lastName, phone, email) {
 
     if (phone == "") {
         console.log("PHONE IS BLANK");
+        strOutput+="Phone is Blank. ";
     }
     else {
         let regex = /^[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/;
 
         if (regex.test(phone) == false) {
             console.log("PHONE IS NOT VALID");
+            strOutput+='Phone in incorrect format (Only "###-###-####"). ';
         }
 
         else {
@@ -289,12 +296,14 @@ function validAddContact(firstName, lastName, phone, email) {
 
     if (email == "") {
         console.log("EMAIL IS BLANK");
+        strOutput+='Email is Blank. ';
     }
     else {
         let regex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
 
         if (regex.test(email) == false) {
             console.log("EMAIL IS NOT VALID");
+            strOutput+='Email in incorrect Format (Ex. "name@email.com"). ';
         }
 
         else {
@@ -305,6 +314,7 @@ function validAddContact(firstName, lastName, phone, email) {
     }
 
     if ((firstNameError || lastNameErrot || phoneError || emailError) == true) {
+        document.getElementById("new-contacts-info").innerText=strOutput;
         return false;
 
     }
