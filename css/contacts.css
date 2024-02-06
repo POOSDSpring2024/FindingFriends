@@ -341,15 +341,15 @@ table {
     font-weight: 300;
     font-size: 15px;
     font-weight: bold;
-    color: #66471b;
-    background-color: antiquewhite;
+    color: #000000;
+    background-color: white;
 }
 #contacts td span {
     display: block;
     white-space: nowrap;
     overflow: hidden;
     font-size: 100%;
-    color: #66471b;
+    color: #000000;
 }
 
 /* for custom scrollbar for webkit browser*/
@@ -365,64 +365,13 @@ table {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
-/*side navigation menu*/
-.sidenav img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 70%;
-    position: relative;
-}
-.sidenav {
-    width: 264px;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    left: 0px;
-    top: 0px;
-    overflow: auto;
-    /*disables horizontal scroll*/
-    position: fixed;
-    /*scroll bar stays in place when user is scrolling*/
-    background: rgba(155, 188, 115, 0.9);
-}
 
-/*navigation links*/
-.sidenav a {
-    padding: 10px 0px 15px 0px;
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 25px;
-    line-height: 44px;
-    color: #007D2F;
-}
 
 .buttons {
     padding: 10px 0px 15px 0px;
     display: block;
 }
 
-/*buttons that are on the sidebar*/
-.sidebuttons {
-    padding: 10px 0px 15px 0px;
-    display: inline-block;
-}
-
-.sidebuttons:hover {
-    color: #897261;
-}
-
-.buttons:hover {
-    color: #897261;
-}
-
-.sidenav a:hover {
-    color: #897261;
-}
 
 .font {
     text-align: center;
