@@ -132,10 +132,42 @@ function readCookie(outputElementID) {
     }
 
     if (!userExist(id)) {
-        window.location.href = "index.html";
+        window.location.href = "login.html";
     }
 
     else {
+        setOutputElementID("weclome-text");
+        outputString("Welcome, " + firstName + " " + lastName + "!");
+    }
+}
+
+function readCookieLogin(outputElementID) {
+    setOutputElementID(outputElementID);
+
+    userId = -1;
+    let splits = document.cookie.split(",");
+
+    for (let i = 0; i < splits.length; i++) {
+        let tokens = splits[i].trim().split("=");
+        switch(tokens[0]){
+            case "firstName":
+                firstName = tokens[1];
+                break;
+            case "lastName":
+                lastName = tokens[1];
+                break; 
+            case "userId":
+                userId = tokens[1];
+                break; 
+        }
+    }
+
+    if (!userExist(id)) {
+        //window.location.href = "index.html";
+    }
+
+    else {
+        window.location.href = "contacts.html";
         setOutputElementID("weclome-text");
         outputString("Welcome, " + firstName + " " + lastName + "!");
     }
