@@ -214,7 +214,7 @@ body{
 
 .container {
     width: 100%;
-    margin-top: 50px;
+    margin-top: 70px;
     overflow:hidden;
   }
   /* grid w/images and names */
@@ -232,7 +232,7 @@ body{
     letter-spacing: 1px;
     font-family: 'Montserrat';
     color: #f3f3f3; 
-    padding: 15px 0;
+    padding: 20px 0;
     background-color: transparent;
     
   }
