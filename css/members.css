@@ -243,6 +243,17 @@ body{
     background-color: transparent;
   }
 
+  .row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .col-md-4 {
+    flex: 0 0 32%;
+    margin-bottom: 20px; /* Adjust as needed */
+  }
+
+
 /*--------------------
 #footer {
     grid-area: content3;
