@@ -6,7 +6,7 @@ body{
     box-sizing: border-box;
     background-color: transparent;
     -webkit-text-stroke: 0.2px black;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial Black, Arial, Helvetica, sans-serif;
 
 }
 
@@ -40,6 +40,7 @@ body{
 
 .menuitem:hover{
     background-color: #04244e;
+    color:#cc5109
 }
 
 .right{
@@ -85,6 +86,7 @@ body{
 }
 .register-button:hover{
     background-color: #cc5109;
+    color:white;
 }
 
 .background{
@@ -136,7 +138,7 @@ body{
 
 #header{
     color:#FF6F1D;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial Black, Arial, Helvetica, sans-serif;
     font-weight: bold;
     
     padding-top: 5%;
