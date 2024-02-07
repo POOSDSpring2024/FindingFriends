@@ -251,8 +251,8 @@ body{
   }
 
   .row {
-    padding-top: 5px;
-    padding-bottom: 5px;
+    margin-top: 5px; /* Adjust as needed */
+    margin-bottom: 5px; /* Adjust as needed */
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
